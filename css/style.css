@@ -785,9 +785,12 @@ background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(206,219,235,1) 
     }
 }
 
-@media (max-width:320px) {
+@media (max-width:360px) {
      .comment-num{
-        padding: 10px 15px !important
+        padding: 10px 10px !important
+    }
+    .ten .card-body{
+        padding: 10px 5px;
     }
 }
 
@@ -856,7 +859,7 @@ background: radial-gradient(circle, rgba(170,182,191,1) 0%, rgba(224,181,221,1) 
 }
 @media (max-width: 380px){
     .persons-react {
-       width: 60px;
+       width: 53px;
     }
 }
 
