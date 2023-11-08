@@ -945,5 +945,8 @@ background: radial-gradient(circle, rgba(170,182,191,1) 0%, rgba(224,181,221,1) 
         flex-direction: column-reverse;
         align-items: center !important;
     }
+    .forth .head-div {
+        padding: 25px 10px;
+    }
     
 }
