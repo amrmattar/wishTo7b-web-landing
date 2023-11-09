@@ -20,7 +20,7 @@
 
 <body dir="rtl">
 
-    <section>
+    <!-- <section>
         <div class="container container-md first">
             <div class="row">
                 <div class="overlay-container">
@@ -61,21 +61,71 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!--card 1 -->
+
+
+<div class="modal fade" id="largeModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="largeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="largeModalLabel">التعليقات </h1>
+         <div>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+         </div>
+        </div>
+        <div class="modal-body" id="modalCommentContent">
+       
+        </div>
+    
+      </div>
+    </div>
+  </div>
+
+
+
+
+      
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">المتفاعلون </h1>
+         <div>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+         </div>
+        </div>
+        <div class="modal-body" id="modalContent">
+       
+        </div>
+    
+      </div>
+    </div>
+  </div>
     <section>
         <div class="container container-md second">
             <div class="row">
+                
                 <h1 class="mb-4">الخط الزمني</h1>
                 <div class="card card-one">
-                    <div class=" head-div d-flex justify-content-between">
-                        <div class="alarm">
+                    <div class=" head-div d-flex justify-content-end">
+                        <!-- <div class="alarm">
                             <i class="fa-regular fa-heart"></i>
-                        </div>
-                        <div class="alarm">
-                            <i class="fa-solid fa-ellipsis"></i>
-                        </div>
+                        </div> -->
+                       
+                      
+                          <div class="dropdown">
+                            <div  class=" alarm btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </div>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">رؤية التفاصيل</a></li>
+                              <li><a class="dropdown-item" href="#">حذف</a></li>
+                             
+                            </ul>
+                          </div>
                     </div>
                     <div class="d-flex justify-content-center">
                         <img class="card-img-top" src="./images/camera.png" style="width: 50%;padding: 15px;"
@@ -89,12 +139,12 @@
                                 </div>
                                 <p class="person-name">بدر الدريعي</p>
                             </div>
-                            <div class="radio-container">
+                            <!-- <div class="radio-container">
                                 <div class="parent">
                                     <input type="radio" id="radio2" name="radiogroup">
                                     <label for="radio2">احجز الهدية</label>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="d-flex justify-content-between comments">
                             <div class="vission-name">
@@ -117,21 +167,27 @@
                         </div>
                         <div class="d-flex reacts">
                             <div class="persons-react1">
-                                <img src="./images/01.jpg" class=" persons-react " alt="">
+                               <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react " alt=""></a>
                                 <img class="emoji" src="./images/emo1.png" alt="">
                             </div>
                             <div class="persons-react2">
-                                <img src="./images/02.jpg" class="persons-react" alt="">
+                               <a href="#" target="_blank">  <img src="./images/02.jpg" class="persons-react" alt=""></a>
                                 <img class="emoji" src="./images/emo2.png" alt="">
                             </div>
                             <div class="persons-react3">
-                                <img src="./images/03.jpg" class="persons-react " alt="">
+                               <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react " alt=""></a>
                                 <img class="emoji" src="./images/ic.png" alt="">
                             </div>
                             <div class="persons-react4">
-                                <img src="./images/04.jpg" class="persons-react" alt="">
+                                <a href="#" target="_blank"> <img src="./images/04.jpg" class="persons-react" alt=""></a>
                                 <img class="emoji" src="./images/ic2.png" alt="">
                             </div>
+                            <div  class="persons-react-count" id="btn1"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="cursor: pointer;">
+                                <span>+6</span>
+                            </div>
+                            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                Launch static backdrop modal
+                              </button> -->
                         </div>
                         <div class="d-flex justify-content-center">
                             <span class="frist-hr"></span>
@@ -154,6 +210,9 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="d-flex justify-content-center align-items-center mb-3 mt-3" id="comentbtn1" data-bs-toggle="modal" data-bs-target="#largeModal" style="cursor: pointer;">
+                            <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down" style="margin-right: 13px;"></i></span>
+                         </div>
                     </div>
 
                 </div>
@@ -295,13 +354,23 @@
         <div class="container container-md nine">
             <div class="row">
                 <div class="card card-nine">
-                    <div class=" head-div d-flex justify-content-between">
-                        <div class="alarm">
+                    <div class=" head-div d-flex justify-content-end">
+                        <!-- <div class="alarm">
                             <i class="fa-regular fa-heart"></i>
-                        </div>
-                        <div class="alarm">
+                        </div> -->
+                        <!-- <div class="alarm">
                             <i class="fa-solid fa-ellipsis"></i>
-                        </div>
+                        </div> -->
+                        <div class="dropdown">
+                            <div  class=" alarm btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </div>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">رؤية التفاصيل</a></li>
+                              <li><a class="dropdown-item" href="#">حذف</a></li>
+                             
+                            </ul>
+                          </div>
                     </div>
                   
                     <div class="d-flex justify-content-between align-items-center outer-person" >
@@ -344,16 +413,19 @@
                         </div>
                         <div class="d-flex reacts">
                             <div class="persons-react1">
-                                <img src="./images/01.jpg" class=" persons-react " alt="">
-                                <img class="emoji" src="./images/emo1.png" alt="">
-                            </div>
-                            <div class="persons-react2">
-                                <img src="./images/02.jpg" class="persons-react" alt="">
-                                <img class="emoji" src="./images/emo2.png" alt="">
-                            </div>
-                            <div class="persons-react3">
-                                <img src="./images/03.jpg" class="persons-react " alt="">
-                                <img class="emoji" src="./images/ic.png" alt="">
+                                <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react " alt=""></a>
+                                 <img class="emoji" src="./images/emo1.png" alt="">
+                             </div>
+                             <div class="persons-react2">
+                                <a href="#" target="_blank">  <img src="./images/02.jpg" class="persons-react" alt=""></a>
+                                 <img class="emoji" src="./images/emo2.png" alt="">
+                             </div>
+                             <div class="persons-react3">
+                                <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react " alt=""></a>
+                                 <img class="emoji" src="./images/ic.png" alt="">
+                             </div>
+                             <div  class="persons-react-count" id="btn2"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="cursor: pointer;">
+                                <span>+6</span>
                             </div>
                           
                         </div>
@@ -378,6 +450,9 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="d-flex justify-content-center align-items-center mb-3 mt-3" id="comentbtn2" data-bs-toggle="modal" data-bs-target="#largeModal" style="cursor: pointer;">
+                            <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down" style="margin-right: 13px;"></i></span>
+                         </div>
                      
                     </div>
     
@@ -409,9 +484,16 @@
                             </div>
                         </div>
                         <div class="d-flex align-items-end flex-column">
-                            <div class="alarm">
-                                <i class="fa-solid fa-ellipsis"></i>
-                            </div>
+                            <div class="dropdown">
+                                <div  class=" alarm btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </div>
+                                <ul class="dropdown-menu">
+                                  <li><a class="dropdown-item" href="#">رؤية التفاصيل</a></li>
+                                  <li><a class="dropdown-item" href="#">حذف</a></li>
+                                 
+                                </ul>
+                              </div>
                             <div class="time">
                                 <span>منذ 3 ساعات</span>
                             </div>
@@ -420,9 +502,9 @@
                     </div>
                     <div class="d-flex justify-content-center resturant-data">
                         <img class="card-img-top" src="./images/shepreani.jpg" alt="Card image cap">
-                        <div class="heart">
+                        <!-- <div class="heart">
                             <i class="fa-regular fa-heart"></i>
-                        </div>
+                        </div> -->
                         <div class="whereIAM">
                             <span>انا في</span><br>
                             <span>شيبرياني- الرياض</span><br>
@@ -444,20 +526,23 @@
                         </div>
                         <div class="d-flex reacts">
                             <div class="persons-react1">
-                                <img src="./images/01.jpg" class=" persons-react " alt="">
-                                <img class="emoji" src="./images/emo1.png" alt="">
-                            </div>
-                            <div class="persons-react2">
-                                <img src="./images/02.jpg" class="persons-react" alt="">
-                                <img class="emoji" src="./images/emo2.png" alt="">
-                            </div>
-                            <div class="persons-react3">
-                                <img src="./images/03.jpg" class="persons-react " alt="">
-                                <img class="emoji" src="./images/ic.png" alt="">
-                            </div>
-                            <div class="persons-react4">
-                                <img src="./images/04.jpg" class="persons-react" alt="">
-                                <img class="emoji" src="./images/ic2.png" alt="">
+                                <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react " alt=""></a>
+                                 <img class="emoji" src="./images/emo1.png" alt="">
+                             </div>
+                             <div class="persons-react2">
+                                <a href="#" target="_blank">  <img src="./images/02.jpg" class="persons-react" alt=""></a>
+                                 <img class="emoji" src="./images/emo2.png" alt="">
+                             </div>
+                             <div class="persons-react3">
+                                <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react " alt=""></a>
+                                 <img class="emoji" src="./images/ic.png" alt="">
+                             </div>
+                             <div class="persons-react4">
+                                 <a href="#" target="_blank"> <img src="./images/04.jpg" class="persons-react" alt=""></a>
+                                 <img class="emoji" src="./images/ic2.png" alt="">
+                             </div>
+                             <div  class="persons-react-count" id="btn3" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="cursor: pointer;">
+                                <span>+6</span>
                             </div>
                         </div>
                         <div class="d-flex justify-content-center">
@@ -498,6 +583,9 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="d-flex justify-content-center align-items-center mb-3 mt-3" id="comentbtn3" data-bs-toggle="modal" data-bs-target="#largeModal" style="cursor: pointer;">
+                            <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down" style="margin-right: 13px;"></i></span>
+                         </div>
                     </div>
 
                 </div>
@@ -506,7 +594,7 @@
 
     </section>
     <!-- slider -->
-    <section>
+    <!-- <section>
         <div class="container container-md">
             <div class="row">
                 <h4>الاصدقاء المقترحون لك</h4>
@@ -546,7 +634,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!--card 5 -->
     <section>
         <div class="container container-md fifth">
@@ -570,9 +658,16 @@
                             </div>
                         </div>
                         <div class="d-flex align-items-end flex-column">
-                            <div class="alarm">
-                                <i class="fa-solid fa-ellipsis"></i>
-                            </div>
+                            <div class="dropdown">
+                                <div  class=" alarm btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </div>
+                                <ul class="dropdown-menu">
+                                  <li><a class="dropdown-item" href="#">رؤية التفاصيل</a></li>
+                                  <li><a class="dropdown-item" href="#">حذف</a></li>
+                                 
+                                </ul>
+                              </div>
                             <div class="time">
                                 <span>15 ساعة</span>
                             </div>
@@ -586,9 +681,9 @@
                             <a href="https://www.youtube.com/watch?v=mAbEZ1EmtbI" class="venobox play-btn mb-4"
                                 data-vbtype="video" data-autoplay="true"></a>
                         </div>
-                        <div class="heart">
+                        <!-- <div class="heart">
                             <i class="fa-regular fa-heart"></i>
-                        </div>
+                        </div> -->
 
                     </div>
                     <div class="card-body">
@@ -603,20 +698,23 @@
                         </div>
                         <div class="d-flex reacts" style="margin: 25px 0;">
                             <div class="persons-react1">
-                                <img src="./images/01.jpg" class=" persons-react " alt="">
-                                <img class="emoji" src="./images/emo1.png" alt="">
-                            </div>
-                            <div class="persons-react2">
-                                <img src="./images/02.jpg" class="persons-react" alt="">
-                                <img class="emoji" src="./images/emo2.png" alt="">
-                            </div>
-                            <div class="persons-react3">
-                                <img src="./images/03.jpg" class="persons-react " alt="">
-                                <img class="emoji" src="./images/ic.png" alt="">
-                            </div>
-                            <div class="persons-react4">
-                                <img src="./images/04.jpg" class="persons-react" alt="">
-                                <img class="emoji" src="./images/ic2.png" alt="">
+                                <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react " alt=""></a>
+                                 <img class="emoji" src="./images/emo1.png" alt="">
+                             </div>
+                             <div class="persons-react2">
+                                <a href="#" target="_blank">  <img src="./images/02.jpg" class="persons-react" alt=""></a>
+                                 <img class="emoji" src="./images/emo2.png" alt="">
+                             </div>
+                             <div class="persons-react3">
+                                <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react " alt=""></a>
+                                 <img class="emoji" src="./images/ic.png" alt="">
+                             </div>
+                             <div class="persons-react4">
+                                 <a href="#" target="_blank"> <img src="./images/04.jpg" class="persons-react" alt=""></a>
+                                 <img class="emoji" src="./images/ic2.png" alt="">
+                             </div>
+                             <div  class="persons-react-count" id="btn4" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="cursor: pointer;">
+                                <span>+6</span>
                             </div>
                         </div>
 
@@ -651,9 +749,16 @@
                         </div>
                     </div>
                     <div class="d-flex align-items-end flex-column">
-                        <div class="alarm">
-                            <i class="fa-solid fa-ellipsis"></i>
-                        </div>
+                        <div class="dropdown">
+                            <div  class=" alarm btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </div>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">رؤية التفاصيل</a></li>
+                              <li><a class="dropdown-item" href="#">حذف</a></li>
+                             
+                            </ul>
+                          </div>
                         <div class="time">
                             <span>منذ 3 ساعات</span>
                         </div>
@@ -662,9 +767,9 @@
                 </div>
                 <div class="d-flex justify-content-center resturant-data">
                     <img class="card-img-top" src="./images/avatarmovi.jpg" alt="Card image cap">
-                    <div class="heart">
+                    <!-- <div class="heart">
                         <i class="fa-regular fa-heart"></i>
-                    </div>
+                    </div> -->
                     <div class="whereIAM">
                         <span>أشاهد</span><br>
                         <span>Avatar: the way of water </span>
@@ -684,20 +789,23 @@
                     </div>
                     <div class="d-flex reacts">
                         <div class="persons-react1">
-                            <img src="./images/01.jpg" class=" persons-react " alt="">
-                            <img class="emoji" src="./images/emo1.png" alt="">
-                        </div>
-                        <div class="persons-react2">
-                            <img src="./images/02.jpg" class="persons-react" alt="">
-                            <img class="emoji" src="./images/emo2.png" alt="">
-                        </div>
-                        <div class="persons-react3">
-                            <img src="./images/03.jpg" class="persons-react " alt="">
-                            <img class="emoji" src="./images/ic.png" alt="">
-                        </div>
-                        <div class="persons-react4">
-                            <img src="./images/04.jpg" class="persons-react" alt="">
-                            <img class="emoji" src="./images/ic2.png" alt="">
+                            <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react " alt=""></a>
+                             <img class="emoji" src="./images/emo1.png" alt="">
+                         </div>
+                         <div class="persons-react2">
+                            <a href="#" target="_blank">  <img src="./images/02.jpg" class="persons-react" alt=""></a>
+                             <img class="emoji" src="./images/emo2.png" alt="">
+                         </div>
+                         <div class="persons-react3">
+                            <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react " alt=""></a>
+                             <img class="emoji" src="./images/ic.png" alt="">
+                         </div>
+                         <div class="persons-react4">
+                             <a href="#" target="_blank"> <img src="./images/04.jpg" class="persons-react" alt=""></a>
+                             <img class="emoji" src="./images/ic2.png" alt="">
+                         </div>
+                         <div  class="persons-react-count" id="btn5"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="cursor: pointer;">
+                            <span>+6</span>
                         </div>
                     </div>
                     <div class="d-flex justify-content-center">
@@ -738,6 +846,9 @@
                             </div>
                         </div>
                     </div>
+                    <div class="d-flex justify-content-center align-items-center mb-3 mt-3" id="comentbtn4" data-bs-toggle="modal" data-bs-target="#largeModal" style="cursor: pointer;">
+                        <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down" style="margin-right: 13px;"></i></span>
+                     </div>
                 </div>
 
             </div>
@@ -769,9 +880,16 @@
                         </div>
                     </div>
                     <div class="d-flex align-items-end flex-column">
-                        <div class="alarm">
-                            <i class="fa-solid fa-ellipsis"></i>
-                        </div>
+                        <div class="dropdown">
+                            <div  class=" alarm btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </div>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">رؤية التفاصيل</a></li>
+                              <li><a class="dropdown-item" href="#">حذف</a></li>
+                             
+                            </ul>
+                          </div>
                         <div class="time">
                             <span>منذ 3 ساعات</span>
                         </div>
@@ -780,9 +898,9 @@
                 </div>
                 <div class="d-flex justify-content-center resturant-data">
                     <img class="card-img-top" src="./images/images.jpg" alt="Card image cap">
-                    <div class="heart">
+                    <!-- <div class="heart">
                         <i class="fa-regular fa-heart"></i>
-                    </div>
+                    </div> -->
                     <div class="whereIAM">
                         <span>أستمع الي </span><br>
                         <span>عمرودياب - صدقني خلاص </span>
@@ -802,20 +920,23 @@
                     </div>
                     <div class="d-flex reacts" style="margin: 25px 0;">
                         <div class="persons-react1">
-                            <img src="./images/01.jpg" class=" persons-react " alt="">
-                            <img class="emoji" src="./images/emo1.png" alt="">
-                        </div>
-                        <div class="persons-react2">
-                            <img src="./images/02.jpg" class="persons-react" alt="">
-                            <img class="emoji" src="./images/emo2.png" alt="">
-                        </div>
-                        <div class="persons-react3">
-                            <img src="./images/03.jpg" class="persons-react " alt="">
-                            <img class="emoji" src="./images/ic.png" alt="">
-                        </div>
-                        <div class="persons-react4">
-                            <img src="./images/04.jpg" class="persons-react" alt="">
-                            <img class="emoji" src="./images/ic2.png" alt="">
+                            <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react " alt=""></a>
+                             <img class="emoji" src="./images/emo1.png" alt="">
+                         </div>
+                         <div class="persons-react2">
+                            <a href="#" target="_blank">  <img src="./images/02.jpg" class="persons-react" alt=""></a>
+                             <img class="emoji" src="./images/emo2.png" alt="">
+                         </div>
+                         <div class="persons-react3">
+                            <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react " alt=""></a>
+                             <img class="emoji" src="./images/ic.png" alt="">
+                         </div>
+                         <div class="persons-react4">
+                             <a href="#" target="_blank"> <img src="./images/04.jpg" class="persons-react" alt=""></a>
+                             <img class="emoji" src="./images/ic2.png" alt="">
+                         </div>
+                         <div  class="persons-react-count" id="btn6"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="cursor: pointer;">
+                            <span>+6</span>
                         </div>
                     </div>
                   
@@ -851,9 +972,16 @@
                         </div>
                     </div>
                     <div class="d-flex align-items-end flex-column">
-                        <div class="alarm">
-                            <i class="fa-solid fa-ellipsis"></i>
-                        </div>
+                        <div class="dropdown">
+                            <div  class=" alarm btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </div>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">رؤية التفاصيل</a></li>
+                              <li><a class="dropdown-item" href="#">حذف</a></li>
+                             
+                            </ul>
+                          </div>
                         <div class="time">
                             <span>منذ 3 ساعات</span>
                         </div>
@@ -862,9 +990,9 @@
                 </div>
                 <div class="d-flex justify-content-center resturant-data">
                     <img class="card-img-top" src="./images/work.jpg" alt="Card image cap">
-                    <div class="heart">
+                    <!-- <div class="heart">
                         <i class="fa-regular fa-heart"></i>
-                    </div>
+                    </div> -->
                  
                 </div>
                 <div class="card-body">
@@ -879,28 +1007,29 @@
                     </div>
                     <div class="d-flex reacts">
                         <div class="persons-react1">
-                            <img src="./images/01.jpg" class=" persons-react " alt="">
-                            <img class="emoji" src="./images/emo1.png" alt="">
-                        </div>
-                        <div class="persons-react2">
-                            <img src="./images/02.jpg" class="persons-react" alt="">
-                            <img class="emoji" src="./images/emo2.png" alt="">
-                        </div>
-                        <div class="persons-react3">
-                            <img src="./images/03.jpg" class="persons-react " alt="">
-                            <img class="emoji" src="./images/ic.png" alt="">
-                        </div>
-                        <div class="persons-react4">
-                            <img src="./images/04.jpg" class="persons-react" alt="">
-                            <img class="emoji" src="./images/ic2.png" alt="">
+                            <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react " alt=""></a>
+                             <img class="emoji" src="./images/emo1.png" alt="">
+                         </div>
+                         <div class="persons-react2">
+                            <a href="#" target="_blank">  <img src="./images/02.jpg" class="persons-react" alt=""></a>
+                             <img class="emoji" src="./images/emo2.png" alt="">
+                         </div>
+                         <div class="persons-react3">
+                            <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react " alt=""></a>
+                             <img class="emoji" src="./images/ic.png" alt="">
+                         </div>
+                         <div class="persons-react4">
+                             <a href="#" target="_blank"> <img src="./images/04.jpg" class="persons-react" alt=""></a>
+                             <img class="emoji" src="./images/ic2.png" alt="">
+                         </div>
+                         <div  class="persons-react-count" id="btn7" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="cursor: pointer;">
+                            <span>+6</span>
                         </div>
                     </div>
                     <div class="d-flex justify-content-center">
                         <span class="frist-hr"></span>
                     </div>
-                    <div class="d-flex justify-content-center align-items-center mb-3 mt-3">
-                       <span style="font-weight: 500;">اقرا كل ال 21 تعليق<i class="fa-solid fa-chevron-down" style="margin-right: 13px;"></i></span>
-                    </div>
+                   
                     <div class="d-flex align-items-center comment-box">
                         <div class="persons-react1">
                             <img src="./images/01.jpg" class=" persons-react " alt="">
@@ -954,6 +1083,9 @@
                             </div>
                         </div>
                     </div>
+                    <div class="d-flex justify-content-center align-items-center mb-3 mt-3" id="comentbtn5" data-bs-toggle="modal" data-bs-target="#largeModal" style="cursor: pointer;">
+                        <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down" style="margin-right: 13px;"></i></span>
+                     </div>
                 </div>
 
             </div>
@@ -966,13 +1098,20 @@
     <div class="container container-md nine">
         <div class="row">
             <div class="card card-nine">
-                <div class=" head-div d-flex justify-content-between">
-                    <div class="alarm">
+                <div class=" head-div d-flex justify-content-end">
+                    <!-- <div class="alarm">
                         <i class="fa-regular fa-heart"></i>
-                    </div>
-                    <div class="alarm">
-                        <i class="fa-solid fa-ellipsis"></i>
-                    </div>
+                    </div> -->
+                    <div class="dropdown">
+                        <div  class=" alarm btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </div>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">رؤية التفاصيل</a></li>
+                          <li><a class="dropdown-item" href="#">حذف</a></li>
+                         
+                        </ul>
+                      </div>
                 </div>
               
                 <div class="d-flex justify-content-between align-items-center outer-person" >
@@ -993,16 +1132,19 @@
                  
                     <div class="d-flex reacts">
                         <div class="persons-react1">
-                            <img src="./images/01.jpg" class=" persons-react " alt="">
-                            <img class="emoji" src="./images/emo1.png" alt="">
-                        </div>
-                        <div class="persons-react2">
-                            <img src="./images/02.jpg" class="persons-react" alt="">
-                            <img class="emoji" src="./images/emo2.png" alt="">
-                        </div>
-                        <div class="persons-react3">
-                            <img src="./images/03.jpg" class="persons-react " alt="">
-                            <img class="emoji" src="./images/ic.png" alt="">
+                            <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react " alt=""></a>
+                             <img class="emoji" src="./images/emo1.png" alt="">
+                         </div>
+                         <div class="persons-react2">
+                            <a href="#" target="_blank">  <img src="./images/02.jpg" class="persons-react" alt=""></a>
+                             <img class="emoji" src="./images/emo2.png" alt="">
+                         </div>
+                         <div class="persons-react3">
+                            <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react " alt=""></a>
+                             <img class="emoji" src="./images/ic.png" alt="">
+                         </div>
+                         <div  class="persons-react-count" id="btn8"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="cursor: pointer;">
+                            <span>+4</span>
                         </div>
                       
                     </div>
@@ -1027,6 +1169,9 @@
                             </div>
                         </div>
                     </div>
+                    <div class="d-flex justify-content-center align-items-center mb-3 mt-3" id="comentbtn6" data-bs-toggle="modal" data-bs-target="#largeModal" style="cursor: pointer;">
+                        <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down" style="margin-right: 13px;"></i></span>
+                     </div>
                  
                 </div>
 
@@ -1060,9 +1205,16 @@
                         </div>
                     </div>
                     <div class="d-flex align-items-end flex-column">
-                        <div class="alarm">
-                            <i class="fa-solid fa-ellipsis"></i>
-                        </div>
+                        <div class="dropdown">
+                            <div  class=" alarm btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </div>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">رؤية التفاصيل</a></li>
+                              <li><a class="dropdown-item" href="#">حذف</a></li>
+                             
+                            </ul>
+                          </div>
                         <div class="time">
                             <span>منذ 3 ساعات</span>
                         </div>
@@ -1075,9 +1227,9 @@
                         <p> <span class="fact">هناك حقيقة مثبتة منذ زمن طويل وهي ان المحتوي المقروء لصفحة ما سيلهي القارئ عن التركيز عن الشكل الخارجي للنص</span>  <img class="emoji" src="./images/emo2.png" alt="">  <img class="emoji" src="./images/emo2.png" alt=""><i class="fa-solid fa-star" style="color: #f1830d;"></i></p>
 
                     </div>
-                    <div class="heart">
+                    <!-- <div class="heart">
                         <i class="fa-regular fa-heart"></i>
-                    </div>
+                    </div> -->
                  
                 </div>
                 <div class="card-body">
@@ -1085,16 +1237,19 @@
                         <div>
                             <div class="d-flex reacts">
                                 <div class="persons-react1">
-                                    <img src="./images/01.jpg" class=" persons-react " alt="">
-                                    <img class="emoji" src="./images/emo1.png" alt="">
-                                </div>
-                                <div class="persons-react2">
-                                    <img src="./images/02.jpg" class="persons-react" alt="">
-                                    <img class="emoji" src="./images/emo2.png" alt="">
-                                </div>
-                                <div class="persons-react3">
-                                    <img src="./images/03.jpg" class="persons-react " alt="">
-                                    <img class="emoji" src="./images/ic.png" alt="">
+                                    <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react " alt=""></a>
+                                     <img class="emoji" src="./images/emo1.png" alt="">
+                                 </div>
+                                 <div class="persons-react2">
+                                    <a href="#" target="_blank">  <img src="./images/02.jpg" class="persons-react" alt=""></a>
+                                     <img class="emoji" src="./images/emo2.png" alt="">
+                                 </div>
+                                 <div class="persons-react3">
+                                    <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react " alt=""></a>
+                                     <img class="emoji" src="./images/ic.png" alt="">
+                                 </div>
+                                 <div  class="persons-react-count" id="btn9"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="cursor: pointer;">
+                                    <span>+5</span>
                                 </div>
                              
                             </div>
@@ -1157,6 +1312,9 @@
                             </div>
                         </div>
                     </div>
+                    <div class="d-flex justify-content-center align-items-center mb-3 mt-3" id="comentbtn7" data-bs-toggle="modal" data-bs-target="#largeModal" style="cursor: pointer;">
+                        <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down" style="margin-right: 13px;"></i></span>
+                     </div>
                 </div>
 
             </div>
@@ -1165,7 +1323,7 @@
 
 </section>
 <!-- card 11 -->
-<section>
+<!-- <section>
     <div class="container container-md eleven">
         <div class="row">
             <div class="card card-three">
@@ -1186,12 +1344,7 @@
                       
                        
                     </div>
-                    <div class="d-flex align-items-end flex-column">
-                        <div class="alarm">
-                            <i class="fa-regular fa-heart"></i>
-                        </div>
-                        
-                    </div>
+                 
 
                 </div>
               
@@ -1201,7 +1354,7 @@
         </div>
     </div>
 
-</section>
+</section> -->
 <!-- card 12 -->
 <section>
     <div class="container container-md twilf">
@@ -1216,15 +1369,15 @@
                             </span>
                        
                           </div>
-                            <div style="margin-left: 10px;">
+                            <div >
                                 <span class="arrive"> وصل <a href="#"> بدر الدريعي</a> الي جدة, المملكة العربية السعودية </span>
                             </div>
                      </div>
-                    <div class="d-flex align-items-end flex-column">
+                    <!-- <div class="d-flex align-items-end flex-column">
                         <div class="alarm">
                             <i class="fa-regular fa-heart"></i>
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
               
@@ -1236,16 +1389,19 @@
                         <div>
                             <div class="d-flex reacts">
                                 <div class="persons-react1">
-                                    <img src="./images/01.jpg" class=" persons-react " alt="">
-                                    <img class="emoji" src="./images/emo1.png" alt="">
-                                </div>
-                                <div class="persons-react2">
-                                    <img src="./images/02.jpg" class="persons-react" alt="">
-                                    <img class="emoji" src="./images/emo2.png" alt="">
-                                </div>
-                                <div class="persons-react3">
-                                    <img src="./images/03.jpg" class="persons-react " alt="">
-                                    <img class="emoji" src="./images/ic.png" alt="">
+                                    <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react " alt=""></a>
+                                     <img class="emoji" src="./images/emo1.png" alt="">
+                                 </div>
+                                 <div class="persons-react2">
+                                    <a href="#" target="_blank">  <img src="./images/02.jpg" class="persons-react" alt=""></a>
+                                     <img class="emoji" src="./images/emo2.png" alt="">
+                                 </div>
+                                 <div class="persons-react3">
+                                    <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react " alt=""></a>
+                                     <img class="emoji" src="./images/ic.png" alt="">
+                                 </div>
+                                 <div  class="persons-react-count" id="btn10"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="cursor: pointer;">
+                                    <span>+4</span>
                                 </div>
                              
                             </div>
@@ -1283,6 +1439,9 @@
                             </div>
                         </div>
                     </div>
+                    <div class="d-flex justify-content-center align-items-center mb-3 mt-3" id="comentbtn8" data-bs-toggle="modal" data-bs-target="#largeModal" style="cursor: pointer;">
+                        <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down" style="margin-right: 13px;"></i></span>
+                     </div>
                 </div>
 
             </div>
@@ -1304,15 +1463,15 @@
                             </span>
                        
                           </div>
-                            <div style="margin-left: 10px;">
+                            <div >
                                 <span class="arrive"> غير <a href="#"> بدر الدريعي</a> صورتة الشخصية</span>
                             </div>
                      </div>
-                    <div class="d-flex align-items-end flex-column">
+                    <!-- <div class="d-flex align-items-end flex-column">
                         <div class="alarm">
                             <i class="fa-regular fa-heart"></i>
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
               
@@ -1323,16 +1482,19 @@
                  <div class="w-100 p-4 blure">
                     <div class="d-flex reacts">
                         <div class="persons-react1">
-                            <img src="./images/01.jpg" class=" persons-react " alt="">
-                            <img class="emoji" src="./images/emo1.png" alt="">
-                        </div>
-                        <div class="persons-react2">
-                            <img src="./images/02.jpg" class="persons-react" alt="">
-                            <img class="emoji" src="./images/emo2.png" alt="">
-                        </div>
-                        <div class="persons-react3">
-                            <img src="./images/03.jpg" class="persons-react " alt="">
-                            <img class="emoji" src="./images/ic.png" alt="">
+                            <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react " alt=""></a>
+                             <img class="emoji" src="./images/emo1.png" alt="">
+                         </div>
+                         <div class="persons-react2">
+                            <a href="#" target="_blank">  <img src="./images/02.jpg" class="persons-react" alt=""></a>
+                             <img class="emoji" src="./images/emo2.png" alt="">
+                         </div>
+                         <div class="persons-react3">
+                            <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react " alt=""></a>
+                             <img class="emoji" src="./images/ic.png" alt="">
+                         </div>
+                         <div  class="persons-react-count" id="btn11" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="cursor: pointer;">
+                            <span>+7</span>
                         </div>
                       
                     </div>
@@ -1357,6 +1519,9 @@
                             </div>
                         </div>
                     </div>
+                    <div class="d-flex justify-content-center align-items-center mb-3 mt-3" id="comentbtn9" data-bs-toggle="modal" data-bs-target="#largeModal" style="cursor: pointer;">
+                        <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down" style="margin-right: 13px;"></i></span>
+                     </div>
                  </div>
                  
                 </div>
@@ -1380,7 +1545,7 @@
                             </span>
                        
                           </div>
-                            <div style="margin-left: 10px;">
+                            <div >
                                 <span class="arrive"> عيد ميلاد <a href="#"> بدر الدريعي</a> 22 يوليو</span>
                             </div>
                      </div>
@@ -1389,9 +1554,9 @@
                             وش تحب
                             <i class="fa-solid fa-less-than"></i>
                         </button> -->
-                        <div class="alarm">
+                        <!-- <div class="alarm">
                             <i class="fa-regular fa-heart"></i>
-                        </div>
+                        </div> -->
                        
                     </div>
 
