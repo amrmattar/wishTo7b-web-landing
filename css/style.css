@@ -8,7 +8,10 @@ html::-webkit-scrollbar {
     width: 10px;
 }
 
-
+body{
+    background: rgb(225,233,238);
+background: radial-gradient(circle, rgba(225,233,238,1) 0%, rgba(244,228,242,1) 43%);
+}
 
   ::-webkit-scrollbar-track {
     background: #f1f1f1; /* Track background color */
@@ -200,10 +203,10 @@ section {
 
 @media (max-width:380px) {
     .second .card-body{
-        padding: 1rem 0;
+        padding: 1rem ;
     }
     .third .card-body{
-        padding: 1rem 0;
+        padding: 1rem ;
     }
     .parent label{
         font-size: 12px;
@@ -270,7 +273,7 @@ section {
     bottom: -7px;
     left: -4px;
 }
-@media (max-width:380px) {
+@media (max-width:500px) {
     .persons-react,.persons-react-count{
         width: 45px;
     }
@@ -286,8 +289,18 @@ section {
   height: 2px;
   margin-top: 27px;
 }
-.comment-box .persons-react1{
-    width: 10%;
+@media (min-width:992px) {
+    .comment-box .persons-react1{
+        width: 12%;
+    }
+}
+@media (min-width:768px) and (max-width:991px) {
+    .comment-box .persons-react1{
+        width: 10%;
+    }
+    .comment-box .bg-white {
+        width: 95%;
+    }
 }
 .comment-box .bg-white{
     width: 90%;
@@ -315,7 +328,7 @@ section {
 }
 @media (max-width:425px) {
     .comment-box .persons-react1{
-        width: 25%;
+        width: 22%;
     }
     .comment-box .bg-white{
         width: 75%;
@@ -415,7 +428,7 @@ section {
         width: 100%;
     }
 }
-@media (max-width:380px) {
+@media (max-width:400px) {
     .vission-name,.vission-comments,.wish,.third .reacts{
         font-size: 12px;
     }
@@ -765,6 +778,8 @@ background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(206,219,235,1) 
     margin-top: 350px;
     padding: 20px;
     backdrop-filter: blur(20px);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 .nine .outer-person{
     position: relative; 
@@ -1031,6 +1046,9 @@ background: radial-gradient(circle, rgba(170,182,191,1) 0%, rgba(224,181,221,1) 
     -ms-border-radius: 20px;
     -o-border-radius: 20px;
 }
+.readmore{
+    font-size: 15px;
+}
 @media (max-width:768px) {
     .modelcomment-box{
         flex-direction: column;
@@ -1055,4 +1073,34 @@ background: radial-gradient(circle, rgba(170,182,191,1) 0%, rgba(224,181,221,1) 
 }
 .modelcomment-box .bg-white{
     border: 1px solid gray;
+}
+
+@media (max-width:380px) {
+    .eleven .friend-with,.twilf  .friend-with {
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        background: #154ABF;
+        color: white;
+        border-radius: 50px;
+        text-align: center;
+        bottom: -7px;
+        right: 27px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .friend-with svg{
+        font-size: 13px;
+    }
+    .reacts{
+        align-items: center;
+    }
+   
+}
+@media (max-width:500px) {
+    .persons-react-count{
+        width: 45px;
+        height: 45px;
+    }
 }
