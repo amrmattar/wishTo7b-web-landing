@@ -26,21 +26,21 @@
 
   // Button 1 Data
 const button1Data = [
-    { name: "Person 1", PersonImage:"/images/01.jpg" , image: "/images/emo1.png" },
-    { name: "Person 2",PersonImage:"/images/02.jpg", image: "/images/emo2.png" },
-    { name: "Person 3", PersonImage:"/images/03.jpg", image: "/images/emo1.png" },
-    { name: "Person 4", PersonImage:"/images/04.jpg", image: "/images/ic.png" },
-    { name: "Person 5", PersonImage:"/images/05.jpg", image: "/images/emo1.png" },
-    { name: "Person 6", PersonImage:"/images/08.jpg", image: "/images/emo2.png" }
+    { name: "Person 1", PersonImage:"images/01.jpg" , image: "images/emo1.png" },
+    { name: "Person 2",PersonImage:"images/02.jpg", image: "images/emo2.png" },
+    { name: "Person 3", PersonImage:"images/03.jpg", image: "images/emo1.png" },
+    { name: "Person 4", PersonImage:"images/04.jpg", image: "images/ic.png" },
+    { name: "Person 5", PersonImage:"images/05.jpg", image: "images/emo1.png" },
+    { name: "Person 6", PersonImage:"images/08.jpg", image: "images/emo2.png" }
   ];
 
   const comentData = [
-    { name: "Person 1", PersonImage:"/images/01.jpg" , image: "/images/emo1.png" , txt:"اهلا وسهلا بكم جميعا" },
-    { name: "Person 2",PersonImage:"/images/02.jpg", image: "/images/emo2.png", txt:"لا تنسي فهد حضور الاجتماع "  },
-    { name: "Person 3", PersonImage:"/images/03.jpg", image: "/images/emo1.png", txt:"هذا النص للتجريب" },
-    { name: "Person 4", PersonImage:"/images/04.jpg", image: "/images/ic.png" , txt:"هناك حقيقة مثبتة منذ زمن طويل وهي ان المحتوي المقروء لصفحة ما سيلهي القارئ عن التركيز عن الشكل الخارجي للنص" },
-    { name: "Person 5", PersonImage:"/images/05.jpg", image: "/images/emo1.png" , txt:"لاتنسي تحجز لي هديه من الملفا يا فهد" },
-    { name: "Person 6", PersonImage:"/images/08.jpg", image: "/images/emo2.png" , txt:"لا تؤجل عمل اليوم الي الغد" }
+    { name: "Person 1", PersonImage:"images/01.jpg" , image: "images/emo1.png" , txt:"اهلا وسهلا بكم جميعا" },
+    { name: "Person 2",PersonImage:"images/02.jpg", image: "images/emo2.png", txt:"لا تنسي فهد حضور الاجتماع "  },
+    { name: "Person 3", PersonImage:"images/03.jpg", image: "images/emo1.png", txt:"هذا النص للتجريب" },
+    { name: "Person 4", PersonImage:"images/04.jpg", image: "images/ic.png" , txt:"هناك حقيقة مثبتة منذ زمن طويل وهي ان المحتوي المقروء لصفحة ما سيلهي القارئ عن التركيز عن الشكل الخارجي للنص" },
+    { name: "Person 5", PersonImage:"images/05.jpg", image: "images/emo1.png" , txt:"لاتنسي تحجز لي هديه من الملفا يا فهد" },
+    { name: "Person 6", PersonImage:"images/08.jpg", image: "images/emo2.png" , txt:"لا تؤجل عمل اليوم الي الغد" }
   ];
  
   
