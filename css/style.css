@@ -242,6 +242,7 @@ section {
 }
 .persons-react{
     width: 60px;
+    height: 60px;
     border-radius: 50%;
     border: 8px solid #bbb9b1;
     -webkit-border-radius: 50%;
@@ -251,6 +252,7 @@ section {
 }
 .persons-react-count{
     width: 60px;
+    
     border-radius: 50%;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
@@ -276,6 +278,7 @@ section {
 @media (max-width:500px) {
     .persons-react,.persons-react-count{
         width: 45px;
+        height: 45px;
     }
     .persons-react1 .emoji,.persons-react2 .emoji,.persons-react3 .emoji,.persons-react4 .emoji{
         width: 20px; 
@@ -951,7 +954,11 @@ background: radial-gradient(circle, rgba(170,182,191,1) 0%, rgba(224,181,221,1) 
 .thirty .blure{
     backdrop-filter: blur(20px);
     background-color: rgba(255, 255, 255, 0.5);
-
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
 }
 .thirty .head-div{
     padding: 25px;
@@ -1104,3 +1111,13 @@ background: radial-gradient(circle, rgba(170,182,191,1) 0%, rgba(224,181,221,1) 
         height: 45px;
     }
 }
+.music-card {
+    margin: 20px 0;
+}
+.music-card:last-child {
+    margin: 20px 0 0; 
+}
+
+
+
+

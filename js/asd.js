@@ -44,46 +44,22 @@ const button1Data = [
   ];
  
   
-  document.getElementById("btn1").addEventListener("click", () => {
+
+  const buttons = document.querySelectorAll('.persons-react-count');
+
+  function handleButtonClick() {
+    console.log("Button clicked");
     displayModalData(button1Data);
-  });
-  
-  document.getElementById("btn2").addEventListener("click", () => {
-    displayModalData(button1Data);
-  });
-  document.getElementById("btn3").addEventListener("click", () => {
-    displayModalData(button1Data);
-  });
-  document.getElementById("btn4").addEventListener("click", () => {
-    displayModalData(button1Data);
-  });
-  document.getElementById("btn5").addEventListener("click", () => {
-    displayModalData(button1Data);
-  });
-  document.getElementById("btn6").addEventListener("click", () => {
-    displayModalData(button1Data);
-  });
-  document.getElementById("btn7").addEventListener("click", () => {
-    displayModalData(button1Data);
-  });
-  document.getElementById("btn8").addEventListener("click", () => {
-    displayModalData(button1Data);
-  });
-  document.getElementById("btn9").addEventListener("click", () => {
-    displayModalData(button1Data);
-  });
-  document.getElementById("btn10").addEventListener("click", () => {
-    displayModalData(button1Data);
-  });
-  document.getElementById("btn11").addEventListener("click", () => {
-    displayModalData(button1Data);
-  });
-  
-  // ...
-  /* comments */
- 
+   }
+
+
+buttons.forEach(button => {
+    console.log(button);
+    button.addEventListener('click', handleButtonClick);
+});
+
   function displayModalData(data) {
-    console.log(data);
+   
     const modal = document.getElementById("staticBackdrop");
     const modalContent = document.getElementById("modalContent");
     
@@ -100,9 +76,8 @@ const button1Data = [
     });
   }  
 
- 
-
   
+ 
   function displayCommentsData(data) {
     const modal = document.getElementById("largeModal");
     const modalContent = document.getElementById("modalCommentContent");
@@ -135,30 +110,275 @@ const button1Data = [
   }
   
   // Example usage when the button is clicked
-  document.getElementById("comentbtn1").addEventListener("click", () => {
+  const Commentbuttons = document.querySelectorAll('.readmore');
+  function handlecommentButtonClick() {
     displayCommentsData(comentData);
+  }
+  
+  Commentbuttons.forEach(button => {
+      button.addEventListener('click', handlecommentButtonClick);
   });
-  document.getElementById("comentbtn2").addEventListener("click", () => {
-    displayCommentsData(comentData);
-  });
-  document.getElementById("comentbtn3").addEventListener("click", () => {
-    displayCommentsData(comentData);
-  });
-  document.getElementById("comentbtn4").addEventListener("click", () => {
-    displayCommentsData(comentData);
-  });
-  document.getElementById("comentbtn5").addEventListener("click", () => {
-    displayCommentsData(comentData);
-  });
-  document.getElementById("comentbtn6").addEventListener("click", () => {
-    displayCommentsData(comentData);
-  });
-  document.getElementById("comentbtn7").addEventListener("click", () => {
-    displayCommentsData(comentData);
-  });
-  document.getElementById("comentbtn8").addEventListener("click", () => {
-    displayCommentsData(comentData);
-  });
-  document.getElementById("comentbtn9").addEventListener("click", () => {
-    displayCommentsData(comentData);
-  });
+
+
+  /* api */
+  const apiUrl = "https://wisht7b-api.algorithms.ws/api/v1/posts"; 
+const apiToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MCIsImlzcyI6Ildhc2hUbzdiIiwiaWF0IjoxNjk4NzU1MjY4Mzk0LCJleHAiOjE2OTg3NTU4NzMxOTR9.ljgz2r-CV-crQZpXz1P7vo4owjkeHewCXtW4kk0jBMg"; 
+
+const headers = new Headers({
+  "Authorization": `Bearer ${apiToken}`,
+});
+
+
+
+
+  var posts = [] ;
+  fetch(apiUrl, {
+    method: 'GET',
+    headers: headers
+  })
+    .then(response => response.json())
+    .then(res => {
+        posts = res.data
+    
+     const filteredData = posts.filter(item => item.type === "MUSIC");
+     filteredData.forEach(item => {
+        createMusicCard(item);
+     });
+    })
+    .catch(error => {
+
+      console.error('Error:', error);
+    });
+
+
+
+    const selectElement = document.getElementById("product-filter");
+
+    selectElement.addEventListener("change", () => {
+      const selectedValue = selectElement.value;
+    
+      // Filter the data based on the selected value
+      if (selectedValue === "all") {
+        // Show all data
+        displayAllData(posts);
+      } else {
+        // Filter and display data based on the selected value
+        const filteredData = posts.filter(item => item.type === selectedValue);
+        displayFilteredData(filteredData);
+      }
+    });
+    
+    function displayAllData(data) {
+        console.log(data);
+      }
+      
+      function displayFilteredData(filteredData) {
+    
+      }
+      
+
+
+function calculateTimeElapsed(specificDate) {
+    // Convert the specific date to a JavaScript Date object
+    specificDate = new Date(specificDate);
+
+    // Get the current date and time
+    const currentDate = new Date();
+
+    // Calculate the time difference in milliseconds
+    const timeDifference = currentDate - specificDate;
+
+    // Calculate the elapsed days, hours, and minutes
+    const daysElapsed = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    const hoursElapsed = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutesElapsed = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+
+    // Create a string to display the elapsed time
+    let elapsedTimeString = '';
+    if (daysElapsed > 0) {
+        elapsedTimeString = `منذ ${daysElapsed} يوم${daysElapsed > 1 ? 'ًا' : ''}`;
+    } else if (hoursElapsed > 0) {
+        elapsedTimeString = `منذ ${hoursElapsed} ساعة`;
+    } else {
+        elapsedTimeString = `منذ ${minutesElapsed} دقيقة`;
+    }
+
+    return elapsedTimeString;
+}
+
+
+
+// Function to create and populate a card
+function createMusicCard(data) {
+    const cardContainer = document.getElementById('seven');
+
+    const card = document.createElement('div');
+    card.className = 'col-lg-8 p-0 music-card';
+    card.innerHTML = `
+        <div class="card card-three" >
+            <div class="head-div d-flex justify-content-between">
+                <div class="family d-flex align-items-center gap-2">
+                    <div class="persons-react1">
+                        <img src="${data.owner.img}" class="persons-react" alt="">
+                    </div>
+                    <div class="falimy-data">
+                        <p class="person-name">${data.owner.fullname}</p>
+                        <div class="icons">
+                            <span dir="rtl"> <i class="fa-solid fa-clapperboard" style="margin: 0 4px;"></i>${data.type}</span>
+                            <span dir="rtl"> <i class="fa-solid fa-user-group" style="margin: 0 4px;"></i>شله
+                            الفله</span>
+                            </div>
+                    </div>
+                </div>
+                <div class="d-flex align-items-end flex-column">
+                    <div class="dropdown">
+                        <div class="alarm btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </div>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">رؤية التفاصيل</a></li>
+                            <li><a class="dropdown-item" href="#">حذف</a></li>
+                        </ul>
+                    </div>
+                    <div class="time">
+                        <span>${timeAgo(new Date(data.createdAt))}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center resturant-data">
+                <img class="card-img-top" src="${data.media.image}" alt="Card image cap">
+                <div class="whereIAM">
+                    <span>أستمع الي </span><br>
+                    <span>${data.media.artist} - ${data.media.name}</span>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <span> أحلي ما غني</span>
+                    </div>
+                    <div>
+                        <span><i class="fa-regular fa-eye"></i> ${data.totalViews}</span>
+                    </div>
+                </div>
+                <div class="d-flex reacts" style="margin: 25px 0;">
+                                <div class="persons-react1">
+                                    <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
+                                            alt=""></a>
+                                    <img class="emoji" src="./images/emo1.png" alt="">
+                                </div>
+                                <div class="persons-react2">
+                                    <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
+                                            alt=""></a>
+                                    <img class="emoji" src="./images/emo2.png" alt="">
+                                </div>
+                                <div class="persons-react3">
+                                    <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react "
+                                            alt=""></a>
+                                    <img class="emoji" src="./images/ic.png" alt="">
+                                </div>
+                                <div class="persons-react4">
+                                    <a href="#" target="_blank"> <img src="./images/04.jpg" class="persons-react"
+                                            alt=""></a>
+                                    <img class="emoji" src="./images/ic2.png" alt="">
+                                </div>
+                                <div class="persons-react-count" id="btn6" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop" style="cursor: pointer;">
+                                    <span>+6</span>
+                                </div>
+                            </div>
+            </div>
+        </div>
+    `;
+
+    cardContainer.appendChild(card);
+    const updatedButtons = document.querySelectorAll('.persons-react-count');
+
+    updatedButtons.forEach(button => {
+        console.log(button);
+        button.addEventListener('click', handleButtonClick);
+    });
+}
+
+// Helper function to calculate time ago
+function timeAgo(date) {
+    const seconds = Math.floor((new Date() - date) / 1000);
+    if (seconds < 60) {
+        return `${seconds} ثواني`;
+    } else if (seconds < 3600) {
+        return `${Math.floor(seconds / 60)} دقائق`;
+    } else if (seconds < 86400) {
+        return `${Math.floor(seconds / 3600)} ساعات`;
+    } else {
+        return `${Math.floor(seconds / 86400)} أيام`;
+    }
+}
+
+
+
+
+
+
+  asd = [
+    {
+        "status": "ACTIVE",
+        "likesCount": 0,
+        "type": "MUSIC",
+        "commentsCount": 0,
+        "privacy": "PUBLIC",
+        "location": {
+            "coordinates": []
+        },
+        "media": {
+            "name": "أذان الفجر بصوت اعجوبة الزمان",
+            "year": "2021-06-30T12:00:00Z",
+            "artist": "الشيخ عبدالباسط عبدالصمد",
+            "image": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/30/f1/da/30f1da6c-71c1-98ec-c31b-991012792bd7/196292016536.jpg/1024x1024bb.png",
+            "type": "song"
+        },
+        "isLike": false,
+        "totalViews": 0,
+        "viewsCount": 0,
+        "id": 105,
+        "createdAt": "2023-11-02T14:22:27.714Z",
+        "files": [],
+        "owner": {
+            "fullname": "",
+            "id": 69,
+            "img": "https://wisht7b-api.algorithms.ws/uploads/cf0c3159-e360-4178-9176-ad93e8c38dba.jpg"
+        },
+        "comments": [],
+        "likes": []
+    },
+    {
+        "content": "الفايكنقز قادمون ",
+        "status": "ACTIVE",
+        "likesCount": 0,
+        "type": "MUSIC",
+        "commentsCount": 0,
+        "privacy": "PUBLIC",
+        "location": {
+            "coordinates": []
+        },
+        "media": {
+            "name": "Reflections on a Hero",
+            "year": "2019-12-06T12:00:00Z",
+            "artist": "Trevor Morris",
+            "image": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/e6/68/de/e668de0d-6150-3d3a-dfe7-a522ddc97ac9/886448091431.jpg/1024x1024bb.png",
+            "type": "song"
+        },
+        "isLike": false,
+        "totalViews": 0,
+        "viewsCount": 0,
+        "id": 109,
+        "createdAt": "2023-11-03T05:41:40.852Z",
+        "files": [],
+        "owner": {
+            "fullname": "",
+            "id": 69,
+            "img": "https://wisht7b-api.algorithms.ws/uploads/cf0c3159-e360-4178-9176-ad93e8c38dba.jpg"
+        },
+        "comments": [],
+        "likes": []
+    }
+  ]
