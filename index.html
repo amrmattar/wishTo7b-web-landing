@@ -21,8 +21,8 @@
 <body dir="rtl">
 
 
-
-
+ 
+ <!-- Modal 1 -->
     <div class="modal fade" id="largeModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="largeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable">
@@ -40,7 +40,7 @@
             </div>
         </div>
     </div>
-    <!-- Modal -->
+    <!-- Modal 2 -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable">
@@ -58,6 +58,7 @@
             </div>
         </div>
     </div>
+     <!-- select  -->
     <div class="container">
         <div class="row mt-3 ">
           <div class="col-md-6 mb-3 ">
@@ -85,14 +86,66 @@
         </div>
       </div>
       
-    <section>
-        <div class="container container-md second">
-            <div class="row d-flex justify-content-center">
-                <div class="col-lg-8 p-0">
-                    <h1 class="mb-4" style="font-size: 23px;">الخط الزمني</h1>
-                    <div class="card card-one">
-                        <div class=" head-div d-flex justify-content-end">
-                        <div class="dropdown">
+<section id="notFoundMessage">
+</section>
+
+
+   
+
+
+
+    <!--card 6 -->
+    <section id="FILM-SECTION">
+        <div class="container container-md sex">
+            <div class="row d-flex justify-content-center" id="Film">
+              
+            </div>
+        </div>
+
+    </section>
+    <!--card 7 -->
+    <section id="MUSIC-SECTION">
+        <div class="container container-md seven"  >
+            <div class="row d-flex justify-content-center" id="seven">
+           
+            </div>
+        </div>
+
+    </section>
+
+   <!--card 8 -->
+<section id="IMAGE-SECTION">
+    <div class="container container-md eight">
+        <div class="row d-flex justify-content-center" id="eight"> 
+        </div>
+    </div>
+</section>
+<section id="TEXT-SECTION">
+    <div class="container container-md ten">
+        <div class="row d-flex justify-content-center" id="textdiv">
+            <!-- <div class="col-lg-8 p-0">
+                <div class="card card-three">
+                    <div class=" head-div d-flex justify-content-between">
+                        <div class="family d-flex align-items-center gap-2">
+                            <div class="persons-react1">
+                                <img src="./images/01.jpg" class=" persons-react " alt="">
+                            </div>
+                            <div class="falimy-data">
+                                <p class="person-name">عبدالرحمن التركي </p>
+                                <div class="icons">
+
+                                    <span dir="rtl"> <i class="fa-solid fa-headphones"
+                                            style="margin: 0 4px;"></i>نص</span>
+
+                                    <span dir="rtl"> <i class="fa-solid fa-user-group" style="margin: 0 4px;"></i>أيام
+                                        الثانوي</span>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-end flex-column">
+                            <div class="dropdown">
                                 <div class=" alarm btn btn-secondary dropdown-toggle" type="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fa-solid fa-ellipsis"></i>
@@ -103,108 +156,988 @@
 
                                 </ul>
                             </div>
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <img class="card-img-top" src="./images/camera.png" style="width: 50%;padding: 15px;"
-                                alt="Card image cap">
-                        </div>
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="d-flex align-items-center gap-2">
-                                    <div class="person-img">
-                                        <img src="./images/avatar-1.png" alt="">
-                                    </div>
-                                    <p class="person-name">بدر الدريعي</p>
-                                </div>
-                              
-                            </div>
-                            <div class="d-flex justify-content-between comments">
-                                <div class="vission-name">
-                                    <p>فيجن يرو-أبل</p>
-                                </div>
-                                <div class="vission-comments">
-                                    <div>
-                                        <span>
-                                            <i class="fa-regular fa-eye"></i>
-                                            2
-                                        </span>
-                                    </div>
-                                    <div>
-                                        <span class="comment-num">
-                                            <i class="fa-regular fa-message"></i>
-                                            15
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex reacts">
-                                <div class="persons-react1">
-                                    <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
-                                            alt=""></a>
-                                    <img class="emoji" src="./images/emo1.png" alt="">
-                                </div>
-                                <div class="persons-react2">
-                                    <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
-                                            alt=""></a>
-                                    <img class="emoji" src="./images/emo2.png" alt="">
-                                </div>
-                                <div class="persons-react3">
-                                    <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react "
-                                            alt=""></a>
-                                    <img class="emoji" src="./images/ic.png" alt="">
-                                </div>
-                                <div class="persons-react4">
-                                    <a href="#" target="_blank"> <img src="./images/04.jpg" class="persons-react"
-                                            alt=""></a>
-                                    <img class="emoji" src="./images/ic2.png" alt="">
-                                </div>
-                                <div class="persons-react-count" id="btn1" data-bs-toggle="modal"
-                                    data-bs-target="#staticBackdrop" style="cursor: pointer;">
-                                    <span>+6</span>
-                                </div>
-                                <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    Launch static backdrop modal
-                                </button> -->
-                            </div>
-                            <div class="d-flex justify-content-center">
-                                <span class="frist-hr"></span>
-                            </div>
-                            <div class="d-flex align-items-center comment-box">
-                                <div class="persons-react1">
-                                    <img src="./images/01.jpg" class=" persons-react " alt="">
-
-                                </div>
-                                <div class="bg-white">
-                                    <div class="comment-info ">
-                                        <div class="d-flex justify-content-between">
-                                            <p class="comment-person-name">بدر الدريعي</p>
-                                            <span class="comment-time"> منذ 12 دقيقة</span>
-                                        </div>
-                                        <div class="d-flex mt-2">
-                                            <img class="emoji" src="./images/emo1.png" alt="">
-                                            <img class="emoji" src="./images/ic2.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-center align-items-center mb-3 mt-4 readmore" id="comentbtn1"
-                                data-bs-toggle="modal" data-bs-target="#largeModal" style="cursor: pointer;">
-                                <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down"
-                                        style="margin-right: 13px;"></i></span>
+                            <div class="time">
+                                <span>منذ 3 ساعات</span>
                             </div>
                         </div>
 
                     </div>
-                 </div>
+                    <div class="d-flex justify-content-center resturant-data">
+                   
+                        <div class="details">
+                            <p> <span class="fact">هناك حقيقة مثبتة منذ زمن طويل وهي ان المحتوي المقروء لصفحة ما سيلهي
+                                    القارئ عن التركيز عن الشكل الخارجي للنص</span> <img class="emoji"
+                                    src="./images/emo2.png" alt=""> <img class="emoji" src="./images/emo2.png" alt=""><i
+                                    class="fa-solid fa-star" style="color: #f1830d;"></i></p>
+
+                        </div>
+                       
+
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <div class="d-flex reacts">
+                                    <div class="persons-react1">
+                                        <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
+                                                alt=""></a>
+                                        <img class="emoji" src="./images/emo1.png" alt="">
+                                    </div>
+                                    <div class="persons-react2">
+                                        <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
+                                                alt=""></a>
+                                        <img class="emoji" src="./images/emo2.png" alt="">
+                                    </div>
+                                 
+                                    <div class="persons-react-count" id="btn9" data-bs-toggle="modal"
+                                        data-bs-target="#staticBackdrop" style="cursor: pointer;">
+                                        <span>+5</span>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="vission-comments">
+                                <div>
+                                    <span>
+                                        <i class="fa-regular fa-eye"></i>
+                                        90
+                                    </span>
+                                </div>
+                                <div>
+                                    <span class="comment-num">
+                                        <i class="fa-regular fa-message"></i>
+                                        2
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="d-flex justify-content-center">
+                            <span class="frist-hr"></span>
+                        </div>
+
+                        <div class="d-flex align-items-center comment-box">
+                            <div class="persons-react1">
+                                <img src="./images/01.jpg" class=" persons-react " alt="">
+
+                            </div>
+                            <div class="bg-white">
+                                <div class="comment-info ">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="comment-person-name">فهد الدوبخ</p>
+                                        <span class="comment-time"> منذ 12 دقيقة</span>
+                                    </div>
+                                    <div class="d-flex mt-2">
+                                        <img class="emoji" src="./images/emo1.png" alt="">
+                                        <img class="emoji" src="./images/ic2.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="d-flex  comment-box align-items-center">
+                            <div class="persons-react1">
+                                <img src="./images/01.jpg" class=" persons-react " alt="">
+
+                            </div>
+                            <div class="bg-white">
+                                <div class="comment-info ">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="comment-person-name">عمرو ناصر</p>
+                                        <span class="comment-time"> منذ 12 دقيقة</span>
+                                    </div>
+                                    <div class="d-flex mt-2 comment-time">
+                                        <span>لاتنسي تحجز لي هديه من الملفا يا فهد</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center mb-3 mt-4 readmore" id="comentbtn7"
+                            data-bs-toggle="modal" data-bs-target="#largeModal" style="cursor: pointer;">
+                            <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down"
+                                    style="margin-right: 13px;"></i></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div> -->
+        </div>
+    </div>
+
+</section>
+ 
+<section>
+    <div class="container container-md second">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-8 p-0">
+                <h1 class="mb-4" style="font-size: 23px;">الخط الزمني</h1>
+                <div class="card card-one">
+                    <div class=" head-div d-flex justify-content-end">
+                    <div class="dropdown">
+                            <div class=" alarm btn btn-secondary dropdown-toggle" type="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </div>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">رؤية التفاصيل</a></li>
+                                <li><a class="dropdown-item" href="#">حذف</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <img class="card-img-top" src="./images/camera.png" style="width: 50%;padding: 15px;"
+                            alt="Card image cap">
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center gap-2">
+                                <div class="person-img">
+                                    <img src="./images/avatar-1.png" alt="">
+                                </div>
+                                <p class="person-name">بدر الدريعي</p>
+                            </div>
+                          
+                        </div>
+                        <div class="d-flex justify-content-between comments">
+                            <div class="vission-name">
+                                <p>فيجن يرو-أبل</p>
+                            </div>
+                            <div class="vission-comments">
+                                <div>
+                                    <span>
+                                        <i class="fa-regular fa-eye"></i>
+                                        2
+                                    </span>
+                                </div>
+                                <div>
+                                    <span class="comment-num">
+                                        <i class="fa-regular fa-message"></i>
+                                        15
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex reacts">
+                            <div class="persons-react1">
+                                <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
+                                        alt=""></a>
+                                <img class="emoji" src="./images/emo1.png" alt="">
+                            </div>
+                            <div class="persons-react2">
+                                <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
+                                        alt=""></a>
+                                <img class="emoji" src="./images/emo2.png" alt="">
+                            </div>
+                            <div class="persons-react3">
+                                <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react "
+                                        alt=""></a>
+                                <img class="emoji" src="./images/ic.png" alt="">
+                            </div>
+                            <div class="persons-react4">
+                                <a href="#" target="_blank"> <img src="./images/04.jpg" class="persons-react"
+                                        alt=""></a>
+                                <img class="emoji" src="./images/ic2.png" alt="">
+                            </div>
+                            <div class="persons-react-count" id="btn1" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop" style="cursor: pointer;">
+                                <span>+6</span>
+                            </div>
+                            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                Launch static backdrop modal
+                            </button> -->
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <span class="frist-hr"></span>
+                        </div>
+                        <div class="d-flex align-items-center comment-box">
+                            <div class="persons-react1">
+                                <img src="./images/01.jpg" class=" persons-react " alt="">
+
+                            </div>
+                            <div class="bg-white">
+                                <div class="comment-info ">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="comment-person-name">بدر الدريعي</p>
+                                        <span class="comment-time"> منذ 12 دقيقة</span>
+                                    </div>
+                                    <div class="d-flex mt-2">
+                                        <img class="emoji" src="./images/emo1.png" alt="">
+                                        <img class="emoji" src="./images/ic2.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center mb-3 mt-4 readmore" id="comentbtn1"
+                            data-bs-toggle="modal" data-bs-target="#largeModal" style="cursor: pointer;">
+                            <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down"
+                                    style="margin-right: 13px;"></i></span>
+                        </div>
+                    </div>
+
+                </div>
+             </div>
+        </div>
+    </div>
+
+</section>
+
+<section>
+    <div class="container container-md nine">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-8 p-0">
+            <div class="card card-nine">
+                <div class=" head-div d-flex justify-content-end">
+                    <div class="dropdown">
+                        <div class=" alarm btn btn-secondary dropdown-toggle" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </div>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">رؤية التفاصيل</a></li>
+                            <li><a class="dropdown-item" href="#">حذف</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center outer-person">
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="person-img">
+                            <img src="./images/avatar-1.png" alt="">
+                        </div>
+                        <p class="person-name">بدر الدريعي</p>
+                    </div>
+
+                    <button class="wish">
+                        وش تحب
+                        <i class="fa-solid fa-less-than"></i>
+                    </button>
+                </div>
+                <div class="card-body">
+
+                    <div class="d-flex justify-content-between comments">
+                        <div class="vission-name">
+                            <p>عيد ميلاد <a href="#" class="birthday"> عبدالرحمن التركي </a> اليوم</p>
+                        </div>
+                        <div class="vission-comments">
+                            <div>
+                                <span>
+                                    <i class="fa-regular fa-eye"></i>
+                                    2
+                                </span>
+                            </div>
+                            <div>
+                                <span class="comment-num">
+                                    <i class="fa-regular fa-message"></i>
+                                    15
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column reacts">
+                        <p> <span class="fact">هناك حقيقة مثبتة منذ زمن طويل وهي ان المحتوي المقروء لصفحة ما سيلهي
+                                القارئ عن التركيز عن الشكل الخارجي للنص</span> <i class="fa-solid fa-star"
+                                style="color: #f1830d;"></i></p>
+
+                    </div>
+                    <div class="d-flex reacts">
+                        <div class="persons-react1">
+                            <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
+                                    alt=""></a>
+                            <img class="emoji" src="./images/emo1.png" alt="">
+                        </div>
+                        <div class="persons-react2">
+                            <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
+                                    alt=""></a>
+                            <img class="emoji" src="./images/emo2.png" alt="">
+                        </div>
+                        <div class="persons-react3">
+                            <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react "
+                                    alt=""></a>
+                            <img class="emoji" src="./images/ic.png" alt="">
+                        </div>
+                        <div class="persons-react-count" id="btn2" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop" style="cursor: pointer;">
+                            <span>+6</span>
+                        </div>
+
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <span class="frist-hr"></span>
+                    </div>
+                    <div class="d-flex align-items-center comment-box">
+                        <div class="persons-react1">
+                            <img src="./images/01.jpg" class=" persons-react " alt="">
+
+                        </div>
+                        <div class="bg-white">
+                            <div class="comment-info ">
+                                <div class="d-flex justify-content-between">
+                                    <p class="comment-person-name">فهد الدوبخ</p>
+                                    <span class="comment-time"> منذ 12 دقيقة</span>
+                                </div>
+                                <div class="d-flex mt-2">
+                                    <img class="emoji" src="./images/emo1.png" alt="">
+                                    <img class="emoji" src="./images/ic2.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center mb-3 mt-4 readmore" id="comentbtn2"
+                        data-bs-toggle="modal" data-bs-target="#largeModal" style="cursor: pointer;">
+                        <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down"
+                                style="margin-right: 13px;"></i></span>
+                    </div>
+
+                </div>
+
             </div>
         </div>
+        </div>
+    </div>
 
-    </section>
+</section>
+<!--card 4 -->
+<section>
+    <div class="container container-md forth">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-8 p-0">
+                <div class="card card-three">
+                    <div class=" head-div d-flex justify-content-between">
+                        <div class="family d-flex align-items-center gap-2">
+                            <div class="persons-react1">
+                                <img src="./images/01.jpg" class=" persons-react " alt="">
+                            </div>
+                            <div class="falimy-data">
+                                <p class="person-name">أبو دينا</p>
+                                <div class="icons">
+                                    <span dir="rtl"> <i class="fa-solid fa-location-dot"
+                                            style="margin: 0 4px;"></i>الرياض</span>
+                                    <span dir="rtl"> <i class="fa-solid fa-user-group"
+                                            style="margin: 0 4px;"></i>العائلة</span>
 
-    <section>
-        <div class="container container-md nine">
-            <div class="row d-flex justify-content-center">
-                <div class="col-lg-8 p-0">
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-end flex-column">
+                            <div class="dropdown">
+                                <div class=" alarm btn btn-secondary dropdown-toggle" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </div>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">رؤية التفاصيل</a></li>
+                                    <li><a class="dropdown-item" href="#">حذف</a></li>
+
+                                </ul>
+                            </div>
+                            <div class="time">
+                                <span>منذ 3 ساعات</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="d-flex justify-content-center resturant-data">
+                        <img class="card-img-top" src="./images/shepreani.jpg" alt="Card image cap">
+                        <!-- <div class="heart">
+                            <i class="fa-regular fa-heart"></i>
+                        </div> -->
+                        <div class="whereIAM">
+                            <span>انا في</span><br>
+                            <span>شيبرياني- الرياض</span><br>
+                            <span><i class="fa-solid fa-location-dot" style="margin: 0 4px;"></i> KSA-Riyadh </span>
+
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span><i class="fa-solid fa-user-large"></i> انا مع </span>
+
+                                <span> <a href="#" class="Iam-With">فهد الدوبخ</a></span>
+                            </div>
+                            <div>
+                                <span><i class="fa-regular fa-eye"></i> 50</span>
+                            </div>
+
+                        </div>
+                        <div class="d-flex reacts">
+                            <div class="persons-react1">
+                                <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
+                                        alt=""></a>
+                                <img class="emoji" src="./images/emo1.png" alt="">
+                            </div>
+                            <div class="persons-react2">
+                                <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
+                                        alt=""></a>
+                                <img class="emoji" src="./images/emo2.png" alt="">
+                            </div>
+                            <div class="persons-react3">
+                                <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react "
+                                        alt=""></a>
+                                <img class="emoji" src="./images/ic.png" alt="">
+                            </div>
+                            <div class="persons-react4">
+                                <a href="#" target="_blank"> <img src="./images/04.jpg" class="persons-react"
+                                        alt=""></a>
+                                <img class="emoji" src="./images/ic2.png" alt="">
+                            </div>
+                            <div class="persons-react-count" id="btn3" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop" style="cursor: pointer;">
+                                <span>+6</span>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <span class="frist-hr"></span>
+                        </div>
+                        <div class="d-flex align-items-center comment-box">
+                            <div class="persons-react1">
+                                <img src="./images/01.jpg" class=" persons-react " alt="">
+
+                            </div>
+                            <div class="bg-white">
+                                <div class="comment-info ">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="comment-person-name">فهد الدوبخ</p>
+                                        <span class="comment-time"> منذ 12 دقيقة</span>
+                                    </div>
+                                    <div class="d-flex mt-2">
+                                        <img class="emoji" src="./images/emo1.png" alt="">
+                                        <img class="emoji" src="./images/ic2.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex  comment-box align-items-center">
+                            <div class="persons-react1">
+                                <img src="./images/01.jpg" class=" persons-react " alt="">
+
+                            </div>
+                            <div class="bg-white">
+                                <div class="comment-info ">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="comment-person-name">بدر الدريعي</p>
+                                        <span class="comment-time"> منذ 12 دقيقة</span>
+                                    </div>
+                                    <div class="d-flex mt-2 comment-time">
+                                        <span>لاتنسي تحجز لي هديه من الملفا يا فهد</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center mb-3 mt-4 readmore" id="comentbtn3"
+                            data-bs-toggle="modal" data-bs-target="#largeModal" style="cursor: pointer;">
+                            <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down"
+                                    style="margin-right: 13px;"></i></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- slider -->
+
+<!--card 5 -->
+<section>
+    <div class="container container-md fifth">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-8 p-0">
+            <div class="card card-three">
+                <div class=" head-div d-flex justify-content-between">
+                    <div class="family d-flex align-items-center gap-2">
+                        <div class="persons-react1">
+                            <img src="./images/01.jpg" class=" persons-react " alt="">
+                        </div>
+                        <div class="falimy-data">
+                            <p class="person-name">بدر الدريعي</p>
+                            <div class="icons">
+                                <span dir="rtl"> <i class="fa-brands fa-youtube"
+                                        style="margin: -2px 4px;"></i>فيديو</span>
+                                <span dir="rtl"> <i class="fa-solid fa-earth-americas"
+                                        style="margin: 0 4px;"></i>عام</span>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-end flex-column">
+                        <div class="dropdown">
+                            <div class=" alarm btn btn-secondary dropdown-toggle" type="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </div>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">رؤية التفاصيل</a></li>
+                                <li><a class="dropdown-item" href="#">حذف</a></li>
+
+                            </ul>
+                        </div>
+                        <div class="time">
+                            <span>15 ساعة</span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="d-flex justify-content-center resturant-data why-us">
+                    <!-- <img class="card-img-top" src="./images/shepreani.jpg"  alt="Card image cap"> -->
+                    <div class="video-box" style="width: 100%;">
+                        <img src="./images/why-us.jpg" class="img-fluid" alt="" style="width: 100%;">
+                        <a href="https://www.youtube.com/watch?v=mAbEZ1EmtbI" class="venobox play-btn mb-4"
+                            data-vbtype="video" data-autoplay="true"></a>
+                    </div>
+                    <!-- <div class="heart">
+                        <i class="fa-regular fa-heart"></i>
+                    </div> -->
+
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <span>يستحق المشاهدة</span>
+                        </div>
+                        <div>
+                            <span><i class="fa-regular fa-eye"></i> 50</span>
+                        </div>
+
+                    </div>
+                    <div class="d-flex reacts" style="margin: 25px 0;">
+                        <div class="persons-react1">
+                            <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
+                                    alt=""></a>
+                            <img class="emoji" src="./images/emo1.png" alt="">
+                        </div>
+                        <div class="persons-react2">
+                            <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
+                                    alt=""></a>
+                            <img class="emoji" src="./images/emo2.png" alt="">
+                        </div>
+                        <div class="persons-react3">
+                            <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react "
+                                    alt=""></a>
+                            <img class="emoji" src="./images/ic.png" alt="">
+                        </div>
+                        <div class="persons-react4">
+                            <a href="#" target="_blank"> <img src="./images/04.jpg" class="persons-react"
+                                    alt=""></a>
+                            <img class="emoji" src="./images/ic2.png" alt="">
+                        </div>
+                        <div class="persons-react-count" id="btn4" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop" style="cursor: pointer;">
+                            <span>+6</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!--card 6 -->
+<section id="FILM-SECTION">
+    <div class="container container-md sex">
+        <div class="row d-flex justify-content-center" id="Film">
+            <!-- <div class="col-lg-8 p-0">
+                <div class="card card-three">
+                    <div class=" head-div d-flex justify-content-between">
+                        <div class="family d-flex align-items-center gap-2">
+                            <div class="persons-react1">
+                                <img src="./images/01.jpg" class=" persons-react " alt="">
+                            </div>
+                            <div class="falimy-data">
+                                <p class="person-name">بدر الدريعي </p>
+                                <div class="icons">
+
+                                    <span dir="rtl"> <i class="fa-solid fa-clapperboard"
+                                            style="margin: 0 4px;"></i>فيلم</span>
+                                    <span dir="rtl"> <i class="fa-solid fa-user-group" style="margin: 0 4px;"></i>شله
+                                        الفله</span>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-end flex-column">
+                            <div class="dropdown">
+                                <div class=" alarm btn btn-secondary dropdown-toggle" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </div>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">رؤية التفاصيل</a></li>
+                                    <li><a class="dropdown-item" href="#">حذف</a></li>
+
+                                </ul>
+                            </div>
+                            <div class="time">
+                                <span>منذ 3 ساعات</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="d-flex justify-content-center resturant-data">
+                        <img class="card-img-top" src="./images/avatarmovi.jpg" alt="Card image cap">
+                     
+                        <div class="whereIAM">
+                            <span>أشاهد</span><br>
+                            <span>Avatar: the way of water </span>
+
+
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span> يستحق المشاهدة <i class="fa-solid fa-star" style="color: #f1830d;"></i></span>
+                            </div>
+                            <div>
+                                <span><i class="fa-regular fa-eye"></i> 50</span>
+                            </div>
+
+                        </div>
+                        <div class="d-flex reacts">
+                            <div class="persons-react1">
+                                <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
+                                        alt=""></a>
+                                <img class="emoji" src="./images/emo1.png" alt="">
+                            </div>
+                            <div class="persons-react2">
+                                <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
+                                        alt=""></a>
+                                <img class="emoji" src="./images/emo2.png" alt="">
+                            </div>
+                            <div class="persons-react3">
+                                <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react "
+                                        alt=""></a>
+                                <img class="emoji" src="./images/ic.png" alt="">
+                            </div>
+                            <div class="persons-react4">
+                                <a href="#" target="_blank"> <img src="./images/04.jpg" class="persons-react"
+                                        alt=""></a>
+                                <img class="emoji" src="./images/ic2.png" alt="">
+                            </div>
+                            <div class="persons-react-count" id="btn5" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop" style="cursor: pointer;">
+                                <span>+6</span>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <span class="frist-hr"></span>
+                        </div>
+                        <div class="d-flex align-items-center comment-box">
+                            <div class="persons-react1">
+                                <img src="./images/01.jpg" class=" persons-react " alt="">
+
+                            </div>
+                            <div class="bg-white">
+                                <div class="comment-info ">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="comment-person-name">فهد الدوبخ</p>
+                                        <span class="comment-time"> منذ 12 دقيقة</span>
+                                    </div>
+                                    <div class="d-flex mt-2">
+                                        <img class="emoji" src="./images/emo1.png" alt="">
+                                        <img class="emoji" src="./images/ic2.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex  comment-box align-items-center">
+                            <div class="persons-react1">
+                                <img src="./images/01.jpg" class=" persons-react " alt="">
+
+                            </div>
+                            <div class="bg-white">
+                                <div class="comment-info ">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="comment-person-name">بدر الدريعي</p>
+                                        <span class="comment-time"> منذ 12 دقيقة</span>
+                                    </div>
+                                    <div class="d-flex mt-2 comment-time">
+                                        <span>لاتنسي تحجز لي هديه من الملفا يا فهد</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center mb-3 mt-4 readmore" id="comentbtn4"
+                            data-bs-toggle="modal" data-bs-target="#largeModal" style="cursor: pointer;">
+                            <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down"
+                                    style="margin-right: 13px;"></i></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div> -->
+        </div>
+    </div>
+
+</section>
+<!--card 7 -->
+<section id="MUSIC-SECTION">
+    <div class="container container-md seven"  >
+        <div class="row d-flex justify-content-center" id="seven">
+         <!-- <div class="col-lg-8 p-0">
+                <div class="card card-three">
+                    <div class=" head-div d-flex justify-content-between">
+                        <div class="family d-flex align-items-center gap-2">
+                            <div class="persons-react1">
+                                <img src="./images/01.jpg" class=" persons-react " alt="">
+                            </div>
+                            <div class="falimy-data">
+                                <p class="person-name">بدر الدريعي </p>
+                                <div class="icons">
+
+                                    <span dir="rtl"> <i class="fa-solid fa-clapperboard"
+                                            style="margin: 0 4px;"></i>موسيقي</span>
+                                    <span dir="rtl"> <i class="fa-solid fa-user-group" style="margin: 0 4px;"></i>شله
+                                        الفله</span>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-end flex-column">
+                            <div class="dropdown">
+                                <div class=" alarm btn btn-secondary dropdown-toggle" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </div>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">رؤية التفاصيل</a></li>
+                                    <li><a class="dropdown-item" href="#">حذف</a></li>
+
+                                </ul>
+                            </div>
+                            <div class="time">
+                                <span>منذ 3 ساعات</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="d-flex justify-content-center resturant-data">
+                        <img class="card-img-top" src="./images/images.jpg" alt="Card image cap">
+                    
+                        <div class="whereIAM">
+                            <span>أستمع الي </span><br>
+                            <span>عمرودياب - صدقني خلاص </span>
+
+
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span> أحلي ما غني</span>
+                            </div>
+                            <div>
+                                <span><i class="fa-regular fa-eye"></i> 90</span>
+                            </div>
+
+                        </div>
+                        <div class="d-flex reacts" style="margin: 25px 0;">
+                            <div class="persons-react1">
+                                <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
+                                        alt=""></a>
+                                <img class="emoji" src="./images/emo1.png" alt="">
+                            </div>
+                            <div class="persons-react2">
+                                <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
+                                        alt=""></a>
+                                <img class="emoji" src="./images/emo2.png" alt="">
+                            </div>
+                            <div class="persons-react3">
+                                <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react "
+                                        alt=""></a>
+                                <img class="emoji" src="./images/ic.png" alt="">
+                            </div>
+                            <div class="persons-react4">
+                                <a href="#" target="_blank"> <img src="./images/04.jpg" class="persons-react"
+                                        alt=""></a>
+                                <img class="emoji" src="./images/ic2.png" alt="">
+                            </div>
+                            <div class="persons-react-count" id="btn6" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop" style="cursor: pointer;">
+                                <span>+6</span>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>   -->
+        </div>
+    </div>
+
+</section>
+<!--card 8 -->
+<section>
+    <div class="container container-md eight">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-8 p-0">
+                <div class="card card-three">
+                    <div class=" head-div d-flex justify-content-between">
+                        <div class="family d-flex align-items-center gap-2">
+                            <div class="persons-react1">
+                                <img src="./images/01.jpg" class=" persons-react " alt="">
+                            </div>
+                            <div class="falimy-data">
+                                <p class="person-name">عبدالرحمن التركي </p>
+                                <div class="icons">
+
+                                    <span dir="rtl"> <i class="fa-solid fa-image" style="margin: 0 4px;"></i>صوره</span>
+                                    <span dir="rtl"> <i class="fa-solid fa-user-group" style="margin: 0 4px;"></i>شله
+                                        لندن</span>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-end flex-column">
+                            <div class="dropdown">
+                                <div class=" alarm btn btn-secondary dropdown-toggle" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </div>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">رؤية التفاصيل</a></li>
+                                    <li><a class="dropdown-item" href="#">حذف</a></li>
+
+                                </ul>
+                            </div>
+                            <div class="time">
+                                <span>منذ 3 ساعات</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="d-flex justify-content-center resturant-data">
+                        <img class="card-img-top" src="./images/work.jpg" alt="Card image cap">
+                        <!-- <div class="heart">
+                        <i class="fa-regular fa-heart"></i>
+                    </div> -->
+
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="work">لا تؤجل عمل اليوم الي الغد</span>
+                            </div>
+                            <div>
+                                <span><i class="fa-regular fa-eye"></i> 130</span>
+                            </div>
+
+                        </div>
+                        <div class="d-flex reacts">
+                            <div class="persons-react1">
+                                <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
+                                        alt=""></a>
+                                <img class="emoji" src="./images/emo1.png" alt="">
+                            </div>
+                            <div class="persons-react2">
+                                <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
+                                        alt=""></a>
+                                <img class="emoji" src="./images/emo2.png" alt="">
+                            </div>
+                            <div class="persons-react3">
+                                <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react "
+                                        alt=""></a>
+                                <img class="emoji" src="./images/ic.png" alt="">
+                            </div>
+                            <div class="persons-react4">
+                                <a href="#" target="_blank"> <img src="./images/04.jpg" class="persons-react"
+                                        alt=""></a>
+                                <img class="emoji" src="./images/ic2.png" alt="">
+                            </div>
+                            <div class="persons-react-count" id="btn7" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop" style="cursor: pointer;">
+                                <span>+6</span>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <span class="frist-hr"></span>
+                        </div>
+
+                        <div class="d-flex align-items-center comment-box">
+                            <div class="persons-react1">
+                                <img src="./images/01.jpg" class=" persons-react " alt="">
+
+                            </div>
+                            <div class="bg-white">
+                                <div class="comment-info ">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="comment-person-name">فهد الدوبخ</p>
+                                        <span class="comment-time"> منذ 12 دقيقة</span>
+                                    </div>
+                                    <div class="d-flex mt-2">
+                                        <img class="emoji" src="./images/emo1.png" alt="">
+                                        <img class="emoji" src="./images/ic2.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex  comment-box align-items-center">
+                            <div class="persons-react1">
+                                <img src="./images/01.jpg" class=" persons-react " alt="">
+
+                            </div>
+                            <div class="bg-white">
+                                <div class="comment-info ">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="comment-person-name">بدر الدريعي</p>
+                                        <span class="comment-time"> منذ 12 دقيقة</span>
+                                    </div>
+                                    <div class="d-flex mt-2 comment-time">
+                                        <span>لاتنسي تحجز لي هديه من الملفا يا فهد</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex  comment-box align-items-center">
+                            <div class="persons-react1">
+                                <img src="./images/01.jpg" class=" persons-react " alt="">
+
+                            </div>
+                            <div class="bg-white">
+                                <div class="comment-info ">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="comment-person-name">عمرو ناصر</p>
+                                        <span class="comment-time"> منذ 12 دقيقة</span>
+                                    </div>
+                                    <div class="d-flex mt-2 comment-time">
+                                        <span>لاتنسي تحجز لي هديه من الملفا يا فهد</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center mb-3 mt-4 readmore" id="comentbtn5"
+                            data-bs-toggle="modal" data-bs-target="#largeModal" style="cursor: pointer;">
+                            <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down"
+                                    style="margin-right: 13px;"></i></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!--card 9 -->
+<section>
+    <div class="container container-md nine">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-8 p-0">
                 <div class="card card-nine">
                     <div class=" head-div d-flex justify-content-end">
                         <div class="dropdown">
@@ -235,31 +1168,7 @@
                     </div>
                     <div class="card-body">
 
-                        <div class="d-flex justify-content-between comments">
-                            <div class="vission-name">
-                                <p>عيد ميلاد <a href="#" class="birthday"> عبدالرحمن التركي </a> اليوم</p>
-                            </div>
-                            <div class="vission-comments">
-                                <div>
-                                    <span>
-                                        <i class="fa-regular fa-eye"></i>
-                                        2
-                                    </span>
-                                </div>
-                                <div>
-                                    <span class="comment-num">
-                                        <i class="fa-regular fa-message"></i>
-                                        15
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-column reacts">
-                            <p> <span class="fact">هناك حقيقة مثبتة منذ زمن طويل وهي ان المحتوي المقروء لصفحة ما سيلهي
-                                    القارئ عن التركيز عن الشكل الخارجي للنص</span> <i class="fa-solid fa-star"
-                                    style="color: #f1830d;"></i></p>
 
-                        </div>
                         <div class="d-flex reacts">
                             <div class="persons-react1">
                                 <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
@@ -276,9 +1185,9 @@
                                         alt=""></a>
                                 <img class="emoji" src="./images/ic.png" alt="">
                             </div>
-                            <div class="persons-react-count" id="btn2" data-bs-toggle="modal"
+                            <div class="persons-react-count" id="btn8" data-bs-toggle="modal"
                                 data-bs-target="#staticBackdrop" style="cursor: pointer;">
-                                <span>+6</span>
+                                <span>+4</span>
                             </div>
 
                         </div>
@@ -303,7 +1212,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="d-flex justify-content-center align-items-center mb-3 mt-4 readmore" id="comentbtn2"
+                        <div class="d-flex justify-content-center align-items-center mb-3 mt-4 readmore" id="comentbtn6"
                             data-bs-toggle="modal" data-bs-target="#largeModal" style="cursor: pointer;">
                             <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down"
                                     style="margin-right: 13px;"></i></span>
@@ -313,159 +1222,15 @@
 
                 </div>
             </div>
-            </div>
         </div>
+    </div>
 
-    </section>
-    <!--card 4 -->
-    <section>
-        <div class="container container-md forth">
-            <div class="row d-flex justify-content-center">
-                <div class="col-lg-8 p-0">
-                    <div class="card card-three">
-                        <div class=" head-div d-flex justify-content-between">
-                            <div class="family d-flex align-items-center gap-2">
-                                <div class="persons-react1">
-                                    <img src="./images/01.jpg" class=" persons-react " alt="">
-                                </div>
-                                <div class="falimy-data">
-                                    <p class="person-name">أبو دينا</p>
-                                    <div class="icons">
-                                        <span dir="rtl"> <i class="fa-solid fa-location-dot"
-                                                style="margin: 0 4px;"></i>الرياض</span>
-                                        <span dir="rtl"> <i class="fa-solid fa-user-group"
-                                                style="margin: 0 4px;"></i>العائلة</span>
-
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-end flex-column">
-                                <div class="dropdown">
-                                    <div class=" alarm btn btn-secondary dropdown-toggle" type="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa-solid fa-ellipsis"></i>
-                                    </div>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">رؤية التفاصيل</a></li>
-                                        <li><a class="dropdown-item" href="#">حذف</a></li>
-
-                                    </ul>
-                                </div>
-                                <div class="time">
-                                    <span>منذ 3 ساعات</span>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="d-flex justify-content-center resturant-data">
-                            <img class="card-img-top" src="./images/shepreani.jpg" alt="Card image cap">
-                            <!-- <div class="heart">
-                                <i class="fa-regular fa-heart"></i>
-                            </div> -->
-                            <div class="whereIAM">
-                                <span>انا في</span><br>
-                                <span>شيبرياني- الرياض</span><br>
-                                <span><i class="fa-solid fa-location-dot" style="margin: 0 4px;"></i> KSA-Riyadh </span>
-
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <span><i class="fa-solid fa-user-large"></i> انا مع </span>
-
-                                    <span> <a href="#" class="Iam-With">فهد الدوبخ</a></span>
-                                </div>
-                                <div>
-                                    <span><i class="fa-regular fa-eye"></i> 50</span>
-                                </div>
-
-                            </div>
-                            <div class="d-flex reacts">
-                                <div class="persons-react1">
-                                    <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
-                                            alt=""></a>
-                                    <img class="emoji" src="./images/emo1.png" alt="">
-                                </div>
-                                <div class="persons-react2">
-                                    <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
-                                            alt=""></a>
-                                    <img class="emoji" src="./images/emo2.png" alt="">
-                                </div>
-                                <div class="persons-react3">
-                                    <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react "
-                                            alt=""></a>
-                                    <img class="emoji" src="./images/ic.png" alt="">
-                                </div>
-                                <div class="persons-react4">
-                                    <a href="#" target="_blank"> <img src="./images/04.jpg" class="persons-react"
-                                            alt=""></a>
-                                    <img class="emoji" src="./images/ic2.png" alt="">
-                                </div>
-                                <div class="persons-react-count" id="btn3" data-bs-toggle="modal"
-                                    data-bs-target="#staticBackdrop" style="cursor: pointer;">
-                                    <span>+6</span>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-center">
-                                <span class="frist-hr"></span>
-                            </div>
-                            <div class="d-flex align-items-center comment-box">
-                                <div class="persons-react1">
-                                    <img src="./images/01.jpg" class=" persons-react " alt="">
-
-                                </div>
-                                <div class="bg-white">
-                                    <div class="comment-info ">
-                                        <div class="d-flex justify-content-between">
-                                            <p class="comment-person-name">فهد الدوبخ</p>
-                                            <span class="comment-time"> منذ 12 دقيقة</span>
-                                        </div>
-                                        <div class="d-flex mt-2">
-                                            <img class="emoji" src="./images/emo1.png" alt="">
-                                            <img class="emoji" src="./images/ic2.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex  comment-box align-items-center">
-                                <div class="persons-react1">
-                                    <img src="./images/01.jpg" class=" persons-react " alt="">
-
-                                </div>
-                                <div class="bg-white">
-                                    <div class="comment-info ">
-                                        <div class="d-flex justify-content-between">
-                                            <p class="comment-person-name">بدر الدريعي</p>
-                                            <span class="comment-time"> منذ 12 دقيقة</span>
-                                        </div>
-                                        <div class="d-flex mt-2 comment-time">
-                                            <span>لاتنسي تحجز لي هديه من الملفا يا فهد</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-center align-items-center mb-3 mt-4 readmore" id="comentbtn3"
-                                data-bs-toggle="modal" data-bs-target="#largeModal" style="cursor: pointer;">
-                                <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down"
-                                        style="margin-right: 13px;"></i></span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </section>
-    <!-- slider -->
-
-    <!--card 5 -->
-    <section>
-        <div class="container container-md fifth">
-            <div class="row d-flex justify-content-center">
-                <div class="col-lg-8 p-0">
+</section>
+<!-- card 10 -->
+<section>
+    <div class="container container-md ten">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-8 p-0">
                 <div class="card card-three">
                     <div class=" head-div d-flex justify-content-between">
                         <div class="family d-flex align-items-center gap-2">
@@ -473,12 +1238,14 @@
                                 <img src="./images/01.jpg" class=" persons-react " alt="">
                             </div>
                             <div class="falimy-data">
-                                <p class="person-name">بدر الدريعي</p>
+                                <p class="person-name">عبدالرحمن التركي </p>
                                 <div class="icons">
-                                    <span dir="rtl"> <i class="fa-brands fa-youtube"
-                                            style="margin: -2px 4px;"></i>فيديو</span>
-                                    <span dir="rtl"> <i class="fa-solid fa-earth-americas"
-                                            style="margin: 0 4px;"></i>عام</span>
+
+                                    <span dir="rtl"> <i class="fa-solid fa-headphones"
+                                            style="margin: 0 4px;"></i>نص</span>
+
+                                    <span dir="rtl"> <i class="fa-solid fa-user-group" style="margin: 0 4px;"></i>أيام
+                                        الثانوي</span>
 
                                 </div>
 
@@ -497,829 +1264,149 @@
                                 </ul>
                             </div>
                             <div class="time">
-                                <span>15 ساعة</span>
+                                <span>منذ 3 ساعات</span>
                             </div>
                         </div>
 
                     </div>
-                    <div class="d-flex justify-content-center resturant-data why-us">
-                        <!-- <img class="card-img-top" src="./images/shepreani.jpg"  alt="Card image cap"> -->
-                        <div class="video-box" style="width: 100%;">
-                            <img src="./images/why-us.jpg" class="img-fluid" alt="" style="width: 100%;">
-                            <a href="https://www.youtube.com/watch?v=mAbEZ1EmtbI" class="venobox play-btn mb-4"
-                                data-vbtype="video" data-autoplay="true"></a>
+                    <div class="d-flex justify-content-center resturant-data">
+                        <!-- <img class="card-img-top" src="./images/work.jpg" alt="Card image cap"> -->
+                        <div class="details">
+                            <p> <span class="fact">هناك حقيقة مثبتة منذ زمن طويل وهي ان المحتوي المقروء لصفحة ما سيلهي
+                                    القارئ عن التركيز عن الشكل الخارجي للنص</span> <img class="emoji"
+                                    src="./images/emo2.png" alt=""> <img class="emoji" src="./images/emo2.png" alt=""><i
+                                    class="fa-solid fa-star" style="color: #f1830d;"></i></p>
+
                         </div>
                         <!-- <div class="heart">
-                            <i class="fa-regular fa-heart"></i>
-                        </div> -->
+                        <i class="fa-regular fa-heart"></i>
+                    </div> -->
 
                     </div>
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
-                                <span>يستحق المشاهدة</span>
-                            </div>
-                            <div>
-                                <span><i class="fa-regular fa-eye"></i> 50</span>
-                            </div>
-
-                        </div>
-                        <div class="d-flex reacts" style="margin: 25px 0;">
-                            <div class="persons-react1">
-                                <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
-                                        alt=""></a>
-                                <img class="emoji" src="./images/emo1.png" alt="">
-                            </div>
-                            <div class="persons-react2">
-                                <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
-                                        alt=""></a>
-                                <img class="emoji" src="./images/emo2.png" alt="">
-                            </div>
-                            <div class="persons-react3">
-                                <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react "
-                                        alt=""></a>
-                                <img class="emoji" src="./images/ic.png" alt="">
-                            </div>
-                            <div class="persons-react4">
-                                <a href="#" target="_blank"> <img src="./images/04.jpg" class="persons-react"
-                                        alt=""></a>
-                                <img class="emoji" src="./images/ic2.png" alt="">
-                            </div>
-                            <div class="persons-react-count" id="btn4" data-bs-toggle="modal"
-                                data-bs-target="#staticBackdrop" style="cursor: pointer;">
-                                <span>+6</span>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-                </div>
-            </div>
-        </div>
-
-    </section>
-    <!--card 6 -->
-    <section>
-        <div class="container container-md sex">
-            <div class="row d-flex justify-content-center">
-                <div class="col-lg-8 p-0">
-                    <div class="card card-three">
-                        <div class=" head-div d-flex justify-content-between">
-                            <div class="family d-flex align-items-center gap-2">
-                                <div class="persons-react1">
-                                    <img src="./images/01.jpg" class=" persons-react " alt="">
-                                </div>
-                                <div class="falimy-data">
-                                    <p class="person-name">بدر الدريعي </p>
-                                    <div class="icons">
-
-                                        <span dir="rtl"> <i class="fa-solid fa-clapperboard"
-                                                style="margin: 0 4px;"></i>فيلم</span>
-                                        <span dir="rtl"> <i class="fa-solid fa-user-group" style="margin: 0 4px;"></i>شله
-                                            الفله</span>
-
+                                <div class="d-flex reacts">
+                                    <div class="persons-react1">
+                                        <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
+                                                alt=""></a>
+                                        <img class="emoji" src="./images/emo1.png" alt="">
+                                    </div>
+                                    <div class="persons-react2">
+                                        <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
+                                                alt=""></a>
+                                        <img class="emoji" src="./images/emo2.png" alt="">
+                                    </div>
+                                 
+                                    <div class="persons-react-count" id="btn9" data-bs-toggle="modal"
+                                        data-bs-target="#staticBackdrop" style="cursor: pointer;">
+                                        <span>+5</span>
                                     </div>
 
                                 </div>
                             </div>
-                            <div class="d-flex align-items-end flex-column">
-                                <div class="dropdown">
-                                    <div class=" alarm btn btn-secondary dropdown-toggle" type="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa-solid fa-ellipsis"></i>
-                                    </div>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">رؤية التفاصيل</a></li>
-                                        <li><a class="dropdown-item" href="#">حذف</a></li>
-
-                                    </ul>
-                                </div>
-                                <div class="time">
-                                    <span>منذ 3 ساعات</span>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="d-flex justify-content-center resturant-data">
-                            <img class="card-img-top" src="./images/avatarmovi.jpg" alt="Card image cap">
-                            <!-- <div class="heart">
-                            <i class="fa-regular fa-heart"></i>
-                        </div> -->
-                            <div class="whereIAM">
-                                <span>أشاهد</span><br>
-                                <span>Avatar: the way of water </span>
-
-
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center">
+                            <div class="vission-comments">
                                 <div>
-                                    <span> يستحق المشاهدة <i class="fa-solid fa-star" style="color: #f1830d;"></i></span>
-                                </div>
-                                <div>
-                                    <span><i class="fa-regular fa-eye"></i> 50</span>
-                                </div>
-
-                            </div>
-                            <div class="d-flex reacts">
-                                <div class="persons-react1">
-                                    <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
-                                            alt=""></a>
-                                    <img class="emoji" src="./images/emo1.png" alt="">
-                                </div>
-                                <div class="persons-react2">
-                                    <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
-                                            alt=""></a>
-                                    <img class="emoji" src="./images/emo2.png" alt="">
-                                </div>
-                                <div class="persons-react3">
-                                    <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react "
-                                            alt=""></a>
-                                    <img class="emoji" src="./images/ic.png" alt="">
-                                </div>
-                                <div class="persons-react4">
-                                    <a href="#" target="_blank"> <img src="./images/04.jpg" class="persons-react"
-                                            alt=""></a>
-                                    <img class="emoji" src="./images/ic2.png" alt="">
-                                </div>
-                                <div class="persons-react-count" id="btn5" data-bs-toggle="modal"
-                                    data-bs-target="#staticBackdrop" style="cursor: pointer;">
-                                    <span>+6</span>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-center">
-                                <span class="frist-hr"></span>
-                            </div>
-                            <div class="d-flex align-items-center comment-box">
-                                <div class="persons-react1">
-                                    <img src="./images/01.jpg" class=" persons-react " alt="">
-
-                                </div>
-                                <div class="bg-white">
-                                    <div class="comment-info ">
-                                        <div class="d-flex justify-content-between">
-                                            <p class="comment-person-name">فهد الدوبخ</p>
-                                            <span class="comment-time"> منذ 12 دقيقة</span>
-                                        </div>
-                                        <div class="d-flex mt-2">
-                                            <img class="emoji" src="./images/emo1.png" alt="">
-                                            <img class="emoji" src="./images/ic2.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex  comment-box align-items-center">
-                                <div class="persons-react1">
-                                    <img src="./images/01.jpg" class=" persons-react " alt="">
-
-                                </div>
-                                <div class="bg-white">
-                                    <div class="comment-info ">
-                                        <div class="d-flex justify-content-between">
-                                            <p class="comment-person-name">بدر الدريعي</p>
-                                            <span class="comment-time"> منذ 12 دقيقة</span>
-                                        </div>
-                                        <div class="d-flex mt-2 comment-time">
-                                            <span>لاتنسي تحجز لي هديه من الملفا يا فهد</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-center align-items-center mb-3 mt-4 readmore" id="comentbtn4"
-                                data-bs-toggle="modal" data-bs-target="#largeModal" style="cursor: pointer;">
-                                <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down"
-                                        style="margin-right: 13px;"></i></span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </section>
-    <!--card 7 -->
-    <section id="MUSIC-SECTION">
-        <div class="container container-md seven"  >
-            <div class="row d-flex justify-content-center" id="seven">
-             <!-- <div class="col-lg-8 p-0">
-                    <div class="card card-three">
-                        <div class=" head-div d-flex justify-content-between">
-                            <div class="family d-flex align-items-center gap-2">
-                                <div class="persons-react1">
-                                    <img src="./images/01.jpg" class=" persons-react " alt="">
-                                </div>
-                                <div class="falimy-data">
-                                    <p class="person-name">بدر الدريعي </p>
-                                    <div class="icons">
-
-                                        <span dir="rtl"> <i class="fa-solid fa-clapperboard"
-                                                style="margin: 0 4px;"></i>موسيقي</span>
-                                        <span dir="rtl"> <i class="fa-solid fa-user-group" style="margin: 0 4px;"></i>شله
-                                            الفله</span>
-
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-end flex-column">
-                                <div class="dropdown">
-                                    <div class=" alarm btn btn-secondary dropdown-toggle" type="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa-solid fa-ellipsis"></i>
-                                    </div>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">رؤية التفاصيل</a></li>
-                                        <li><a class="dropdown-item" href="#">حذف</a></li>
-
-                                    </ul>
-                                </div>
-                                <div class="time">
-                                    <span>منذ 3 ساعات</span>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="d-flex justify-content-center resturant-data">
-                            <img class="card-img-top" src="./images/images.jpg" alt="Card image cap">
-                        
-                            <div class="whereIAM">
-                                <span>أستمع الي </span><br>
-                                <span>عمرودياب - صدقني خلاص </span>
-
-
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <span> أحلي ما غني</span>
-                                </div>
-                                <div>
-                                    <span><i class="fa-regular fa-eye"></i> 90</span>
-                                </div>
-
-                            </div>
-                            <div class="d-flex reacts" style="margin: 25px 0;">
-                                <div class="persons-react1">
-                                    <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
-                                            alt=""></a>
-                                    <img class="emoji" src="./images/emo1.png" alt="">
-                                </div>
-                                <div class="persons-react2">
-                                    <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
-                                            alt=""></a>
-                                    <img class="emoji" src="./images/emo2.png" alt="">
-                                </div>
-                                <div class="persons-react3">
-                                    <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react "
-                                            alt=""></a>
-                                    <img class="emoji" src="./images/ic.png" alt="">
-                                </div>
-                                <div class="persons-react4">
-                                    <a href="#" target="_blank"> <img src="./images/04.jpg" class="persons-react"
-                                            alt=""></a>
-                                    <img class="emoji" src="./images/ic2.png" alt="">
-                                </div>
-                                <div class="persons-react-count" id="btn6" data-bs-toggle="modal"
-                                    data-bs-target="#staticBackdrop" style="cursor: pointer;">
-                                    <span>+6</span>
-                                </div>
-                            </div>
-
-
-                        </div>
-
-                    </div>
-                </div>   -->
-            </div>
-        </div>
-
-    </section>
-    <!--card 8 -->
-    <section>
-        <div class="container container-md eight">
-            <div class="row d-flex justify-content-center">
-                <div class="col-lg-8 p-0">
-                    <div class="card card-three">
-                        <div class=" head-div d-flex justify-content-between">
-                            <div class="family d-flex align-items-center gap-2">
-                                <div class="persons-react1">
-                                    <img src="./images/01.jpg" class=" persons-react " alt="">
-                                </div>
-                                <div class="falimy-data">
-                                    <p class="person-name">عبدالرحمن التركي </p>
-                                    <div class="icons">
-
-                                        <span dir="rtl"> <i class="fa-solid fa-image" style="margin: 0 4px;"></i>صوره</span>
-                                        <span dir="rtl"> <i class="fa-solid fa-user-group" style="margin: 0 4px;"></i>شله
-                                            لندن</span>
-
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-end flex-column">
-                                <div class="dropdown">
-                                    <div class=" alarm btn btn-secondary dropdown-toggle" type="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa-solid fa-ellipsis"></i>
-                                    </div>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">رؤية التفاصيل</a></li>
-                                        <li><a class="dropdown-item" href="#">حذف</a></li>
-
-                                    </ul>
-                                </div>
-                                <div class="time">
-                                    <span>منذ 3 ساعات</span>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="d-flex justify-content-center resturant-data">
-                            <img class="card-img-top" src="./images/work.jpg" alt="Card image cap">
-                            <!-- <div class="heart">
-                            <i class="fa-regular fa-heart"></i>
-                        </div> -->
-
-                        </div>
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <span class="work">لا تؤجل عمل اليوم الي الغد</span>
-                                </div>
-                                <div>
-                                    <span><i class="fa-regular fa-eye"></i> 130</span>
-                                </div>
-
-                            </div>
-                            <div class="d-flex reacts">
-                                <div class="persons-react1">
-                                    <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
-                                            alt=""></a>
-                                    <img class="emoji" src="./images/emo1.png" alt="">
-                                </div>
-                                <div class="persons-react2">
-                                    <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
-                                            alt=""></a>
-                                    <img class="emoji" src="./images/emo2.png" alt="">
-                                </div>
-                                <div class="persons-react3">
-                                    <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react "
-                                            alt=""></a>
-                                    <img class="emoji" src="./images/ic.png" alt="">
-                                </div>
-                                <div class="persons-react4">
-                                    <a href="#" target="_blank"> <img src="./images/04.jpg" class="persons-react"
-                                            alt=""></a>
-                                    <img class="emoji" src="./images/ic2.png" alt="">
-                                </div>
-                                <div class="persons-react-count" id="btn7" data-bs-toggle="modal"
-                                    data-bs-target="#staticBackdrop" style="cursor: pointer;">
-                                    <span>+6</span>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-center">
-                                <span class="frist-hr"></span>
-                            </div>
-
-                            <div class="d-flex align-items-center comment-box">
-                                <div class="persons-react1">
-                                    <img src="./images/01.jpg" class=" persons-react " alt="">
-
-                                </div>
-                                <div class="bg-white">
-                                    <div class="comment-info ">
-                                        <div class="d-flex justify-content-between">
-                                            <p class="comment-person-name">فهد الدوبخ</p>
-                                            <span class="comment-time"> منذ 12 دقيقة</span>
-                                        </div>
-                                        <div class="d-flex mt-2">
-                                            <img class="emoji" src="./images/emo1.png" alt="">
-                                            <img class="emoji" src="./images/ic2.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex  comment-box align-items-center">
-                                <div class="persons-react1">
-                                    <img src="./images/01.jpg" class=" persons-react " alt="">
-
-                                </div>
-                                <div class="bg-white">
-                                    <div class="comment-info ">
-                                        <div class="d-flex justify-content-between">
-                                            <p class="comment-person-name">بدر الدريعي</p>
-                                            <span class="comment-time"> منذ 12 دقيقة</span>
-                                        </div>
-                                        <div class="d-flex mt-2 comment-time">
-                                            <span>لاتنسي تحجز لي هديه من الملفا يا فهد</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="d-flex  comment-box align-items-center">
-                                <div class="persons-react1">
-                                    <img src="./images/01.jpg" class=" persons-react " alt="">
-
-                                </div>
-                                <div class="bg-white">
-                                    <div class="comment-info ">
-                                        <div class="d-flex justify-content-between">
-                                            <p class="comment-person-name">عمرو ناصر</p>
-                                            <span class="comment-time"> منذ 12 دقيقة</span>
-                                        </div>
-                                        <div class="d-flex mt-2 comment-time">
-                                            <span>لاتنسي تحجز لي هديه من الملفا يا فهد</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-center align-items-center mb-3 mt-4 readmore" id="comentbtn5"
-                                data-bs-toggle="modal" data-bs-target="#largeModal" style="cursor: pointer;">
-                                <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down"
-                                        style="margin-right: 13px;"></i></span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </section>
-    <!--card 9 -->
-    <section>
-        <div class="container container-md nine">
-            <div class="row d-flex justify-content-center">
-                <div class="col-lg-8 p-0">
-                    <div class="card card-nine">
-                        <div class=" head-div d-flex justify-content-end">
-                            <div class="dropdown">
-                                <div class=" alarm btn btn-secondary dropdown-toggle" type="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fa-solid fa-ellipsis"></i>
-                                </div>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">رؤية التفاصيل</a></li>
-                                    <li><a class="dropdown-item" href="#">حذف</a></li>
-
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="d-flex justify-content-between align-items-center outer-person">
-                            <div class="d-flex align-items-center gap-2">
-                                <div class="person-img">
-                                    <img src="./images/avatar-1.png" alt="">
-                                </div>
-                                <p class="person-name">بدر الدريعي</p>
-                            </div>
-
-                            <button class="wish">
-                                وش تحب
-                                <i class="fa-solid fa-less-than"></i>
-                            </button>
-                        </div>
-                        <div class="card-body">
-
-
-                            <div class="d-flex reacts">
-                                <div class="persons-react1">
-                                    <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
-                                            alt=""></a>
-                                    <img class="emoji" src="./images/emo1.png" alt="">
-                                </div>
-                                <div class="persons-react2">
-                                    <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
-                                            alt=""></a>
-                                    <img class="emoji" src="./images/emo2.png" alt="">
-                                </div>
-                                <div class="persons-react3">
-                                    <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react "
-                                            alt=""></a>
-                                    <img class="emoji" src="./images/ic.png" alt="">
-                                </div>
-                                <div class="persons-react-count" id="btn8" data-bs-toggle="modal"
-                                    data-bs-target="#staticBackdrop" style="cursor: pointer;">
-                                    <span>+4</span>
-                                </div>
-
-                            </div>
-                            <div class="d-flex justify-content-center">
-                                <span class="frist-hr"></span>
-                            </div>
-                            <div class="d-flex align-items-center comment-box">
-                                <div class="persons-react1">
-                                    <img src="./images/01.jpg" class=" persons-react " alt="">
-
-                                </div>
-                                <div class="bg-white">
-                                    <div class="comment-info ">
-                                        <div class="d-flex justify-content-between">
-                                            <p class="comment-person-name">فهد الدوبخ</p>
-                                            <span class="comment-time"> منذ 12 دقيقة</span>
-                                        </div>
-                                        <div class="d-flex mt-2">
-                                            <img class="emoji" src="./images/emo1.png" alt="">
-                                            <img class="emoji" src="./images/ic2.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-center align-items-center mb-3 mt-4 readmore" id="comentbtn6"
-                                data-bs-toggle="modal" data-bs-target="#largeModal" style="cursor: pointer;">
-                                <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down"
-                                        style="margin-right: 13px;"></i></span>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </section>
-    <!-- card 10 -->
-    <section>
-        <div class="container container-md ten">
-            <div class="row d-flex justify-content-center">
-                <div class="col-lg-8 p-0">
-                    <div class="card card-three">
-                        <div class=" head-div d-flex justify-content-between">
-                            <div class="family d-flex align-items-center gap-2">
-                                <div class="persons-react1">
-                                    <img src="./images/01.jpg" class=" persons-react " alt="">
-                                </div>
-                                <div class="falimy-data">
-                                    <p class="person-name">عبدالرحمن التركي </p>
-                                    <div class="icons">
-
-                                        <span dir="rtl"> <i class="fa-solid fa-headphones"
-                                                style="margin: 0 4px;"></i>نص</span>
-
-                                        <span dir="rtl"> <i class="fa-solid fa-user-group" style="margin: 0 4px;"></i>أيام
-                                            الثانوي</span>
-
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-end flex-column">
-                                <div class="dropdown">
-                                    <div class=" alarm btn btn-secondary dropdown-toggle" type="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa-solid fa-ellipsis"></i>
-                                    </div>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">رؤية التفاصيل</a></li>
-                                        <li><a class="dropdown-item" href="#">حذف</a></li>
-
-                                    </ul>
-                                </div>
-                                <div class="time">
-                                    <span>منذ 3 ساعات</span>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="d-flex justify-content-center resturant-data">
-                            <!-- <img class="card-img-top" src="./images/work.jpg" alt="Card image cap"> -->
-                            <div class="details">
-                                <p> <span class="fact">هناك حقيقة مثبتة منذ زمن طويل وهي ان المحتوي المقروء لصفحة ما سيلهي
-                                        القارئ عن التركيز عن الشكل الخارجي للنص</span> <img class="emoji"
-                                        src="./images/emo2.png" alt=""> <img class="emoji" src="./images/emo2.png" alt=""><i
-                                        class="fa-solid fa-star" style="color: #f1830d;"></i></p>
-
-                            </div>
-                            <!-- <div class="heart">
-                            <i class="fa-regular fa-heart"></i>
-                        </div> -->
-
-                        </div>
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <div class="d-flex reacts">
-                                        <div class="persons-react1">
-                                            <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
-                                                    alt=""></a>
-                                            <img class="emoji" src="./images/emo1.png" alt="">
-                                        </div>
-                                        <div class="persons-react2">
-                                            <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
-                                                    alt=""></a>
-                                            <img class="emoji" src="./images/emo2.png" alt="">
-                                        </div>
-                                     
-                                        <div class="persons-react-count" id="btn9" data-bs-toggle="modal"
-                                            data-bs-target="#staticBackdrop" style="cursor: pointer;">
-                                            <span>+5</span>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="vission-comments">
-                                    <div>
-                                        <span>
-                                            <i class="fa-regular fa-eye"></i>
-                                            90
-                                        </span>
-                                    </div>
-                                    <div>
-                                        <span class="comment-num">
-                                            <i class="fa-regular fa-message"></i>
-                                            2
-                                        </span>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="d-flex justify-content-center">
-                                <span class="frist-hr"></span>
-                            </div>
-
-                            <div class="d-flex align-items-center comment-box">
-                                <div class="persons-react1">
-                                    <img src="./images/01.jpg" class=" persons-react " alt="">
-
-                                </div>
-                                <div class="bg-white">
-                                    <div class="comment-info ">
-                                        <div class="d-flex justify-content-between">
-                                            <p class="comment-person-name">فهد الدوبخ</p>
-                                            <span class="comment-time"> منذ 12 دقيقة</span>
-                                        </div>
-                                        <div class="d-flex mt-2">
-                                            <img class="emoji" src="./images/emo1.png" alt="">
-                                            <img class="emoji" src="./images/ic2.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="d-flex  comment-box align-items-center">
-                                <div class="persons-react1">
-                                    <img src="./images/01.jpg" class=" persons-react " alt="">
-
-                                </div>
-                                <div class="bg-white">
-                                    <div class="comment-info ">
-                                        <div class="d-flex justify-content-between">
-                                            <p class="comment-person-name">عمرو ناصر</p>
-                                            <span class="comment-time"> منذ 12 دقيقة</span>
-                                        </div>
-                                        <div class="d-flex mt-2 comment-time">
-                                            <span>لاتنسي تحجز لي هديه من الملفا يا فهد</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-center align-items-center mb-3 mt-4 readmore" id="comentbtn7"
-                                data-bs-toggle="modal" data-bs-target="#largeModal" style="cursor: pointer;">
-                                <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down"
-                                        style="margin-right: 13px;"></i></span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </section>
-    <!-- card 11 -->
-
-    <!-- card 12 -->
-    <section>
-        <div class="container container-md twilf">
-            <div class="row d-flex justify-content-center">
-                <div class="col-lg-8 p-0">
-                    <div class="card card-three">
-                        <div class=" head-div d-flex justify-content-between align-items-center">
-                            <div class="family d-flex align-items-center gap-3">
-                                <div class="persons-react1">
-                                    <img src="./images/01.jpg" class=" persons-react " alt="">
-                                    <span class="friend-with">
-                                        <i class="fa-solid fa-earth-asia"></i>
+                                    <span>
+                                        <i class="fa-regular fa-eye"></i>
+                                        90
                                     </span>
-
                                 </div>
                                 <div>
-                                    <span class="arrive"> وصل <a href="#"> بدر الدريعي</a> الي جدة, المملكة العربية السعودية
+                                    <span class="comment-num">
+                                        <i class="fa-regular fa-message"></i>
+                                        2
                                     </span>
                                 </div>
                             </div>
+
                         </div>
 
-                        <div class="d-flex justify-content-center hr">
+                        <div class="d-flex justify-content-center">
                             <span class="frist-hr"></span>
                         </div>
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <div class="d-flex reacts ">
-                                        <div class="persons-react1">
-                                            <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
-                                                    alt=""></a>
-                                            <img class="emoji" src="./images/emo1.png" alt="">
-                                        </div>
-                                        <div class="persons-react2">
-                                            <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
-                                                    alt=""></a>
-                                            <img class="emoji" src="./images/emo2.png" alt="">
-                                        </div>
-                                        <div class="persons-react3">
-                                            <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react "
-                                                    alt=""></a>
-                                            <img class="emoji" src="./images/ic.png" alt="">
-                                        </div>
-                                        <div class="persons-react-count" id="btn10" data-bs-toggle="modal"
-                                            data-bs-target="#staticBackdrop" style="cursor: pointer;">
-                                            <span>+4</span>
-                                        </div>
 
-                                    </div>
-                                </div>
-                                <div class="vission-comments">
-                                    <div>
-                                        <span>
-                                            <i class="fa-regular fa-eye"></i>
-                                            4
-                                        </span>
-                                    </div>
-
-                                </div>
+                        <div class="d-flex align-items-center comment-box">
+                            <div class="persons-react1">
+                                <img src="./images/01.jpg" class=" persons-react " alt="">
 
                             </div>
-
-
-
-
-
-                            <div class="d-flex  comment-box align-items-center">
-                                <div class="persons-react1">
-                                    <img src="./images/01.jpg" class=" persons-react " alt="">
-
-                                </div>
-                                <div class="bg-white">
-                                    <div class="comment-info ">
-                                        <div class="d-flex justify-content-between">
-                                            <p class="comment-person-name">عمرو ناصر</p>
-                                            <span class="comment-time"> منذ 12 دقيقة</span>
-                                        </div>
-                                        <div class="d-flex mt-2 comment-time">
-                                            <span>لاتنسي تحجز لي هديه من الملفا يا فهد</span>
-                                        </div>
+                            <div class="bg-white">
+                                <div class="comment-info ">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="comment-person-name">فهد الدوبخ</p>
+                                        <span class="comment-time"> منذ 12 دقيقة</span>
+                                    </div>
+                                    <div class="d-flex mt-2">
+                                        <img class="emoji" src="./images/emo1.png" alt="">
+                                        <img class="emoji" src="./images/ic2.png" alt="">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="d-flex justify-content-center align-items-center mb-3 mt-4 readmore" id="comentbtn8"
-                                data-bs-toggle="modal" data-bs-target="#largeModal" style="cursor: pointer;">
-                                <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down"
-                                        style="margin-right: 13px;"></i></span>
                             </div>
                         </div>
 
+
+                        <div class="d-flex  comment-box align-items-center">
+                            <div class="persons-react1">
+                                <img src="./images/01.jpg" class=" persons-react " alt="">
+
+                            </div>
+                            <div class="bg-white">
+                                <div class="comment-info ">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="comment-person-name">عمرو ناصر</p>
+                                        <span class="comment-time"> منذ 12 دقيقة</span>
+                                    </div>
+                                    <div class="d-flex mt-2 comment-time">
+                                        <span>لاتنسي تحجز لي هديه من الملفا يا فهد</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center mb-3 mt-4 readmore" id="comentbtn7"
+                            data-bs-toggle="modal" data-bs-target="#largeModal" style="cursor: pointer;">
+                            <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down"
+                                    style="margin-right: 13px;"></i></span>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>
-    </section>
-    <!--card 13 -->
-    <section>
-        <div class="container container-md twilf thirty">
-            <div class="row d-flex justify-content-center">
-                <div class="col-lg-8 p-0">
-                    <div class="card card-three">
-                        <div class=" head-div d-flex justify-content-between align-items-center">
-                            <div class="family d-flex align-items-center gap-3">
-                                <div class="persons-react1">
-                                    <img src="./images/01.jpg" class=" persons-react " alt="">
-                                    <span class="friend-with">
-                                        <i class="fa-regular fa-image"></i>
-                                    </span>
+    </div>
 
-                                </div>
-                                <div>
-                                    <span class="arrive"> غير <a href="#"> بدر الدريعي</a> صورتة الشخصية</span>
-                                </div>
+</section>
+<!-- card 11 -->
+
+<!-- card 12 -->
+<section>
+    <div class="container container-md twilf">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-8 p-0">
+                <div class="card card-three">
+                    <div class=" head-div d-flex justify-content-between align-items-center">
+                        <div class="family d-flex align-items-center gap-3">
+                            <div class="persons-react1">
+                                <img src="./images/01.jpg" class=" persons-react " alt="">
+                                <span class="friend-with">
+                                    <i class="fa-solid fa-earth-asia"></i>
+                                </span>
+
+                            </div>
+                            <div>
+                                <span class="arrive"> وصل <a href="#"> بدر الدريعي</a> الي جدة, المملكة العربية السعودية
+                                </span>
                             </div>
                         </div>
+                    </div>
 
-
-                        <div class="card-body d-flex align-items-end" style="height: 500px;">
-
-
-                            <div class="w-100 p-4 blure">
-                                <div class="d-flex reacts">
+                    <div class="d-flex justify-content-center hr">
+                        <span class="frist-hr"></span>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <div class="d-flex reacts ">
                                     <div class="persons-react1">
                                         <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
                                                 alt=""></a>
@@ -1335,80 +1422,176 @@
                                                 alt=""></a>
                                         <img class="emoji" src="./images/ic.png" alt="">
                                     </div>
-                                    <div class="persons-react-count" id="btn11" data-bs-toggle="modal"
+                                    <div class="persons-react-count" id="btn10" data-bs-toggle="modal"
                                         data-bs-target="#staticBackdrop" style="cursor: pointer;">
-                                        <span>+7</span>
+                                        <span>+4</span>
                                     </div>
 
                                 </div>
-                                <div class="d-flex justify-content-center">
-                                    <span class="frist-hr"></span>
+                            </div>
+                            <div class="vission-comments">
+                                <div>
+                                    <span>
+                                        <i class="fa-regular fa-eye"></i>
+                                        4
+                                    </span>
                                 </div>
-                                <div class="d-flex align-items-center comment-box">
-                                    <div class="persons-react1">
-                                        <img src="./images/01.jpg" class=" persons-react " alt="">
 
-                                    </div>
-                                    <div class="bg-white">
-                                        <div class="comment-info ">
-                                            <div class="d-flex justify-content-between">
-                                                <p class="comment-person-name">فهد الدوبخ</p>
-                                                <span class="comment-time"> منذ 12 دقيقة</span>
-                                            </div>
-                                            <div class="d-flex mt-2">
-                                                <img class="emoji" src="./images/emo1.png" alt="">
-                                                <img class="emoji" src="./images/ic2.png" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-center align-items-center mb-3 mt-4 readmore" id="comentbtn9"
-                                    data-bs-toggle="modal" data-bs-target="#largeModal" style="cursor: pointer;">
-                                    <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down"
-                                            style="margin-right: 13px;"></i></span>
-                                </div>
                             </div>
 
                         </div>
 
+
+
+
+
+                        <div class="d-flex  comment-box align-items-center">
+                            <div class="persons-react1">
+                                <img src="./images/01.jpg" class=" persons-react " alt="">
+
+                            </div>
+                            <div class="bg-white">
+                                <div class="comment-info ">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="comment-person-name">عمرو ناصر</p>
+                                        <span class="comment-time"> منذ 12 دقيقة</span>
+                                    </div>
+                                    <div class="d-flex mt-2 comment-time">
+                                        <span>لاتنسي تحجز لي هديه من الملفا يا فهد</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center mb-3 mt-4 readmore" id="comentbtn8"
+                            data-bs-toggle="modal" data-bs-target="#largeModal" style="cursor: pointer;">
+                            <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down"
+                                    style="margin-right: 13px;"></i></span>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>
-
-    </section>
-    <!-- card 14 -->
-    <section>
-        <div class="container container-md twilf forth">
-            <div class="row d-flex justify-content-center">
-                <div class="col-lg-8 p-0">
-                
+    </div>
+</section>
+<!--card 13 -->
+<section>
+    <div class="container container-md twilf thirty">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-8 p-0">
                 <div class="card card-three">
                     <div class=" head-div d-flex justify-content-between align-items-center">
                         <div class="family d-flex align-items-center gap-3">
                             <div class="persons-react1">
                                 <img src="./images/01.jpg" class=" persons-react " alt="">
                                 <span class="friend-with">
-                                    <i class="fa-solid fa-gift"></i>
+                                    <i class="fa-regular fa-image"></i>
                                 </span>
 
                             </div>
                             <div>
-                                <span class="arrive"> عيد ميلاد <a href="#"> بدر الدريعي</a> 22 يوليو</span>
+                                <span class="arrive"> غير <a href="#"> بدر الدريعي</a> صورتة الشخصية</span>
                             </div>
                         </div>
-                      
-
                     </div>
 
 
+                    <div class="card-body d-flex align-items-end" style="height: 500px;">
+
+
+                        <div class="w-100 p-4 blure">
+                            <div class="d-flex reacts">
+                                <div class="persons-react1">
+                                    <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
+                                            alt=""></a>
+                                    <img class="emoji" src="./images/emo1.png" alt="">
+                                </div>
+                                <div class="persons-react2">
+                                    <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
+                                            alt=""></a>
+                                    <img class="emoji" src="./images/emo2.png" alt="">
+                                </div>
+                                <div class="persons-react3">
+                                    <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react "
+                                            alt=""></a>
+                                    <img class="emoji" src="./images/ic.png" alt="">
+                                </div>
+                                <div class="persons-react-count" id="btn11" data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop" style="cursor: pointer;">
+                                    <span>+7</span>
+                                </div>
+
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <span class="frist-hr"></span>
+                            </div>
+                            <div class="d-flex align-items-center comment-box">
+                                <div class="persons-react1">
+                                    <img src="./images/01.jpg" class=" persons-react " alt="">
+
+                                </div>
+                                <div class="bg-white">
+                                    <div class="comment-info ">
+                                        <div class="d-flex justify-content-between">
+                                            <p class="comment-person-name">فهد الدوبخ</p>
+                                            <span class="comment-time"> منذ 12 دقيقة</span>
+                                        </div>
+                                        <div class="d-flex mt-2">
+                                            <img class="emoji" src="./images/emo1.png" alt="">
+                                            <img class="emoji" src="./images/ic2.png" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center align-items-center mb-3 mt-4 readmore" id="comentbtn9"
+                                data-bs-toggle="modal" data-bs-target="#largeModal" style="cursor: pointer;">
+                                <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down"
+                                        style="margin-right: 13px;"></i></span>
+                            </div>
+                        </div>
+
+                    </div>
 
                 </div>
             </div>
+        </div>
+    </div>
+
+</section>
+<!-- card 14 -->
+<section>
+    <div class="container container-md twilf forth">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-8 p-0">
+            
+            <div class="card card-three">
+                <div class=" head-div d-flex justify-content-between align-items-center">
+                    <div class="family d-flex align-items-center gap-3">
+                        <div class="persons-react1">
+                            <img src="./images/01.jpg" class=" persons-react " alt="">
+                            <span class="friend-with">
+                                <i class="fa-solid fa-gift"></i>
+                            </span>
+
+                        </div>
+                        <div>
+                            <span class="arrive"> عيد ميلاد <a href="#"> بدر الدريعي</a> 22 يوليو</span>
+                        </div>
+                    </div>
+                  
+
+                </div>
+
+
+
             </div>
         </div>
+        </div>
+    </div>
 
-    </section>
+</section>
+
+         
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./vendor/venobox/venobox.min.js"></script>
     <script src="./owlcarousel/owl.carousel.min.js"></script>
