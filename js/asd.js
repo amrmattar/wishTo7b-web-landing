@@ -105,7 +105,9 @@ let originalPosts = []; // Keep a copy of the original data
             }else if (item.type === 'IMAGE') {
               createImageCard(item);
             }
-            
+            else if (item.type === 'TEXT') {
+              createTextCard(item);
+            }
           });
         }
       }
@@ -266,7 +268,7 @@ let originalPosts = []; // Keep a copy of the original data
                             <span><i class="fa-regular fa-eye"></i> ${data.totalViews}</span>
                         </div>
                     </div>
-                    <div class="d-flex reacts" style="margin: 25px 0;">
+                    <div class="d-flex reacts">
                                     <div class="persons-react1">
                                         <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
                                                 alt=""></a>
@@ -320,7 +322,7 @@ let originalPosts = []; // Keep a copy of the original data
           console.log(data.comments.length );
           card.querySelector('.readmore').classList.add("hide");
         }
-        else if(data.comments.length === 0){
+         if(data.comments.length === 0){
           card.querySelector('.frist-hr').classList.add("hide");
         }
       cardContainer.appendChild(card);
@@ -394,7 +396,7 @@ let originalPosts = []; // Keep a copy of the original data
                           }</span>
                       </div>
                   </div>
-                  <div class="d-flex reacts" style="margin: 25px 0;">
+                  <div class="d-flex reacts" >
                                   <div class="persons-react1">
                                       <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
                                               alt=""></a>
@@ -505,52 +507,59 @@ let originalPosts = []; // Keep a copy of the original data
                  <img class="card-img-top" src="${data.files[0].preview}" alt="Card image cap">
             </div>
             <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center">
-                <div>
-                <div class="d-flex reacts">
-                    <div class="persons-react1">
-                        <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
-                                alt=""></a>
-                        <img class="emoji" src="./images/emo1.png" alt="">
-                    </div>
-                    <div class="persons-react2">
-                        <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
-                                alt=""></a>
-                        <img class="emoji" src="./images/emo2.png" alt="">
-                    </div>
-                
-                    <div class="persons-react-count" id="btn9" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop" style="cursor: pointer;">
-                        <span>+5</span>
-                    </div>
+            <div class="d-flex justify-content-between align-items-center">
+              
+            <div>
+            <div class="d-flex reacts">
+                <div class="persons-react1">
+                    <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
+                            alt=""></a>
+                    <img class="emoji" src="./images/emo1.png" alt="">
+                </div>
+                <div class="persons-react2">
+                    <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
+                            alt=""></a>
+                    <img class="emoji" src="./images/emo2.png" alt="">
+                </div>
+             
+                <div class="persons-react-count" id="btn9" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop" style="cursor: pointer;">
+                    <span>+5</span>
+                </div>
 
-                </div>
-            </div>
-                    <div>
-                        <span><i class="fa-regular fa-eye"></i> ${
-                          data.totalViews
-                        }</span>
-                    </div>
-                </div>
-                <div class="d-flex reacts" style="margin: 25px 0;">
-                              
-                            <div class="d-flex justify-content-center">
-                              <span class="frist-hr"></span>
-                            </div>
-                          
-                            ${generateComments(data.comments)}
-                      
-                            <div class="d-flex justify-content-center align-items-center mb-3 mt-4 readmore" id="comentbtn${data.id}"
-                            data-bs-toggle="modal" 
-                            data-bs-target="#largeModal" 
-                            style="cursor: pointer;"
-                            >
-                            <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down"
-                              style="margin-right: 13px;"></i></span>
-                          </div>
-                      
             </div>
         </div>
+
+        <div class="vission-comments">
+        <div>
+            <span>
+                <i class="fa-regular fa-eye"></i>
+                ${
+                  data.totalViews
+                }
+            </span>
+        </div>
+      
+    </div>
+            </div>
+           
+                        <div class="d-flex justify-content-center">
+                          <span class="frist-hr"></span>
+                        </div>
+                      
+                        ${generateComments(data.comments)}
+                  
+                        <div class="d-flex justify-content-center align-items-center mb-3 mt-4 readmore" id="comentbtn${data.id}"
+                        data-bs-toggle="modal" 
+                        data-bs-target="#largeModal" 
+                        style="cursor: pointer;"
+                        >
+                        <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down"
+                          style="margin-right: 13px;"></i></span>
+                      </div>
+                  
+        </div>
+    </div>
     `;
     const updatedButtons = document.querySelectorAll('.persons-react-count');
 
