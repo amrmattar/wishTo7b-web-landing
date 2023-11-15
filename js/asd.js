@@ -266,7 +266,7 @@ async function fetchData(page = 1) {
     paginationContainer.appendChild(prevButton);
 
     // Create page number buttons with a limit (e.g., 5 pages)
-    const limit = 4;
+    const limit = 3;
     const startPage = Math.max(1, data.page - Math.floor(limit / 2));
     const endPage = Math.min(data.pageCount, startPage + limit - 1);
 
