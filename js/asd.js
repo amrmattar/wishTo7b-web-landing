@@ -84,6 +84,7 @@ async function fetchData(page = 1) {
       // Keep a copy of the original data for resetting
       originalPosts = [...posts];
       // Display all data initially
+      currentPageData = posts
       displayAllData(posts);
     } catch (error) {
       // Handle errors
