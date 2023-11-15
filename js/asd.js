@@ -60,6 +60,7 @@ function clearItems() {
 }
 async function fetchData(page = 1) {
   try {
+
     const response = await fetch(apiUrl, {
       method: 'GET',
       headers: headers
@@ -70,15 +71,19 @@ async function fetchData(page = 1) {
     initiatePagination(data);
     allPosts = allPosts.concat(data.data);
     renderItems(data.data);
+
     return data.data;
   } catch (error) {
     console.error('Error fetching data:', error);
+ 
     throw error;
   }
 }
 // Function to initialize the page with data
   async function initializePage() {
     try {
+  
+     
       // Fetch data from the API
       posts = await fetchData();
       // Keep a copy of the original data for resetting
@@ -86,9 +91,11 @@ async function fetchData(page = 1) {
       // Display all data initially
       currentPageData = posts
       displayAllData(posts);
+     
     } catch (error) {
       // Handle errors
       console.error('Error initializing page:', error);
+    
     }
   }
 
@@ -336,9 +343,6 @@ async function fetchData(page = 1) {
   
       const filteredData = await response.json();
       console.log(type,filteredData);
-      // // Display filtered data with pagination
-      // initiatePagination(filteredData);
-      // renderItems(filteredData.data);
       displayFilteredData(filteredData.data)
       
     } catch (error) {
@@ -1650,14 +1654,6 @@ asd = [
     "likes": []
   }
 ]
-
-
-
-
-
-
-
-
 
 
 
