@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-Frame-Options" content="allow">
     <title>Wish Thb landing</title>
     <!-- <link rel="shortcut icon"  type="image/x-icon" href="./images/favicon.ico"> -->
     <link rel="icon" href="images/logo-icon.png">
@@ -59,18 +60,18 @@
         </div>
     </div>
      <!-- select  -->
-    <div class="container">
+    <div class="container mb-4">
         <div class="row mt-3 ">
           <div class="col-md-6 mb-3 ">
         
             <select class="form-select" id="product-filter" style="padding: 10px 2.25rem 10px .75rem;border-radius: 20px;">
               <option value="all">جميع المنشورات</option>
               <option value="OCCASION">مناسبه</option>
-              <option value="category2">هديه</option>
+              <option value="GIFT">هديه</option>
               <option value="TEXT">مقالى</option>
               <option value="IMAGE">صوره</option>
-              <option value="category2">فيديو</option>
-              <option value="category3">لوكيشن</option>
+              <option value="VIDEO">فيديو</option>
+              <option value="LOCATION">لوكيشن</option>
               <option value="MOVIE">فيلم</option>
               <option value="MUSIC">موسيقي</option>
             </select>
@@ -91,7 +92,7 @@
 
 
    
-<!-- <section>
+ <!-- <section>
     <div class="container container-md second">
         <div class="row d-flex justify-content-center">
             <div class="col-lg-8 p-0">
@@ -205,10 +206,10 @@
 
 </section> -->
 
-<!-- <section>
+ <section id="OCCASION-SECTION">
     <div class="container container-md nine">
-        <div class="row d-flex justify-content-center">
-            <div class="col-lg-8 p-0">
+        <div class="row d-flex justify-content-center" id="OCCASION">
+            <!-- <div class="col-lg-8 p-0">
             <div class="card card-nine">
                 <div class=" head-div d-flex justify-content-end">
                     <div class="dropdown">
@@ -316,13 +317,13 @@
                 </div>
 
             </div>
-        </div>
+        </div> -->
         </div>
     </div>
 
-</section> -->
+</section> 
 <!--card 4 -->
-<!-- <section>
+ <!-- <section >
     <div class="container container-md forth">
         <div class="row d-flex justify-content-center">
             <div class="col-lg-8 p-0">
@@ -400,11 +401,7 @@
                                         alt=""></a>
                                 <img class="emoji" src="./images/ic.png" alt="">
                             </div>
-                            <div class="persons-react4">
-                                <a href="#" target="_blank"> <img src="./images/04.jpg" class="persons-react"
-                                        alt=""></a>
-                                <img class="emoji" src="./images/ic2.png" alt="">
-                            </div>
+                          
                             <div class="persons-react-count" id="btn3" data-bs-toggle="modal"
                                 data-bs-target="#staticBackdrop" style="cursor: pointer;">
                                 <span>+6</span>
@@ -413,24 +410,7 @@
                         <div class="d-flex justify-content-center">
                             <span class="frist-hr"></span>
                         </div>
-                        <div class="d-flex align-items-center comment-box">
-                            <div class="persons-react1">
-                                <img src="./images/01.jpg" class=" persons-react " alt="">
-
-                            </div>
-                            <div class="bg-white">
-                                <div class="comment-info ">
-                                    <div class="d-flex justify-content-between">
-                                        <p class="comment-person-name">فهد الدوبخ</p>
-                                        <span class="comment-time"> منذ 12 دقيقة</span>
-                                    </div>
-                                    <div class="d-flex mt-2">
-                                        <img class="emoji" src="./images/emo1.png" alt="">
-                                        <img class="emoji" src="./images/ic2.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <div class="d-flex  comment-box align-items-center">
                             <div class="persons-react1">
                                 <img src="./images/01.jpg" class=" persons-react " alt="">
@@ -460,13 +440,108 @@
         </div>
     </div>
 
-</section> -->
+</section>   -->
 <!-- slider -->
 
 <!--card 5 -->
-<!-- <section>
+ <section id="VIDEO-SECTION">
     <div class="container container-md fifth">
-        <div class="row d-flex justify-content-center">
+        <div class="row d-flex justify-content-center" id="VIDEO">
+            <!-- <div class="col-lg-8 p-0">
+            <div class="card card-three">
+                <div class=" head-div d-flex justify-content-between">
+                    <div class="family d-flex align-items-center gap-2">
+                        <div class="persons-react1">
+                            <img src="./images/01.jpg" class=" persons-react " alt="">
+                        </div>
+                        <div class="falimy-data">
+                            <p class="person-name">بدر الدريعي</p>
+                            <div class="icons">
+                                <span dir="rtl"> <i class="fa-brands fa-youtube"
+                                        style="margin: -2px 4px;"></i>فيديو</span>
+                                <span dir="rtl"> <i class="fa-solid fa-earth-americas"
+                                        style="margin: 0 4px;"></i>عام</span>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-end flex-column">
+                        <div class="dropdown">
+                            <div class=" alarm btn btn-secondary dropdown-toggle" type="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </div>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">رؤية التفاصيل</a></li>
+                                <li><a class="dropdown-item" href="#">حذف</a></li>
+
+                            </ul>
+                        </div>
+                        <div class="time">
+                            <span>15 ساعة</span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="d-flex justify-content-center resturant-data why-us">
+                 
+                    <div class="video-box" style="width: 100%;">
+                        <img src="./images/why-us.jpg" class="img-fluid" alt="" style="width: 100%;">
+                        <a href="https://www.youtube.com/watch?v=mAbEZ1EmtbI" class="venobox play-btn mb-4"
+                            data-vbtype="video" data-autoplay="true"></a>
+                    </div>
+            
+
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <span>يستحق المشاهدة</span>
+                        </div>
+                        <div>
+                            <span><i class="fa-regular fa-eye"></i> 50</span>
+                        </div>
+
+                    </div>
+                    <div class="d-flex reacts" style="margin: 25px 0;">
+                        <div class="persons-react1">
+                            <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
+                                    alt=""></a>
+                            <img class="emoji" src="./images/emo1.png" alt="">
+                        </div>
+                        <div class="persons-react2">
+                            <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
+                                    alt=""></a>
+                            <img class="emoji" src="./images/emo2.png" alt="">
+                        </div>
+                        <div class="persons-react3">
+                            <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react "
+                                    alt=""></a>
+                            <img class="emoji" src="./images/ic.png" alt="">
+                        </div>
+                        <div class="persons-react4">
+                            <a href="#" target="_blank"> <img src="./images/04.jpg" class="persons-react"
+                                    alt=""></a>
+                            <img class="emoji" src="./images/ic2.png" alt="">
+                        </div>
+                        <div class="persons-react-count" id="btn4" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop" style="cursor: pointer;">
+                            <span>+6</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            </div> -->
+        </div>
+    </div>
+
+</section>  
+<!-- <section >
+    <div class="container container-md fifth">
+        <div class="row d-flex justify-content-center" >
             <div class="col-lg-8 p-0">
             <div class="card card-three">
                 <div class=" head-div d-flex justify-content-between">
@@ -558,15 +633,14 @@
         </div>
     </div>
 
-</section> -->
-
+</section>   -->
 
 <!--card 9 -->
-<!-- <section>
+ <section id="GIFT-SECTION">
     <div class="container container-md nine">
-        <div class="row d-flex justify-content-center">
-            <div class="col-lg-8 p-0">
-                <div class="card card-nine">
+        <div class="row d-flex justify-content-center" id="GIFT">
+            <!-- <div class="col-lg-8 p-0">
+                <div class="card card-gift">
                     <div class=" head-div d-flex justify-content-end">
                         <div class="dropdown">
                             <div class=" alarm btn btn-secondary dropdown-toggle" type="button"
@@ -649,11 +723,11 @@
                     </div>
 
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 
-</section> -->
+</section> 
 
 <!-- card 11 -->
 
@@ -752,9 +826,9 @@
             </div>
         </div>
     </div>
-</section> -->
+</section>  -->
 <!--card 13 -->
-<!-- <section>
+ <!-- <section>
     <div class="container container-md twilf thirty">
         <div class="row d-flex justify-content-center">
             <div class="col-lg-8 p-0">
@@ -836,7 +910,7 @@
         </div>
     </div>
 
-</section> -->
+</section>  -->
 <!-- card 14 -->
 <!-- <section>
     <div class="container container-md twilf forth">
@@ -868,11 +942,11 @@
         </div>
     </div>
 
-</section> -->
+</section>  -->
 
 
     <!--card 6 -->
-    <section id="FILM-SECTION" style="margin-top: 10px;">
+    <section id="FILM-SECTION">
         <div class="container container-md sex">
             <div class="row d-flex justify-content-center" id="Film">
               
@@ -1046,14 +1120,140 @@
     </section>
  
 
-
+   <section>
+    <div id="pagination-container" ></div>
+   </section>
          
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./vendor/venobox/venobox.min.js"></script>
     <script src="./owlcarousel/owl.carousel.min.js"></script>
     <script src="./js/bootstrap.bundle.min.js"></script>
     <script src="./js/all.min.js"></script>
+    <!-- Add this script tag to your HTML, replacing YOUR_GOOGLE_MAPS_API_KEY with your actual API key -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSG5lm6jfZfKjs6dBnU0ZpsajGuMmp9qA&libraries=places"></script>
+
     <script src="./js/asd.js"></script>
+    <!-- Add this script tag to your HTML, after the Google Maps API script -->
+<!-- <script>
+    function getPlaceName(coordinates) {
+      var geocoder = new google.maps.Geocoder();
+  
+      // Create a LatLng object using the provided coordinates
+      var latLng = new google.maps.LatLng(coordinates[0], coordinates[1]);
+  
+      // Perform reverse geocoding
+      geocoder.geocode({ 'location': latLng }, function(results, status) {
+        console.log(results);
+        console.log(status);
+        if (status === google.maps.GeocoderStatus.OK) {
+          if (results[0]) {
+            // Display the formatted address or any other information you need
+            var placeName = results[0].formatted_address;
+            console.log(' Name:', results);
+            console.log('Place Name:', placeName);
+          } else {
+            console.error('No results found');
+          }
+        } else {
+          console.error('Geocoder failed due to: ' + status);
+        }
+      });
+    }
+  
+    // Example usage
+    var coordinates = [30.033333, 31.233334];
+    getPlaceName(coordinates);
+  </script> -->
+  <!-- Replace the existing getPlaceName function with this updated version -->
+  <!-- Replace the existing getPlaceName function with this updated version -->
+
+  
+  <!-- Replace the existing getPlaceName function with this updated version -->
+<script>
+   
+   function getCountryName(coordinates) {
+      var geocoder = new google.maps.Geocoder();
+      var latLng = new google.maps.LatLng(coordinates[0], coordinates[1]);
+      geocoder.geocode({ 'location': latLng }, function(results, status) {
+        console.log("results",results);
+        console.log("status",status);
+        if (status === google.maps.GeocoderStatus.OK) {
+          if (results[0]) {
+            var placeName = results[0].formatted_address;
+          console.log('Place Name:', placeName);
+            var countryMatch = results[0].formatted_address.match(/,\s*([^,]+)$/);
+  
+            if (countryMatch && countryMatch.length > 1) {
+              var country = countryMatch[1];
+              console.log('Country:', country);
+            } else {
+              console.error('Country not found');
+            }
+            var governorate;
+          for (var i = 0; i < results[0].address_components.length; i++) {
+            var component = results[0].address_components[i];
+            if (component.types.includes('administrative_area_level_1')) {
+              governorate = component.long_name;
+              break;
+            }
+          } if (governorate) {
+            // Remove the specific word "Governorate"
+            var governorateWithoutWord = governorate.replace(/Governorate$/, '').trim();
+            console.log('Governorate:', governorateWithoutWord);
+          } else {
+            console.error('Governorate not found');
+          }
+          
+
+
+          
+          } else {
+            console.error('No results found');
+          }
+          
+        } else {
+          console.error('Geocoder failed due to: ' + status);
+        }
+
+        
+      });
+    }
+   
+    function getPlaceDetails(placeId) {
+    var service = new google.maps.places.PlacesService(document.createElement('div'));
+
+    // Specify the fields you want to retrieve, including photos
+    var request = {
+      placeId: placeId,
+      fields: ['name', 'photos']
+    };
+
+    service.getDetails(request, function(place, status) {
+      if (status == google.maps.places.PlacesServiceStatus.OK) {
+        // Check if the place has photos
+        if (place.photos && place.photos.length > 0) {
+          // Get the first photo reference
+          var photoReference = place.photos[0].getUrl();
+
+          // Log or use the photoReference as needed
+          console.log('Photo Reference:', photoReference);
+        } else {
+          console.error('No photos found for the place');
+        }
+      } else {
+        console.error('Place details request failed:', status);
+      }
+    });
+  }
+
+  // Example usage with the provided place_id
+  var placeId = "ChIJQQ3xC-4LRRQRsUQGXs5rKQA";
+  getPlaceDetails(placeId);
+    // Example usage
+    var coordinates = [24.774265, 46.738586];
+    getCountryName(coordinates);
+  </script>
+  
 </body>
 
 </html>

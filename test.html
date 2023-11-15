@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player</title>
+</head>
+<body>
+    <div id="videoContainer">
+        <img id="thumbnail" src="YOUR_IMAGE_URL" alt="Video Thumbnail" style="max-width: 100%; height: auto;">
+        <button onclick="playVideo('YOUR_VIDEO_URL')">Play Video</button>
+    </div>
+
+    <script>
+        function playVideo(videoUrl) {
+            // Replace the image with the video
+            const videoContainer = document.getElementById("videoContainer");
+            videoContainer.innerHTML = <video controls autoplay src="${videoUrl}" style="max-width: 100%; height: auto;"></video>;
+        }
+    </script>
+</body>
+</html>

@@ -23,13 +23,16 @@ background: radial-gradient(circle, rgba(225,233,238,1) 0%, rgba(244,228,242,1) 
 p{
     margin: 0;
 }
-
+#pagination-container{
+    display: flex;
+    justify-content: center;
+}
 .container-md{
     max-width: 94% !important;
     width: 94% !important;
 }
 section {
-    margin: 20px 0;
+    /* margin: 40px 0; */
 }
 
 /* section1 */
@@ -82,12 +85,14 @@ section {
 .alarm{
     height: 40px;
     width: 40px;
-    background: rgb(249 241 241 / 50%);
+    /* background: rgb(249 241 241 / 50%); */
+    background: #536161;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50px;
     color: white;
+    
     position: relative;
 }
 .alarm-notif{
@@ -144,7 +149,8 @@ section {
     text-align: start;
 }
 .person-img img{
-    width: 60px;
+    width: 50px;
+    height: 50px;
     border: 4px solid #7E7A6C;
     border-radius: 50%;
 }
@@ -162,7 +168,8 @@ section {
 }
 @media (max-width:370px) {
     .person-img img {
-        width: 55px;
+        width: 45px;
+        height: 45px;
     }
     .container-md{
         max-width: 100%;
@@ -187,7 +194,7 @@ section {
     border-bottom: 0;
 }
 .person-name{
-    color: white;
+    /* color: white; */
     font-weight: bold;
 }
 .radio-container .parent{
@@ -350,6 +357,7 @@ section {
 .time{
     color: #4f4951;
     font-size: 13px;
+    margin-top: 6px;
 }
 
 .comment-person-name{
@@ -496,9 +504,10 @@ background: linear-gradient(0deg, rgba(218,200,238,1) 21%, rgb(197 154 192) 60%)
     align-items: center;
     justify-content: center;
     border-radius: 50px;
-    color: black;
+    color: white;
+    background: #536161;
     position: relative;
-    background: none;
+  
 }
 
 
@@ -598,6 +607,7 @@ background: linear-gradient(0deg, rgba(218,200,238,1) 21%, rgb(197 154 192) 60%)
     left: calc(50% - 47px);
     top: calc(50% - 47px);
     overflow: hidden;
+    border: 0;
 }
 .why-us .play-btn::before {
     content: '';
@@ -713,9 +723,9 @@ background: linear-gradient(0deg, rgba(218,200,238,1) 21%, rgb(197 154 192) 60%)
     align-items: center;
     justify-content: center;
     border-radius: 50px;
-    color: black;
+    background: #536161;
+    color: white;
     position: relative;
-    background: none;
 }
 
 /* end fifth card */
@@ -762,7 +772,22 @@ background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(206,219,235,1) 
 /* card 9 */
 
 .nine .card-nine{
-    background-image: url('../images/sudia.jpg');
+    /* background-image: url('../images/sudia.jpg'); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-position-y: top;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    border-bottom: 0;
+    padding: 0;
+   
+}
+.nine .card-gift{
+    /* background-image: url('../images/sudia.jpg');  */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -778,15 +803,16 @@ background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(206,219,235,1) 
 }
 .nine .card-body{
     background: rgb(165 149 149 / 50%);
-    margin-top: 350px;
+    margin-top: 290px;
     padding: 20px;
     backdrop-filter: blur(20px);
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    max-height: 390px;
 }
 .nine .outer-person{
     position: relative; 
-    top: 330px;
+    top: 260px;
     padding: 0 20px;
 }
 @media (max-width:400px) {
@@ -813,6 +839,9 @@ background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(206,219,235,1) 
 }
 .card-nine .head-div{
     padding: 10px 30px;
+}
+.fact{
+    color: white;
 }
 .nine .birthday{
     color: white;
@@ -1112,11 +1141,11 @@ background: radial-gradient(circle, rgba(170,182,191,1) 0%, rgba(224,181,221,1) 
     }
 }
 .music-card {
-    margin: 20px 0;
+    margin:0 0 20px 0;
 }
-.music-card:last-child {
+/* .music-card:last-child {
     margin: 20px 0 0; 
-}
+} */
 .hide {
     display: none !important;
   }
@@ -1131,3 +1160,104 @@ background: radial-gradient(circle, rgba(170,182,191,1) 0%, rgba(224,181,221,1) 
 .card-img-top{
     max-height: 400px;
 }
+
+
+
+
+
+  /* ///////////////////////// */
+  /* #pagination-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#pagination-container button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+#pagination-container button:hover {
+    background-color: #45a049;
+}
+
+#pagination-container button[disabled] {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
+#pagination-container button:not([disabled]) {
+    transition: background-color 0.3s ease;
+}
+/* Add a style for the active page */
+#pagination-container button.active {
+    background-color: #093d0c;
+}
+
+/* Additional styles for the active button */
+/* #pagination-container button.active:hover {
+    background-color: #45a049;
+    transition: background-color 0.3s ease;
+} */ 
+
+#pagination-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  #pagination-container button {
+    color: #20B2AA;
+    list-style: none;
+    line-height: 40px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.3s ease;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 0 15px;
+    margin: 5px;
+    border-radius: 50%;
+  }
+  
+  #pagination-container button:hover {
+    background-color: #45a049;
+    transition: background-color 0.3s ease;
+  }
+  
+  #pagination-container button[disabled] {
+    background-color: #ddd;
+    cursor: not-allowed;
+  }
+  
+  #pagination-container button:not([disabled]) {
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Add a style for the active page */
+  #pagination-container button.active {
+    background-color: #093d0c;
+    color: white;
+  }
+  
+  /* Additional styles for the active button */
+  #pagination-container button.active:hover {
+    background-color: #45a049; /* You can adjust this color to your preference */
+    transition: background-color 0.3s ease;
+  }
+  

@@ -23,8 +23,8 @@ $(window).on('load', function () {
   $('.venobox').venobox();
 });
 
-/* api */
-const apiUrl = "https://wisht7b-api.algorithms.ws/api/v1/posts";
+const apiUrl = 'https://wisht7b-api.algorithms.ws/api/v1/posts'
+// const apiUrl = "https://wisht7b-api.algorithms.ws/api/v1/posts?limit=1000";
 const apiToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MCIsImlzcyI6Ildhc2hUbzdiIiwiaWF0IjoxNjk4NzU1MjY4Mzk0LCJleHAiOjE2OTg3NTU4NzMxOTR9.ljgz2r-CV-crQZpXz1P7vo4owjkeHewCXtW4kk0jBMg";
 
 const headers = new Headers({
@@ -52,7 +52,13 @@ const comentData = [
 
 let posts = [];
 let originalPosts = [];
-async function fetchData() {
+let allPosts = [];
+let currentPageData;
+function clearItems() {
+  const paginationContainer = document.getElementById('pagination-container');
+  paginationContainer.innerHTML = ''; // Clear the container's content
+}
+async function fetchData(page = 1) {
   try {
     const response = await fetch(apiUrl, {
       method: 'GET',
@@ -60,6 +66,10 @@ async function fetchData() {
     });
 
     const data = await response.json();
+   
+    initiatePagination(data);
+    allPosts = allPosts.concat(data.data);
+    renderItems(data.data);
     return data.data;
   } catch (error) {
     console.error('Error fetching data:', error);
@@ -93,44 +103,67 @@ async function fetchData() {
           createFilmCard(item);
         } else if (item.type === 'IMAGE') {
           createImageCard(item);
-        }
-        else if (item.type === 'TEXT') {
+        } else if (item.type === 'TEXT') {
           createTextCard(item);
+        }else if (item.type === 'OCCASION') {
+          createOccasionCard(item);
+        }else if (item.type === 'GIFT') {
+          createGiftCard(item);
+        }else if (item.type === 'VIDEO') {
+          createVedioCard(item);
         }
+        
+        
       });
     }
   }
   // Function to display filtered data
   function displayFilteredData(filteredData) {
-
+    const paginationContainer = document.getElementById('pagination-container');
+  
     if (filteredData.length > 0) {
-      const sections = document.querySelectorAll('section');
-
-      sections.forEach(section => {
-        section.style.margin = ' 0  ';  // Example: Add a border to each section
-      });
+    currentPageData = filteredData
       console.log(filteredData);
       const selectedType = selectElement.value;
       clearCardContainer(); 
-     
-      if (selectedType === 'MUSIC') {
+       if (selectedType === 'MUSIC') {
+        paginationContainer.style.display="none"
         filteredData.forEach(item => {
           createMusicCard(item);
         });
       } else if (selectedType === 'MOVIE') {
+        paginationContainer.style.display="none"
         filteredData.forEach(item => {
           createFilmCard(item);
         });
       }
       else if (selectedType === 'IMAGE') {
+        paginationContainer.style.display="none"
         filteredData.forEach(item => {
           createImageCard(item);
         });
       } else if (selectedType === 'TEXT') {
+        paginationContainer.style.display="none"
         filteredData.forEach(item => {
           createTextCard(item);
         });
+      }else if (selectedType === 'OCCASION') {
+        paginationContainer.style.display="none"
+        filteredData.forEach(item => {
+          createOccasionCard(item);
+        });
+      }else if (selectedType === 'GIFT') {
+        paginationContainer.style.display="none"
+        filteredData.forEach(item => {
+          createGiftCard(item);
+        });
+      }else if (selectedType === 'VIDEO') {
+        paginationContainer.style.display="none"
+        filteredData.forEach(item => {
+          createVedioCard(item);
+        });
       }
+    
     }
     else {
       clearCardContainer(); // Clear existing content
@@ -153,31 +186,164 @@ async function fetchData() {
     const notFoundMessage = document.getElementById('notFoundMessage');
     const eight = document.getElementById('eight');
     const textdiv = document.getElementById('textdiv');
+    const OCCASION = document.getElementById('OCCASION');
+    const GIFT = document.getElementById('GIFT');
+    const VIDEO = document.getElementById('VIDEO');
     // Remove existing cards from the containers
     musicCardContainer.innerHTML = '';
     filmCardContainer.innerHTML = '';
     notFoundMessage.innerHTML = '';
     eight.innerHTML = '';
     textdiv.innerHTML = '';
-  
-  
+    OCCASION.innerHTML = '';
+    GIFT.innerHTML = '';
+    VIDEO.innerHTML = '';
  
   }
-  // Call initializePage when the page loads
+  function initiatePagination(data) {
+    clearCardContainer();
+    renderItems(data.data);
+    renderPaginationControls(data);
+  }
+
+ 
+
+  function handlePageChange(url,pageNumber) {
+    fetch(url, {
+      method: 'GET',
+      headers: headers,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        initiatePagination(data);
+        currentPageData = data.data;
+        console.log(currentPageData);
+        console.log(`Navigated to page ${pageNumber}`);
+      })
+      .catch((error) => console.error('Error fetching data:', error));
+  }
+
+  function renderPaginationControls(data) {
+    const paginationContainer = document.getElementById('pagination-container');
+    paginationContainer.innerHTML = '';
+
+    // Create Next and Previous buttons
+    const nextButton = document.createElement('button');
+    const nextIcon = document.createElement('span');
+    nextIcon.className = 'fa-solid fa-chevron-left'; 
+    nextButton.appendChild(nextIcon);
+    if (data.links.next) {
+      nextButton.addEventListener('click', () => handlePageChange(data.links.next, data.page + 1));
+      console.log(currentPageData);
+    } else {
+      nextButton.disabled = true;
+    }
+
+    const prevButton = document.createElement('button');
+    const prevIcon = document.createElement('span');
+    prevIcon.className = 'fa-solid fa-chevron-right'; 
+    prevButton.appendChild(prevIcon);
+    if (data.links.prev) {
+      prevButton.addEventListener('click', () => handlePageChange(data.links.prev, data.page - 1));
+      console.log(currentPageData);
+    } else {
+      prevButton.disabled = true;
+    }
+
+    // Conditionally hide Previous button on the first page
+    if (data.page === 1) {
+      prevButton.style.display = 'none';
+    }
+
+    paginationContainer.appendChild(prevButton);
+
+    // Create page number buttons with a limit (e.g., 5 pages)
+    const limit = 4;
+    const startPage = Math.max(1, data.page - Math.floor(limit / 2));
+    const endPage = Math.min(data.pageCount, startPage + limit - 1);
+
+    for (let i = startPage; i <= endPage; i++) {
+      const pageButton = document.createElement('button');
+      pageButton.innerText = i;
+      pageButton.addEventListener('click', () => handlePageChange(`https://wisht7b-api.algorithms.ws/api/v1/posts?page=${i}`, i));
+  console.log(currentPageData);
+      // Highlight the current page
+      if (i === data.page) {
+        pageButton.classList.add('active');
+      }
+
+      paginationContainer.appendChild(pageButton);
+    }
+
+    paginationContainer.appendChild(nextButton);
+  }
+  function renderItems(items) {
+    // Clear existing items
+    clearCardContainer();
+  
+    // Render each item on the page
+    items.forEach(item => {
+   //   console.log(item);
+      const selectedType = selectElement.value;
+  
+      if (selectedType === 'all') {
+        // Render based on item type
+        if (item.type === 'MUSIC') {
+          createMusicCard(item);
+        } else if (item.type === 'MOVIE') {
+          createFilmCard(item);
+        } else if (item.type === 'IMAGE') {
+          createImageCard(item);
+        } else if (item.type === 'TEXT') {
+          createTextCard(item);
+        } else if (item.type === 'OCCASION') {
+          createOccasionCard(item);
+        } else if (item.type === 'GIFT') {
+          createGiftCard(item);
+        } else if (item.type === 'VIDEO') {
+          createVedioCard(item);
+        }
+      }
+    });
+  }
+ 
   window.addEventListener('load', initializePage);
   const selectElement = document.getElementById("product-filter");
 
-  // Modify the event listener to use the fetched data
+
   selectElement.addEventListener("change", () => {
     const selectedValue = selectElement.value;
     if (selectedValue === "all") {
+      const paginationContainer = document.getElementById('pagination-container');
+      paginationContainer.style.display="flex";
+      initializePage()
       displayAllData(originalPosts); 
     } else {
-     
       const filteredData = originalPosts.filter(item => item.type === selectedValue);
-      displayFilteredData(filteredData);
+     //displayFilteredData(filteredData);
+     displayFilteredDataWithPagination(selectedValue)
     }
   });
+
+  async function displayFilteredDataWithPagination(type) {
+    try {
+      // Fetch data for the selected type
+      const response = await fetch(`https://wisht7b-api.algorithms.ws/api/v1/posts?type=${type}&limit=1000`, {
+        method: 'GET',
+        headers: headers
+      });
+  
+      const filteredData = await response.json();
+      console.log(type,filteredData);
+      // // Display filtered data with pagination
+      // initiatePagination(filteredData);
+      // renderItems(filteredData.data);
+      displayFilteredData(filteredData.data)
+      
+    } catch (error) {
+      console.error('Error fetching filtered data:', error);
+    }
+  }
 
   function calculateTimeElapsed(specificDate) {
     // Convert the specific date to a JavaScript Date object
@@ -318,14 +484,15 @@ async function fetchData() {
     CommnetsButtons.forEach(button => {
       button.addEventListener('click', function () {
         const dataId = button.id.replace("comentbtn", "");
-        const data = posts.find(item => item.id === parseInt(dataId));
+        const data = currentPageData.find(item => item.id === parseInt(dataId));
+     
         displayCommentsData(data.comments);
       });
     });
 
 
   }
-  // Function tocreate Film Post
+  // Function to create Film Post
   function createFilmCard(data) {
     const cardContainer = document.getElementById('Film');
     const card = document.createElement('div');
@@ -443,12 +610,13 @@ async function fetchData() {
     CommnetsButtons.forEach(button => {
       button.addEventListener('click', function () {
         const dataId = button.id.replace("comentbtn", "");
-        const data = posts.find(item => item.id === parseInt(dataId));
+        const data = currentPageData.find(item => item.id === parseInt(dataId));
+     
         displayCommentsData(data.comments);
       });
     });
   }
-  // Function tocreate Film Post
+  // Function to create Film Post
   function createImageCard(data) {
     const cardContainer = document.getElementById('eight');
     const card = document.createElement('div');
@@ -562,12 +730,13 @@ async function fetchData() {
     CommnetsButtons.forEach(button => {
       button.addEventListener('click', function () {
         const dataId = button.id.replace("comentbtn", "");
-        const data = posts.find(item => item.id === parseInt(dataId));
+        const data = currentPageData.find(item => item.id === parseInt(dataId));
+     
         displayCommentsData(data.comments);
       });
     });
   }
-  // Function tocreate Film Post
+  // Function to create Film Post
   function createTextCard(data) {
     const cardContainer = document.getElementById('textdiv');
     const card = document.createElement('div');
@@ -582,8 +751,7 @@ async function fetchData() {
                         <div class="falimy-data">
                             <p class="person-name">${data.owner.fullname}</p>
                             <div class="icons">
-                                <span dir="rtl"> <i class="fa-solid fa-clapperboard" style="margin: 0 4px;"></i>${data.type
-      }</span>
+                                <span dir="rtl"> <i class="fa-solid fa-clapperboard" style="margin: 0 4px;"></i>${data.type}</span>
                                 <span dir="rtl"> <i class="fa-solid fa-user-group" style="margin: 0 4px;"></i>أيام
                                 الثانوي</span>
                                 </div>
@@ -613,40 +781,38 @@ async function fetchData() {
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                       
-                    <div>
-                    <div class="d-flex reacts">
-                        <div class="persons-react1">
-                            <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
-                                    alt=""></a>
-                            <img class="emoji" src="./images/emo1.png" alt="">
-                        </div>
-                        <div class="persons-react2">
-                            <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
-                                    alt=""></a>
-                            <img class="emoji" src="./images/emo2.png" alt="">
-                        </div>
-                    
-                        <div class="persons-react-count" id="btn9" data-bs-toggle="modal"
-                            data-bs-target="#staticBackdrop" style="cursor: pointer;">
-                            <span>+5</span>
-                        </div>
+                       <div>
+                          <div class="d-flex reacts">
+                            <div class="persons-react1">
+                                <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
+                                        alt=""></a>
+                                <img class="emoji" src="./images/emo1.png" alt="">
+                            </div>
+                            <div class="persons-react2">
+                                <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
+                                        alt=""></a>
+                                <img class="emoji" src="./images/emo2.png" alt="">
+                            </div>
+                        
+                            <div class="persons-react-count" id="btn9" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop" style="cursor: pointer;">
+                                <span>+5</span>
+                            </div>
 
-                    </div>
+                        </div>
                 </div>
 
                 <div class="vission-comments">
                 <div>
                     <span>
                         <i class="fa-regular fa-eye"></i>
-                        ${data.totalViews
-      }
+                        ${data.totalViews }
                     </span>
                 </div>
                 <div>
                     <span class="comment-num">
                         <i class="fa-regular fa-message"></i>
-                        ${data.commentsCount
-      }
+                        ${data.commentsCount}
                     </span>
                 </div>
             </div>
@@ -689,11 +855,554 @@ async function fetchData() {
     CommnetsButtons.forEach(button => {
       button.addEventListener('click', function () {
         const dataId = button.id.replace("comentbtn", "");
-        const data = posts.find(item => item.id === parseInt(dataId));
+        const data = currentPageData.find(item => item.id === parseInt(dataId));
+     
         displayCommentsData(data.comments);
       });
     });
   }
+
+  // Function to create OCCASION Post
+  function createOccasionCard(data) {
+    const cardContainer = document.getElementById('OCCASION');
+    const card = document.createElement('div');
+    card.className = 'col-lg-8 p-0 music-card';
+    card.innerHTML = `
+    <div class="card card-nine"
+    style="background-image: url('${data.occasion.img}');"
+    
+    >
+    <div class=" head-div d-flex justify-content-end">
+        <div class="dropdown">
+            <div class=" alarm btn btn-secondary dropdown-toggle" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-ellipsis"></i>
+            </div>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">رؤية التفاصيل</a></li>
+                <li><a class="dropdown-item" href="#">حذف</a></li>
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center outer-person">
+        <div class="d-flex align-items-center gap-2">
+            <div class="person-img">
+                <img src="${data.owner.img}" alt="">
+            </div>
+            <p class="person-name">${data.owner.fullname}</p>
+        </div>
+
+        <button class="wish">
+            وش تحب
+            <i class="fa-solid fa-less-than"></i>
+        </button>
+    </div>
+    <div class="card-body">
+
+        <div class="d-flex justify-content-between comments">
+            <div class="vission-name">
+                <p>${data.occasion.name} <span>${timeAgo(new Date(data.occasion.fullDate))}</span></p>
+            </div>
+            <div class="vission-comments">
+                <div>
+                    <span>  <i class="fa-regular fa-eye"></i>   ${data.totalViews }</span>
+                </div>
+                <div>
+                    <span class="comment-num">
+                        <i class="fa-regular fa-message"></i>
+                        ${data.commentsCount}
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex flex-column ">
+          
+            <p>${data.occasion.end ? '<span class="fact">انتهت</span>' : '<span class="fact">لم تنتهي</span>'}</p>
+
+        </div>
+        <div class="d-flex reacts">
+            <div class="persons-react1">
+                <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
+                        alt=""></a>
+                <img class="emoji" src="./images/emo1.png" alt="">
+            </div>
+            <div class="persons-react2">
+                <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
+                        alt=""></a>
+                <img class="emoji" src="./images/emo2.png" alt="">
+            </div>
+            <div class="persons-react3">
+                <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react "
+                        alt=""></a>
+                <img class="emoji" src="./images/ic.png" alt="">
+            </div>
+            <div class="persons-react-count" id="btn2" data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop" style="cursor: pointer;">
+                <span>+6</span>
+            </div>
+
+        </div>
+            <div class="d-flex justify-content-center">
+            <span class="frist-hr"></span>
+          </div>
+        
+          ${generateComments(data.comments)}
+
+          <div class="d-flex justify-content-center align-items-center mb-3 mt-4 readmore" id="comentbtn${data.id}"
+          data-bs-toggle="modal" 
+          data-bs-target="#largeModal" 
+          style="cursor: pointer;"
+          >
+          <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down"
+            style="margin-right: 13px;"></i></span>
+        </div>
+
+      </div>
+      </div>
+        `;
+    const updatedButtons = document.querySelectorAll('.persons-react-count');
+
+    updatedButtons.forEach(button => {
+
+      button.addEventListener('click', handleButtonClick);
+    });
+    if (data.comments.length <= 1) {
+      console.log(data.comments.length);
+      card.querySelector('.readmore').classList.add("hide");
+    }
+    if (data.comments.length == 0) {
+      card.querySelector('.frist-hr').classList.add("hide");
+    }
+    cardContainer.appendChild(card);
+    const CommnetsButtons = document.querySelectorAll('.readmore');
+
+    CommnetsButtons.forEach(button => {
+      button.addEventListener('click', function () {
+        const dataId = button.id.replace("comentbtn", "");
+        const data = currentPageData.find(item => item.id === parseInt(dataId));
+     
+        displayCommentsData(data.comments);
+      });
+    });
+  }
+  function createGiftCard(data) {
+    const cardContainer = document.getElementById('GIFT');
+    const card = document.createElement('div');
+    card.className = 'col-lg-8 p-0 music-card';
+    card.innerHTML = `
+    <div class="card card-gift"
+    style="background-image: url('${data.gift.img}');"
+    >
+                      <div class=" head-div d-flex justify-content-end">
+                          <div class="dropdown">
+                              <div class=" alarm btn btn-secondary dropdown-toggle" type="button"
+                                  data-bs-toggle="dropdown" aria-expanded="false">
+                                  <i class="fa-solid fa-ellipsis"></i>
+                              </div>
+                              <ul class="dropdown-menu">
+                                  <li><a class="dropdown-item" href="#">رؤية التفاصيل</a></li>
+                                  <li><a class="dropdown-item" href="#">حذف</a></li>
+
+                              </ul>
+                          </div>
+                      </div>
+
+                      <div class="d-flex justify-content-between align-items-center outer-person">
+                          <div class="d-flex align-items-center gap-2">
+                              <div class="person-img">
+                              <img src="${data.owner.img}" alt="">
+                              </div>
+                              <p class="person-name"> ${data.owner.fullname}</p>
+                          </div>
+
+                          <button class="wish">
+                              وش تحب
+                              <i class="fa-solid fa-less-than"></i>
+                          </button>
+                      </div>
+                      <div class="card-body">
+
+
+                          <div class="d-flex reacts" style="margin-top:0">
+                              <div class="persons-react1">
+                                  <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
+                                          alt=""></a>
+                                  <img class="emoji" src="./images/emo1.png" alt="">
+                              </div>
+                              <div class="persons-react2">
+                                  <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
+                                          alt=""></a>
+                                  <img class="emoji" src="./images/emo2.png" alt="">
+                              </div>
+                              <div class="persons-react3">
+                                  <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react "
+                                          alt=""></a>
+                                  <img class="emoji" src="./images/ic.png" alt="">
+                              </div>
+                              <div class="persons-react-count" id="btn8" data-bs-toggle="modal"
+                                  data-bs-target="#staticBackdrop" style="cursor: pointer;">
+                                  <span>+4</span>
+                              </div>
+
+                          </div>
+                          <div class="d-flex justify-content-center">
+                          <span class="frist-hr"></span>
+                        </div>
+                      
+                        ${generateComments(data.comments)}
+                
+                        <div class="d-flex justify-content-center align-items-center mb-3 mt-4 readmore" id="comentbtn${data.id}"
+                        data-bs-toggle="modal" 
+                        data-bs-target="#largeModal" 
+                        style="cursor: pointer;"
+                        >
+                        <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down"
+                          style="margin-right: 13px;"></i></span>
+                      </div>
+                
+                    </div>
+                    </div>
+        `;
+    const updatedButtons = document.querySelectorAll('.persons-react-count');
+
+    updatedButtons.forEach(button => {
+
+      button.addEventListener('click', handleButtonClick);
+    });
+    if (data.comments.length <= 1) {
+      console.log(data.comments.length);
+      card.querySelector('.readmore').classList.add("hide");
+    }
+    if (data.comments.length == 0) {
+      card.querySelector('.frist-hr').classList.add("hide");
+    }
+    cardContainer.appendChild(card);
+    const CommnetsButtons = document.querySelectorAll('.readmore');
+
+    CommnetsButtons.forEach(button => {
+      button.addEventListener('click', function () {
+        const dataId = button.id.replace("comentbtn", "");
+        const data = currentPageData.find(item => item.id === parseInt(dataId));
+     
+        displayCommentsData(data.comments);
+      });
+    });
+  }
+  function createVedioCard(data) {
+    const cardContainer = document.getElementById('VIDEO');
+    const card = document.createElement('div');
+    card.className = 'col-lg-8 p-0 music-card';
+    card.innerHTML = `
+                <div class="card card-three">
+                <div class=" head-div d-flex justify-content-between">
+                    <div class="family d-flex align-items-center gap-2">
+                        <div class="persons-react1">
+                        <img src="${data.owner.img}" class="persons-react" alt="">
+                        </div>
+                        <div class="falimy-data">
+                        <p class="person-name">${data.owner.fullname}</p>
+                            <div class="icons">
+                                <span dir="rtl"> <i class="fa-brands fa-youtube"
+                                        style="margin: -2px 4px;"></i>${data.type}</span>
+                                <span dir="rtl"> <i class="fa-solid fa-earth-americas"
+                                        style="margin: 0 4px;"></i>عام</span>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-end flex-column">
+                        <div class="dropdown">
+                            <div class=" alarm btn btn-secondary dropdown-toggle" type="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </div>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">رؤية التفاصيل</a></li>
+                                <li><a class="dropdown-item" href="#">حذف</a></li>
+
+                            </ul>
+                        </div>
+                        <div class="time">
+                        <span>${timeAgo(new Date(data.createdAt))}</span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="d-flex justify-content-center resturant-data why-us">
+                    <div class="video-box" style="width: 100%;" id="videoContainer">
+                        <img id="thumbnail" class="img-fluid" src="${data.files[0].preview}" alt="Video Thumbnail" style="max-width: 100%; height: auto; ">
+                        <button class="venobox play-btn mb-4"
+                          onclick="playVideo('${data.files[0].link}')"></button>
+                    </div>
+                </div>
+              
+
+
+              <div class="card-body">
+
+              <div class="d-flex justify-content-between align-items-center">
+              <div>
+                  <span>يستحق المشاهدة</span>
+              </div>
+              <div>
+                  <span><i class="fa-regular fa-eye"></i></span>
+                  <span>${data.totalViews }</span>
+              </div>
+
+          </div>
+              <div class="d-flex reacts" >
+                  <div class="persons-react1">
+                      <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
+                              alt=""></a>
+                      <img class="emoji" src="./images/emo1.png" alt="">
+                  </div>
+                  <div class="persons-react2">
+                      <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
+                              alt=""></a>
+                      <img class="emoji" src="./images/emo2.png" alt="">
+                  </div>
+                  <div class="persons-react3">
+                      <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react "
+                              alt=""></a>
+                      <img class="emoji" src="./images/ic.png" alt="">
+                  </div>
+                  <div class="persons-react-count" id="btn8" data-bs-toggle="modal"
+                      data-bs-target="#staticBackdrop" style="cursor: pointer;">
+                      <span>+4</span>
+                  </div>
+
+              </div>
+              <div class="d-flex justify-content-center">
+              <span class="frist-hr"></span>
+            </div>
+          
+            ${generateComments(data.comments)}
+    
+            <div class="d-flex justify-content-center align-items-center mb-3 mt-4 readmore" id="comentbtn${data.id}"
+            data-bs-toggle="modal" 
+            data-bs-target="#largeModal" 
+            style="cursor: pointer;"
+            >
+            <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down"
+              style="margin-right: 13px;"></i></span>
+          </div>
+    
+        </div>
+        </div>
+        `;
+          const updatedButtons = document.querySelectorAll('.persons-react-count');
+
+          updatedButtons.forEach(button => {
+
+            button.addEventListener('click', handleButtonClick);
+          });
+          if (data.comments.length <= 1) {
+            console.log(data.comments.length);
+            card.querySelector('.readmore').classList.add("hide");
+          }
+          if (data.comments.length == 0) {
+            card.querySelector('.frist-hr').classList.add("hide");
+          }
+          cardContainer.appendChild(card);
+          const CommnetsButtons = document.querySelectorAll('.readmore');
+
+          CommnetsButtons.forEach(button => {
+            button.addEventListener('click', function () {
+              const dataId = button.id.replace("comentbtn", "");
+              const data = currentPageData.find(item => item.id === parseInt(dataId));
+     
+              displayCommentsData(data.comments);
+            });
+          });
+  }
+  function createLocationCard(data) {
+  //   const cardContainer = document.getElementById('LOCATION');
+  //   const card = document.createElement('div');
+  //   card.className = 'col-lg-8 p-0 music-card';
+  //   getCountryName(coordinates, function (country) {
+  //   card.innerHTML = `
+  //   <div class="card card-three">
+  //   <div class=" head-div d-flex justify-content-between">
+  //       <div class="family d-flex align-items-center gap-2">
+  //           <div class="persons-react1">
+  //               <img src="./images/01.jpg" class=" persons-react " alt="">
+  //           </div>
+  //           <div class="falimy-data">
+  //               <p class="person-name">أبو دينا</p>
+  //               <div class="icons">
+  //                   <span dir="rtl"> <i class="fa-solid fa-location-dot"
+  //                           style="margin: 0 4px;"></i>الرياض</span>
+  //                   <span dir="rtl"> <i class="fa-solid fa-user-group"
+  //                           style="margin: 0 4px;"></i>العائلة</span>
+
+  //               </div>
+
+  //           </div>
+  //       </div>
+  //       <div class="d-flex align-items-end flex-column">
+  //           <div class="dropdown">
+  //               <div class=" alarm btn btn-secondary dropdown-toggle" type="button"
+  //                   data-bs-toggle="dropdown" aria-expanded="false">
+  //                   <i class="fa-solid fa-ellipsis"></i>
+  //               </div>
+  //               <ul class="dropdown-menu">
+  //                   <li><a class="dropdown-item" href="#">رؤية التفاصيل</a></li>
+  //                   <li><a class="dropdown-item" href="#">حذف</a></li>
+
+  //               </ul>
+  //           </div>
+  //           <div class="time">
+  //               <span>منذ 3 ساعات</span>
+  //           </div>
+  //       </div>
+
+  //   </div>
+  //   <div class="d-flex justify-content-center resturant-data">
+  //       <img class="card-img-top" src="./images/shepreani.jpg" alt="Card image cap">
+      
+  //       <div class="whereIAM">
+  //           <span>انا في</span><br>
+  //           <span>${data.location.coordinates}</span><br>
+  //           <span><i class="fa-solid fa-location-dot" style="margin: 0 4px;"></i> ${country} </span>
+
+  //       </div>
+  //   </div>
+  //   <div class="card-body">
+  //       <div class="d-flex justify-content-between align-items-center">
+  //           <div>
+  //               <span><i class="fa-solid fa-user-large"></i> انا مع </span>
+
+  //               <span> <a href="#" class="Iam-With">فهد الدوبخ</a></span>
+  //           </div>
+  //           <div>
+  //               <span><i class="fa-regular fa-eye"></i> 50</span>
+  //           </div>
+
+  //       </div>
+  //       <div class="d-flex reacts">
+  //           <div class="persons-react1">
+  //               <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
+  //                       alt=""></a>
+  //               <img class="emoji" src="./images/emo1.png" alt="">
+  //           </div>
+  //           <div class="persons-react2">
+  //               <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
+  //                       alt=""></a>
+  //               <img class="emoji" src="./images/emo2.png" alt="">
+  //           </div>
+  //           <div class="persons-react3">
+  //               <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react "
+  //                       alt=""></a>
+  //               <img class="emoji" src="./images/ic.png" alt="">
+  //           </div>
+          
+  //           <div class="persons-react-count" id="btn3" data-bs-toggle="modal"
+  //               data-bs-target="#staticBackdrop" style="cursor: pointer;">
+  //               <span>+6</span>
+  //           </div>
+  //       </div>
+  //       <div class="d-flex justify-content-center">
+  //           <span class="frist-hr"></span>
+  //       </div>
+        
+  //       <div class="d-flex  comment-box align-items-center">
+  //           <div class="persons-react1">
+  //               <img src="./images/01.jpg" class=" persons-react " alt="">
+
+  //           </div>
+  //           <div class="bg-white">
+  //               <div class="comment-info ">
+  //                   <div class="d-flex justify-content-between">
+  //                       <p class="comment-person-name">بدر الدريعي</p>
+  //                       <span class="comment-time"> منذ 12 دقيقة</span>
+  //                   </div>
+  //                   <div class="d-flex mt-2 comment-time">
+  //                       <span>لاتنسي تحجز لي هديه من الملفا يا فهد</span>
+  //                   </div>
+  //               </div>
+  //           </div>
+  //       </div>
+  //       <div class="d-flex justify-content-center align-items-center mb-3 mt-4 readmore" id="comentbtn3"
+  //           data-bs-toggle="modal" data-bs-target="#largeModal" style="cursor: pointer;">
+  //           <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down"
+  //                   style="margin-right: 13px;"></i></span>
+  //       </div>
+  //   </div>
+
+  // </div>
+  //       `;
+  //         const updatedButtons = document.querySelectorAll('.persons-react-count');
+  //         updatedButtons.forEach(button => {
+
+  //           button.addEventListener('click', handleButtonClick);
+  //         });
+  //         if (data.comments.length <= 1) {
+  //           console.log(data.comments.length);
+  //           card.querySelector('.readmore').classList.add("hide");
+  //         }
+  //         if (data.comments.length == 0) {
+  //           card.querySelector('.frist-hr').classList.add("hide");
+  //         }
+  //         cardContainer.appendChild(card);
+  //         const CommnetsButtons = document.querySelectorAll('.readmore');
+  //         CommnetsButtons.forEach(button => {
+  //           button.addEventListener('click', function () {
+  //             const dataId = button.id.replace("comentbtn", "");
+  //             const data = posts.find(item => item.id === parseInt(dataId));
+  //             displayCommentsData(data.comments);
+  //           });
+  //         });
+  // })
+  }
+
+
+
+  function playVideo(videoUrl) {
+  console.log(videoUrl);
+  const videoContainer = document.getElementById("videoContainer");
+  videoContainer.innerHTML = `<video controls autoplay src="${videoUrl}" style="max-width: 100%; height: auto;width: 100%"></video>`;
+
+  }
+  var coordinates = [24.774265, 46.738586];
+
+  function getCountryName(coordinates, callback) {
+    var geocoder = new google.maps.Geocoder();
+
+    // Create a LatLng object using the provided coordinates
+    var latLng = new google.maps.LatLng(coordinates[0], coordinates[1]);
+
+    // Perform reverse geocoding
+    geocoder.geocode({ 'location': latLng }, function (results, status) {
+      if (status === google.maps.GeocoderStatus.OK) {
+        if (results[0]) {
+          // Loop through address components to find the country
+          var country;
+          for (var i = 0; i < results[0].address_components.length; i++) {
+            var component = results[0].address_components[i];
+            if (component.types.includes('country')) {
+              country = component.long_name;
+              break;
+            }
+          }
+
+          if (country) {
+            callback(country);
+          } else {
+            console.error('Country not found');
+          }
+        } else {
+          console.error('No results found');
+        }
+      } else {
+        console.error('Geocoder failed due to: ' + status);
+      }
+    });
+  }
+
+
   // Helper function to calculate time ago
   function timeAgo(date) {
     const seconds = Math.floor((new Date() - date) / 1000);
@@ -738,7 +1447,7 @@ async function fetchData() {
   }
 
   function displayCommentsData(data) {
-    console.log(data);
+    console.log(originalPosts);
     const modal = document.getElementById("largeModal");
     const modalContent = document.getElementById("modalCommentContent");
 
@@ -940,3 +1649,17 @@ asd = [
     "likes": []
   }
 ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
