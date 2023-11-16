@@ -484,6 +484,7 @@ background: linear-gradient(0deg, rgba(218,200,238,1) 21%, rgb(197 154 192) 60%)
 .resturant-data{
     margin-top: 30px;
     position: relative;
+    background: black;
 }
 
 .forth .head-div ,.sex .head-div , .seven .head-div ,.eight .head-div ,.ten .head-div {
@@ -801,6 +802,7 @@ background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(206,219,235,1) 
     /* background-image: url('../images/sudia.jpg');  */
     background-repeat: no-repeat;
     background-size: contain;
+    background-color: black;
     background-position: center;
     background-position-y: top;
     border-radius: 20px;
@@ -810,6 +812,7 @@ background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(206,219,235,1) 
     -o-border-radius: 20px;
     border-bottom: 0;
     padding: 0;
+    border: 0;
    
 }
 .nine .card-body{
@@ -1192,6 +1195,7 @@ background: rgb(249 241 241 / 50%);
 
 .card-img-top{
     max-height: 400px;
+    width: 70% !important;
 }
 
 
