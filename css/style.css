@@ -93,12 +93,13 @@ section {
     height: 40px;
     width: 40px;
     /* background: rgb(249 241 241 / 50%); */
-    background: #536161;
+    /* background: #536161; */
+    background: rgb(249 241 241 / 50%);
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50px;
-    color: white;
+    color: black;
     
     position: relative;
 }
@@ -244,8 +245,8 @@ section {
     border-radius: 50px;
     background: #6234D5;
 }
-.second .comments ,.second .reacts,.second .comment-box ,.sex .reacts ,.seven .reacts ,.eight .reacts
-,.nine .reacts ,.twilf .comment-box 
+.second .comments ,.second .reacts,.second .comment-box ,.sex .reacts ,.seven .reacts 
+,.twilf .comment-box 
 {
     margin-top: 25px;
 }
@@ -369,6 +370,7 @@ section {
 
 .comment-person-name{
     font-weight: bold;
+    color: black;
 }
 .navs{
     padding: 20px;
@@ -511,8 +513,9 @@ background: linear-gradient(0deg, rgba(218,200,238,1) 21%, rgb(197 154 192) 60%)
     align-items: center;
     justify-content: center;
     border-radius: 50px;
-    color: white;
-    background: #536161;
+    color: black;
+    background: rgb(249 241 241 / 50%);
+    /* background: #536161; */
     position: relative;
   
 }
@@ -730,8 +733,9 @@ background: linear-gradient(0deg, rgba(218,200,238,1) 21%, rgb(197 154 192) 60%)
     align-items: center;
     justify-content: center;
     border-radius: 50px;
-    background: #536161;
-    color: white;
+    /* background: #536161; */
+    background: rgb(249 241 241 / 50%);
+    color: black;
     position: relative;
 }
 
@@ -781,7 +785,7 @@ background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(206,219,235,1) 
 .nine .card-nine{
     /* background-image: url('../images/sudia.jpg'); */
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     background-position-y: top;
     border-radius: 20px;
@@ -796,7 +800,7 @@ background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(206,219,235,1) 
 .nine .card-gift{
     /* background-image: url('../images/sudia.jpg');  */
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     background-position-y: top;
     border-radius: 20px;
@@ -911,7 +915,8 @@ background: radial-gradient(circle, rgba(170,182,191,1) 0%, rgba(224,181,221,1) 
     padding: 25px;
 }
 .eleven .alarm ,.twilf .alarm{
-    background: rgb(219 206 206 / 50%);
+    /* background: rgb(219 206 206 / 50%); */
+background: rgb(249 241 241 / 50%);
 }
 .eleven .friend-with , .twilf .friend-with{
     position: absolute;
@@ -1017,7 +1022,9 @@ background: radial-gradient(circle, rgba(170,182,191,1) 0%, rgba(224,181,221,1) 
 .forth .alarm {
     height: 40px;
     width: 40px;
-    background: rgb(219 206 206 / 50%);
+    /* background: rgb(219 206 206 / 50%); */
+    background: rgb(249 241 241 / 50%);
+    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1054,10 +1061,24 @@ background: radial-gradient(circle, rgba(170,182,191,1) 0%, rgba(224,181,221,1) 
 .btn-secondary{
     border-color: transparent;
 }
+.modal-dialog-scrollable .modal-content{
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+.likeperdiv{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
 .modal-body li {
+    display: flex;
+    justify-content: space-between;
     list-style-type: none;
     display: flex;
-    gap: 10px;
+    gap: 20px;
     align-items: center;
     margin: 20px 10px;
     position: relative;
@@ -1066,7 +1087,8 @@ background: radial-gradient(circle, rgba(170,182,191,1) 0%, rgba(224,181,221,1) 
    margin-top: 5px 10px;
   }
 .modal-body .model-per-img{
-    width: 60px;
+    width: 50px;
+    height: 50px;
     border-radius: 50px;
 }
 .modal-body {
@@ -1077,6 +1099,10 @@ background: radial-gradient(circle, rgba(170,182,191,1) 0%, rgba(224,181,221,1) 
     width: 30px;
     bottom: -7px;
    right: 35px;
+}
+.nolikes{
+    padding: 20px;
+    text-align: center;
 }
 .modelcomment-box .persons-react1{
     width: 10%;
@@ -1169,7 +1195,9 @@ background: radial-gradient(circle, rgba(170,182,191,1) 0%, rgba(224,181,221,1) 
 }
 
 
-
+#product-search2{
+    display: none;
+}
 
 
   /* ///////////////////////// */
@@ -1205,7 +1233,7 @@ background: radial-gradient(circle, rgba(170,182,191,1) 0%, rgba(224,181,221,1) 
     transition: background-color 0.3s ease;
 }
 /* Add a style for the active page */
-#pagination-container button.active {
+#pagination-container button.active ,#pagination-container2 button.active ,#pagination-container3 button.active,#pagination-container4 button.active {
     background-color: #093d0c;
 }
 
@@ -1215,7 +1243,7 @@ background: radial-gradient(circle, rgba(170,182,191,1) 0%, rgba(224,181,221,1) 
     transition: background-color 0.3s ease;
 } */ 
 
-#pagination-container {
+#pagination-container ,#pagination-container2 ,#pagination-container3 ,#pagination-container4 {
     max-width: 800px;
     margin: 20px auto;
     padding: 10px;
@@ -1225,7 +1253,7 @@ background: radial-gradient(circle, rgba(170,182,191,1) 0%, rgba(224,181,221,1) 
     flex-wrap: wrap;
   }
   
-  #pagination-container button {
+  #pagination-container button , #pagination-container2 button ,#pagination-container3 button,#pagination-container4 button {
     color: #20B2AA;
     list-style: none;
     line-height: 40px;
@@ -1242,29 +1270,52 @@ background: radial-gradient(circle, rgba(170,182,191,1) 0%, rgba(224,181,221,1) 
     border-radius: 50%;
   }
   
-  #pagination-container button:hover {
+  #pagination-container button:hover ,#pagination-container2 button:hover,#pagination-container3 button:hover,
+  #pagination-container4 button:hover
+  {
     background-color: #45a049;
     transition: background-color 0.3s ease;
   }
   
-  #pagination-container button[disabled] {
+  #pagination-container button[disabled] , #pagination-container2 button[disabled] ,#pagination-container3 button[disabled]
+  #pagination-container4 button[disabled]
+  {
     background-color: #ddd;
     cursor: not-allowed;
   }
   
-  #pagination-container button:not([disabled]) {
+  #pagination-container button:not([disabled]),#pagination-container2 button:not([disabled]),#pagination-container3 button:not([disabled])
+  ,#pagination-container4 button:not([disabled])
+  {
     transition: background-color 0.3s ease;
   }
   
   /* Add a style for the active page */
-  #pagination-container button.active {
+  #pagination-container button.active ,  #pagination-container2 button.active ,
+  #pagination-container3 button.active,#pagination-container4 button.active
+  {
     background-color: #093d0c;
     color: white;
   }
   
   /* Additional styles for the active button */
-  #pagination-container button.active:hover {
+  #pagination-container button.active:hover ,  #pagination-container2 button.active:hover ,
+  #pagination-container3 button.active:hover, #pagination-container3 button.active:hover
+  {
     background-color: #45a049; /* You can adjust this color to your preference */
     transition: background-color 0.3s ease;
   }
-  
+  #pagination-container3{
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .personal{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+  }

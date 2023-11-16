@@ -66,7 +66,7 @@
     <div class="container mb-4 " id="selecting" >
         <div class="row mt-3 ">
           <div class="col-md-6 mb-3 ">
-        
+      
             <select class="form-select" id="product-filter" style="padding: 10px 2.25rem 10px .75rem;border-radius: 20px;">
               <option value="all">جميع المنشورات</option>
               <option value="OCCASION">مناسبه</option>
@@ -84,13 +84,15 @@
          
             <div class="input-group">
               <input type="text" class="form-control" id="product-search" placeholder="ابحث هنا ..." style="padding: 10px 2.25rem 10px .75rem;border-radius: 20px;">
-             
+              <input type="text" class="form-control" id="product-search2" placeholder="ابحث هنا ..."  style="padding: 10px 2.25rem 10px .75rem;border-radius: 20px;">
+          
             </div>
           </div>
         </div>
       </div>
       
 <section id="notFoundMessage">
+    
 </section>
 
 
@@ -443,7 +445,7 @@
         </div>
     </div>
 
-</section>   -->
+</section>    -->
 <!-- slider -->
 
 <!--card 5 -->
@@ -1123,8 +1125,11 @@
     </section>
  
 
-   <section>
+   <section id="all-paganation">
     <div id="pagination-container" ></div>
+    <div id="pagination-container2" ></div>
+    <div id="pagination-container3" ></div>
+    <div id="pagination-container4" ></div>
    </section>
 </div>       
 
@@ -1135,8 +1140,54 @@
     <script src="./js/all.min.js"></script>
     <!-- Add this script tag to your HTML, replacing YOUR_GOOGLE_MAPS_API_KEY with your actual API key -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSG5lm6jfZfKjs6dBnU0ZpsajGuMmp9qA&libraries=places"></script>
+<script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"></script>
 
     <script src="./js/asd.js"></script>
+    <script>
+        mapkit.init({
+          authorizationCallback: function(done) {
+            done('YOUR_API_KEY');
+          },
+          language: 'en',
+        });
+      </script>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
     <!-- Add this script tag to your HTML, after the Google Maps API script -->
 <!-- <script>
     function getPlaceName(coordinates) {
@@ -1173,7 +1224,7 @@
 
   
   <!-- Replace the existing getPlaceName function with this updated version -->
-<script>
+<!-- <script>
    
    function getCountryName(coordinates) {
       var geocoder = new google.maps.Geocoder();
@@ -1257,7 +1308,7 @@
     var coordinates = [24.774265, 46.738586];
     getCountryName(coordinates);
   </script>
-  
+   -->
 </body>
 
 </html>

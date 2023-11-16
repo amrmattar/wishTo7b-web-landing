@@ -24,7 +24,7 @@ $(window).on('load', function () {
 });
 
 const apiUrl = 'https://wisht7b-api.algorithms.ws/api/v1/posts'
-// const apiUrl = "https://wisht7b-api.algorithms.ws/api/v1/posts?limit=1000";
+ const allapi = "https://wisht7b-api.algorithms.ws/api/v1/posts?limit=1000";
 const apiToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MCIsImlzcyI6Ildhc2hUbzdiIiwiaWF0IjoxNjk4NzU1MjY4Mzk0LCJleHAiOjE2OTg3NTU4NzMxOTR9.ljgz2r-CV-crQZpXz1P7vo4owjkeHewCXtW4kk0jBMg";
 
 const headers = new Headers({
@@ -48,63 +48,88 @@ const comentData = [
   { name: "Person 5", PersonImage: "images/05.jpg", image: "images/emo1.png", txt: "لاتنسي تحجز لي هديه من الملفا يا فهد" },
   { name: "Person 6", PersonImage: "images/08.jpg", image: "images/emo2.png", txt: "لا تؤجل عمل اليوم الي الغد" }
 ];
+const selectElement = document.getElementById("product-filter");
+let searchInput = document.getElementById('product-search');
+searchInput.addEventListener('input',handleSearch  );
+let searchInput2 = document.getElementById('product-search2');
 
-
+searchInput2.addEventListener('input',handlesearchforselectetype  );
 let posts = [];
 let originalPosts = [];
 let allPosts = [];
 let currentPageData;
-function clearItems() {
-  const paginationContainer = document.getElementById('pagination-container');
-  paginationContainer.innerHTML = ''; // Clear the container's content
-}
-async function fetchData(page = 1) {
-  try {
+let alldata = [];
+let mydata = [];
 
-    const response = await fetch(apiUrl, {
-      method: 'GET',
-      headers: headers
-    });
-
-    const data = await response.json();
-   
-    initiatePagination(data);
-    allPosts = allPosts.concat(data.data);
-    renderItems(data.data);
-
-    return data.data;
-  } catch (error) {
-    console.error('Error fetching data:', error);
- 
-    throw error;
-  }
-}
-// Function to initialize the page with data
-  async function initializePage() {
-    try {
-  
-     
-      // Fetch data from the API
-      posts = await fetchData();
-      // Keep a copy of the original data for resetting
-      originalPosts = [...posts];
-      // Display all data initially
-      currentPageData = posts
-      displayAllData(posts);
-     
-    } catch (error) {
-      // Handle errors
-      console.error('Error initializing page:', error);
-    
+      fetch(allapi, {
+          method: 'GET',
+          headers: headers
+        })
+          .then(response => response.json())
+          .then(res => {
+       
+            alldata = res;
+            
+          //  initiatePagination(res);
+          //  console.log(data);
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+    function clearItems() {
+      const paginationContainer = document.getElementById('pagination-container');
+      paginationContainer.innerHTML = ''; // Clear the container's content
     }
-  }
+    async function fetchData(page = 1) {
+      try {
+
+        const response = await fetch(apiUrl, {
+          method: 'GET',
+          headers: headers
+        });
+
+        const data = await response.json();
+      
+        initiatePagination(data,'');
+        allPosts = allPosts.concat(data.data);
+        renderItems(data.data);
+
+        return data.data;
+      } catch (error) {
+        console.error('Error fetching data:', error);
+    
+        throw error;
+      }
+    }
+ 
+    async function initializePage() {
+      try {
+    
+      
+        // Fetch data from the API
+        posts = await fetchData();
+        // Keep a copy of the original data for resetting
+        originalPosts = [...posts];
+        // Display all data initially
+        currentPageData = posts;
+      //  console.log(allPosts);
+        displayAllData(posts);
+        searchInput2.style.display="none"
+      } catch (error) {
+        // Handle errors
+        console.error('Error initializing page:', error);
+      
+      }
+    }
 
   function displayAllData(data) {
     const selectedType = selectElement.value;
     clearCardContainer(); 
 
+  
     if (selectedType === 'all') {
       data.forEach(item => {
+        console.log(item);
         if (item.type === 'MUSIC') {
           createMusicCard(item);
         } else if (item.type === 'MOVIE') {
@@ -125,78 +150,20 @@ async function fetchData(page = 1) {
       });
     }
   }
-  // Function to display filtered data
-  function displayFilteredData(filteredData) {
-    const paginationContainer = document.getElementById('pagination-container');
-  
-    if (filteredData.length > 0) {
-    currentPageData = filteredData
-      console.log(filteredData);
-      const selectedType = selectElement.value;
-      clearCardContainer(); 
-       if (selectedType === 'MUSIC') {
-        paginationContainer.style.display="none"
-        filteredData.forEach(item => {
-          createMusicCard(item);
-        });
-      } else if (selectedType === 'MOVIE') {
-        paginationContainer.style.display="none"
-        filteredData.forEach(item => {
-          createFilmCard(item);
-        });
-      }
-      else if (selectedType === 'IMAGE') {
-        paginationContainer.style.display="none"
-        filteredData.forEach(item => {
-          createImageCard(item);
-        });
-      } else if (selectedType === 'TEXT') {
-        paginationContainer.style.display="none"
-        filteredData.forEach(item => {
-          createTextCard(item);
-        });
-      }else if (selectedType === 'OCCASION') {
-        paginationContainer.style.display="none"
-        filteredData.forEach(item => {
-          createOccasionCard(item);
-        });
-      }else if (selectedType === 'GIFT') {
-        paginationContainer.style.display="none"
-        filteredData.forEach(item => {
-          createGiftCard(item);
-        });
-      }else if (selectedType === 'VIDEO') {
-        paginationContainer.style.display="none"
-        filteredData.forEach(item => {
-          createVedioCard(item);
-        });
-      }
-    
-    }
-    else {
-      clearCardContainer(); // Clear existing content
-      const cardContainer = document.getElementById('notFoundMessage');
-      cardContainer.innerHTML = `
-            <div class="container notfound">
-            <div class="row">
-                <div>
-                    لا توجد منشورات حاليا 
-                </div>
-            </div>
-        </div>`
-    }
 
-  }
-  // Function to clear existing content
+ 
+
+
   function clearCardContainer() {
     const musicCardContainer = document.getElementById('seven');
     const filmCardContainer = document.getElementById('Film');
-    const notFoundMessage = document.getElementById('notFoundMessage');
+   const notFoundMessage = document.getElementById('notFoundMessage');
     const eight = document.getElementById('eight');
     const textdiv = document.getElementById('textdiv');
     const OCCASION = document.getElementById('OCCASION');
     const GIFT = document.getElementById('GIFT');
     const VIDEO = document.getElementById('VIDEO');
+  
     // Remove existing cards from the containers
     musicCardContainer.innerHTML = '';
     filmCardContainer.innerHTML = '';
@@ -206,34 +173,46 @@ async function fetchData(page = 1) {
     OCCASION.innerHTML = '';
     GIFT.innerHTML = '';
     VIDEO.innerHTML = '';
+   // allpaganation.style.display='none'
  
   }
-  function initiatePagination(data) {
+  function initiatePagination(data,type) {
     clearCardContainer();
     renderItems(data.data);
-    renderPaginationControls(data);
+    renderPaginationControls(data,type);
   }
+  // function handleSearch() {
+  //   displaysearchData(allPosts); 
+  // }
+
+
+
 
  
-
-  function handlePageChange(url,pageNumber) {
-    fetch(url, {
+  function handlePageChange(url, pageNumber, type ) {
+    const updatedUrl = type !== '' ? `${url}&type=${type}` : url;
+  
+    fetch(updatedUrl, {
       method: 'GET',
       headers: headers,
     })
       .then((response) => response.json())
       .then((data) => {
-        initiatePagination(data);
+        initiatePagination(data, type);
         currentPageData = data.data;
-        console.log(currentPageData);
-        console.log(`Navigated to page ${pageNumber}`);
+    
+        console.log(`Navigated to page ${pageNumber} with type ${type}`);
       })
       .catch((error) => console.error('Error fetching data:', error));
   }
+  
 
-  function renderPaginationControls(data) {
+  function renderPaginationControls(data,type) {
+
     const paginationContainer = document.getElementById('pagination-container');
     paginationContainer.innerHTML = '';
+    const paginationContainer2 = document.getElementById('pagination-container2');
+    paginationContainer2.innerHTML = '';
 
     // Create Next and Previous buttons
     const nextButton = document.createElement('button');
@@ -241,8 +220,8 @@ async function fetchData(page = 1) {
     nextIcon.className = 'fa-solid fa-chevron-left'; 
     nextButton.appendChild(nextIcon);
     if (data.links.next) {
-      nextButton.addEventListener('click', () => handlePageChange(data.links.next, data.page + 1));
-      console.log(currentPageData);
+      nextButton.addEventListener('click', () => handlePageChange(data.links.next, data.page + 1, type));
+   
     } else {
       nextButton.disabled = true;
     }
@@ -252,8 +231,8 @@ async function fetchData(page = 1) {
     prevIcon.className = 'fa-solid fa-chevron-right'; 
     prevButton.appendChild(prevIcon);
     if (data.links.prev) {
-      prevButton.addEventListener('click', () => handlePageChange(data.links.prev, data.page - 1));
-      console.log(currentPageData);
+      prevButton.addEventListener('click', () => handlePageChange(data.links.prev, data.page - 1, type));
+     // console.log(currentPageData);
     } else {
       prevButton.disabled = true;
     }
@@ -262,8 +241,12 @@ async function fetchData(page = 1) {
     if (data.page === 1) {
       prevButton.style.display = 'none';
     }
-
-    paginationContainer.appendChild(prevButton);
+      if(type !== ''){
+        paginationContainer2.appendChild(prevButton);
+      }else{
+        paginationContainer.appendChild(prevButton);
+      }
+  
 
     // Create page number buttons with a limit (e.g., 5 pages)
     const limit = 3;
@@ -273,17 +256,25 @@ async function fetchData(page = 1) {
     for (let i = startPage; i <= endPage; i++) {
       const pageButton = document.createElement('button');
       pageButton.innerText = i;
-      pageButton.addEventListener('click', () => handlePageChange(`https://wisht7b-api.algorithms.ws/api/v1/posts?page=${i}`, i));
-  console.log(currentPageData);
+      pageButton.addEventListener('click', () => handlePageChange(`https://wisht7b-api.algorithms.ws/api/v1/posts?page=${i}`, i,type));
+ // console.log(currentPageData);
       // Highlight the current page
       if (i === data.page) {
         pageButton.classList.add('active');
       }
-
-      paginationContainer.appendChild(pageButton);
+      if(type !== ''){
+        paginationContainer2.appendChild(pageButton);
+      }else{
+        paginationContainer.appendChild(pageButton);
+      }
+     // paginationContainer.appendChild(pageButton);
     }
-
-    paginationContainer.appendChild(nextButton);
+    if(type !== ''){
+      paginationContainer2.appendChild(nextButton);
+    }else{
+      paginationContainer.appendChild(nextButton);
+    }
+   // paginationContainer.appendChild(nextButton);
   }
   function renderItems(items) {
     // Clear existing items
@@ -293,8 +284,23 @@ async function fetchData(page = 1) {
     items.forEach(item => {
    //   console.log(item);
       const selectedType = selectElement.value;
-  
-      if (selectedType === 'all') {
+      if (selectedType === 'OCCASION') {
+        createOccasionCard(item);
+      }
+      else if (item.type === 'MUSIC') {
+        createMusicCard(item);
+      } else if (item.type === 'MOVIE') {
+        createFilmCard(item);
+      } else if (item.type === 'IMAGE') {
+        createImageCard(item);
+      } else if (item.type === 'TEXT') {
+        createTextCard(item);
+      } else if (item.type === 'GIFT') {
+        createGiftCard(item);
+      } else if (item.type === 'VIDEO') {
+        createVedioCard(item);
+      }
+     else if (selectedType === 'all') {
         // Render based on item type
         if (item.type === 'MUSIC') {
           createMusicCard(item);
@@ -316,19 +322,54 @@ async function fetchData(page = 1) {
   }
  
   window.addEventListener('load', initializePage);
-  const selectElement = document.getElementById("product-filter");
+
 
 
   selectElement.addEventListener("change", () => {
     const selectedValue = selectElement.value;
+    if(selectedValue){
+      //searchInput.style.display="none";
+    //  searchInput.value = ''
+    }
     if (selectedValue === "all") {
+     searchInput2.style.display="none";
+     searchInput.style.display="block";
       const paginationContainer = document.getElementById('pagination-container');
+      const paginationContainer4 = document.getElementById('pagination-container4');
       paginationContainer.style.display="flex";
+      paginationContainer4.style.display="none";
       initializePage()
       displayAllData(originalPosts); 
     } else {
+      searchInput.style.display="none";
+      searchInput2.style.display="block";
+      searchInput.value='';
+      searchInput2.value='';
+      if(searchInput2.value === ''){
+        console.log("search is empty");
+       
+        const paginationContainer3 = document.getElementById('pagination-container3');
+        const paginationContainer4 = document.getElementById('pagination-container4');
+        paginationContainer4.style.display="none";
+        paginationContainer3.style.display="none";
+      }
+      const paginationContainer2 = document.getElementById('pagination-container2');
+      const paginationContainer3 = document.getElementById('pagination-container3');
+      const paginationContainer4 = document.getElementById('pagination-container4');
+      if(paginationContainer2){
+
+        paginationContainer2.style.display="flex";
+      }
+      // else if(paginationContainer3 && searchInput2 !==''){
+
+      //   paginationContainer3.style.display="none";
+      // }
+      else if(paginationContainer3 && searchInput2 ===''){
+
+        paginationContainer3.style.display="none";
+      }
       const filteredData = originalPosts.filter(item => item.type === selectedValue);
-     //displayFilteredData(filteredData);
+   
      displayFilteredDataWithPagination(selectedValue)
     }
   });
@@ -336,19 +377,472 @@ async function fetchData(page = 1) {
   async function displayFilteredDataWithPagination(type) {
     try {
       // Fetch data for the selected type
-      const response = await fetch(`https://wisht7b-api.algorithms.ws/api/v1/posts?type=${type}&limit=1000`, {
+      const response = await fetch(`https://wisht7b-api.algorithms.ws/api/v1/posts?type=${type}`, {
         method: 'GET',
         headers: headers
       });
   
       const filteredData = await response.json();
-      console.log(type,filteredData);
-      displayFilteredData(filteredData.data)
+      initiatePagination(filteredData,type);
+      fetchalldatabytype(type)
+      //displayAllData(filteredData.data)
+     // displayFilteredData(filteredData.data , type)
+     // handleSearchfilterd(filteredData.data , type)
+      console.log(`filteredData by type ${type}`,filteredData);
       
     } catch (error) {
       console.error('Error fetching filtered data:', error);
     }
   }
+
+
+  function handleSearch() {
+ 
+    const searchTerm = document.getElementById('product-search').value.trim().toLowerCase();
+    const notFoundMessageContainer = document.getElementById('notFoundMessage');
+    console.log('notFoundMessageContainer:', notFoundMessageContainer);
+    if (searchTerm === '') {
+     
+      hidePagination()
+      
+      initializePage()
+    }
+    else{
+      showPagination()
+    }
+   
+              // Filter posts based on the search term
+    const filteredData = alldata.data.filter(item => {
+      return (
+        (item.type && item.type.toLowerCase().includes(searchTerm)) ||
+      (item.owner && item.owner.fullname && item.owner.fullname.toLowerCase().includes(searchTerm)) ||
+      (item.content && item.content && item.content.toLowerCase().includes(searchTerm))||
+      (item.occasion && item.occasion.name && item.occasion.name.toLowerCase().includes(searchTerm))
+ 
+   
+      );
+    });
+    const allpaganation = document.getElementById("all-paganation");
+    currentPageData = filteredData;
+    console.log(filteredData);
+    const selectedType = selectElement.value;
+    // Display the filtered data in HTML using the displayAllData function
+    if (filteredData.length > 0) {
+      allpaganation.style.display="block"
+      displayAllsearchData(filteredData,1);
+      searchrenderPaginationControls(filteredData)
+    }
+    else {
+      const allpaganation = document.getElementById("all-paganation");
+      allpaganation.style.display="none"
+      clearCardContainer();
+      console.log("no data herere");
+      //notFoundMessageContainer.innerHTML = '<div>Static Content</div>';
+      notFoundMessageContainer.innerHTML = `
+      <div class="container notfound">
+        <div class="row">
+          <div>
+            لا توجد نتائج للبحث
+          </div>
+        </div>
+      </div>`;
+    
+    }
+    }
+
+  
+  const itemsPerPage = 10;
+  let currentPage = 1;
+  let totalPages = 1
+
+
+  function searchrenderPaginationControls(filteredData) {
+    totalPages = Math.ceil(filteredData.length / itemsPerPage);
+    const paginationContainer1 = document.getElementById('pagination-container');
+    paginationContainer1.innerHTML = '';
+    const paginationContainer2 = document.getElementById('pagination-container2');
+    paginationContainer2.innerHTML = '';
+  
+    const paginationContainer3 = document.getElementById('pagination-container3');
+    paginationContainer3.innerHTML = '';
+    const paginationContainer4 = document.getElementById('pagination-container4');
+    paginationContainer4.innerHTML = '';
+    const visiblePages = 3; // Number of visible pages at a time
+    const halfVisible = Math.floor(visiblePages / 2);
+
+    // Calculate the start and end indices for the visible pages
+    let start = Math.max(currentPage - halfVisible, 1);
+    let end = Math.min(start + visiblePages - 1, totalPages);
+
+    if (end - start + 1 < visiblePages) {
+        // Adjust the start index if the visible pages are less than the desired number
+        start = Math.max(end - visiblePages + 1, 1);
+    }
+  // Create "Previous" button
+  const prevButton = document.createElement('button');
+  const prevIcon = document.createElement('span');
+  prevIcon.className = 'fa-solid fa-chevron-right'; 
+  prevButton.appendChild(prevIcon);
+  prevButton.id = "prv";
+  prevButton.onclick = function () {
+      if (currentPage > 1) {
+          changePage(currentPage - 1, filteredData);
+      }
+  };
+  paginationContainer3.appendChild(prevButton);
+
+    // Create pagination links
+    for (let i = 1; i <= totalPages; i++) {
+      const pageButton = document.createElement('button');
+      pageButton.innerText = i;
+      if (i === currentPage) {
+        pageButton.classList.add('active');
+    }
+        // const link = document.createElement('a');
+        // link.href = '#';
+        // link.textContent = i;
+        pageButton.onclick = function () {
+            changePage(i, filteredData);
+        };
+
+        paginationContainer3.appendChild(pageButton);
+    }
+   
+    
+ 
+     // Create "Next" button
+     const nextButton = document.createElement('button');
+    //  nextButton.textContent = 'Next';
+     const nextIcon = document.createElement('span');
+     nextIcon.className = 'fa-solid fa-chevron-left'; 
+     nextButton.appendChild(nextIcon);
+     nextButton.id = "next";
+     nextButton.onclick = function () {
+         if (currentPage < totalPages) {
+             changePage(currentPage + 1, filteredData);
+         }
+     };
+     paginationContainer3.appendChild(nextButton);
+     updateButtonState();
+}
+// function changePage(page, filteredData) {
+//   displayAllsearchData(filteredData, page);
+// }
+function changePage(page, filteredData) {
+  console.log(page);
+  currentPage = page;
+  displayAllsearchData(filteredData, page);
+  searchrenderPaginationControls(filteredData);
+}
+function changePage2(page, filteredData) {
+  console.log(page);
+  currentPage = page;
+  displayAllsearchselectedData(filteredData, page);
+  searchrenderPaginationControlsforselected(filteredData);
+}
+function displayAllsearchData(data, page) {
+  const selectedType = selectElement.value;
+  clearCardContainer(); 
+
+  const startIndex = (page - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentPageData = data.slice(startIndex, endIndex);
+
+
+  if (selectedType === 'all') {
+    currentPageData .forEach(item => {
+      if (item.type === 'MUSIC') {
+        createMusicCard(item);
+      } else if (item.type === 'MOVIE') {
+        createFilmCard(item);
+      } else if (item.type === 'IMAGE') {
+        createImageCard(item);
+      } else if (item.type === 'TEXT') {
+        createTextCard(item);
+      }else if (item.type === 'OCCASION') {
+        createOccasionCard(item);
+      }else if (item.type === 'GIFT') {
+        createGiftCard(item);
+      }else if (item.type === 'VIDEO') {
+        createVedioCard(item);
+      }
+      
+      
+    });
+  }
+}
+
+function hidePagination() {
+  const paginationContainer = document.getElementById('pagination-container3');
+  paginationContainer.style.display = 'none';
+}
+function showPagination() {
+  const paginationContainer = document.getElementById('pagination-container3');
+  paginationContainer.style.display = 'flex';
+}
+
+function prevPage() {
+  if (currentPage > 1) {
+      changePage(currentPage - 1, currentPageData);
+  }
+}
+
+// Function to go to the next page
+function nextPage() {
+  if (currentPage < totalPages) {
+      changePage(currentPage + 1, currentPageData);
+  }
+}
+
+
+function updateButtonState() {
+  const prevButton = document.getElementById('prv');
+  const nextButton = document.getElementById('next');
+
+  if (currentPage === 1) {
+      prevButton.style.display = 'none'; // Hide "Previous" button on the first page
+  } else {
+      prevButton.style.display = 'block';
+  }
+
+  if (currentPage === totalPages) {
+      nextButton.disabled = true; // Disable "Next" button on the last page
+  } else {
+      nextButton.disabled = false;
+  }
+}
+function contains(selector, text) {
+  const elements = document.querySelectorAll(selector);
+  return Array.from(elements).find(element => element.textContent.includes(text));
+}
+
+
+
+function fetchalldatabytype(type) {
+  const updatedUrl = type !== '' ? `${allapi}&type=${type}` : allapi;
+
+  fetch(updatedUrl, {
+    method: 'GET',
+    headers: headers,
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      mydata = data.data
+  
+    })
+    .catch((error) => console.error('Error fetching data:', error));
+}
+
+function handlesearchforselectetype() {
+  const notFoundMessageContainer = document.getElementById('notFoundMessage');
+  const searchTerm = document.getElementById('product-search2').value.trim().toLowerCase();
+  const selectedType = selectElement.value;
+   if (searchTerm === '') {
+   
+    hidePagination2()
+    displayFilteredDataWithPagination(selectedType)
+  //  initializePage()
+  }
+  else{
+    showPagination2()
+  }
+ 
+            // Filter posts based on the search term
+  const myselecteddata = mydata.filter(item => {
+    return (
+      (item.type && item.type.toLowerCase().includes(searchTerm)) ||
+      (item.owner && item.owner.fullname && item.owner.fullname.toLowerCase().includes(searchTerm)) ||
+      (item.content && item.content && item.content.toLowerCase().includes(searchTerm))||
+      (item.occasion && item.occasion.name && item.occasion.name.toLowerCase().includes(searchTerm))
+ 
+    );
+  });
+
+  //currentPageData = filteredData;
+  console.log(myselecteddata);
+  const allpaganation = document.getElementById("all-paganation");
+  // Display the filtered data in HTML using the displayAllData function
+  if (myselecteddata.length > 0) {
+ 
+    displayAllsearchselectedData(myselecteddata,1);
+    searchrenderPaginationControlsforselected(myselecteddata)
+    allpaganation.style.display="block"
+  }
+  else {
+    
+    allpaganation.style.display="none"
+    clearCardContainer();
+    console.log("no data herere");
+    //notFoundMessageContainer.innerHTML = '<div>Static Content</div>';
+    notFoundMessageContainer.innerHTML = `
+    <div class="container notfound">
+      <div class="row">
+        <div>
+          لا توجد نتائج للبحث
+        </div>
+      </div>
+    </div>`;
+  
+  
+  }
+  }
+
+  function displayAllsearchselectedData(data, page) {
+    const selectedType = selectElement.value;
+    clearCardContainer(); 
+  
+    const startIndex = (page - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const currentPageData = data.slice(startIndex, endIndex);
+  
+  
+
+      currentPageData .forEach(item => {
+        if (item.type === 'MUSIC') {
+          createMusicCard(item);
+        } else if (item.type === 'MOVIE') {
+          createFilmCard(item);
+        } else if (item.type === 'IMAGE') {
+          createImageCard(item);
+        } else if (item.type === 'TEXT') {
+          createTextCard(item);
+        }else if (item.type === 'OCCASION') {
+          createOccasionCard(item);
+        }else if (item.type === 'GIFT') {
+          createGiftCard(item);
+        }else if (item.type === 'VIDEO') {
+          createVedioCard(item);
+        }
+        
+        
+      });
+    
+  }
+  function searchrenderPaginationControlsforselected(filteredData) {
+    totalPages = Math.ceil(filteredData.length / itemsPerPage);
+    const paginationContainer1 = document.getElementById('pagination-container');
+    paginationContainer1.innerHTML = '';
+    const paginationContainer2 = document.getElementById('pagination-container2');
+    paginationContainer2.innerHTML = '';
+  
+    const paginationContainer3 = document.getElementById('pagination-container3');
+    paginationContainer3.innerHTML = '';
+    const paginationContainer4 = document.getElementById('pagination-container4');
+    paginationContainer4.innerHTML = '';
+    const visiblePages = 3; // Number of visible pages at a time
+    const halfVisible = Math.floor(visiblePages / 2);
+
+    // Calculate the start and end indices for the visible pages
+    let start = Math.max(currentPage - halfVisible, 1);
+    let end = Math.min(start + visiblePages - 1, totalPages);
+
+    if (end - start + 1 < visiblePages) {
+        // Adjust the start index if the visible pages are less than the desired number
+        start = Math.max(end - visiblePages + 1, 1);
+    }
+  // Create "Previous" button
+  const prevButton = document.createElement('button');
+  const prevIcon = document.createElement('span');
+  prevIcon.className = 'fa-solid fa-chevron-right'; 
+  prevButton.appendChild(prevIcon);
+  prevButton.id = "prv2";
+  prevButton.onclick = function () {
+      if (currentPage > 1) {
+        changePage2(currentPage - 1, filteredData);
+      }
+  };
+  paginationContainer4.appendChild(prevButton);
+
+    // Create pagination links
+    for (let i = 1; i <= totalPages; i++) {
+      const pageButton = document.createElement('button');
+      pageButton.innerText = i;
+      if (i === currentPage) {
+        pageButton.classList.add('active');
+    }
+        // const link = document.createElement('a');
+        // link.href = '#';
+        // link.textContent = i;
+        pageButton.onclick = function () {
+          changePage2(i, filteredData);
+        };
+
+        paginationContainer4.appendChild(pageButton);
+    }
+   
+    
+ 
+     // Create "Next" button
+     const nextButton = document.createElement('button');
+    //  nextButton.textContent = 'Next';
+     const nextIcon = document.createElement('span');
+     nextIcon.className = 'fa-solid fa-chevron-left'; 
+     nextButton.appendChild(nextIcon);
+     nextButton.id = "next2";
+     nextButton.onclick = function () {
+         if (currentPage < totalPages) {
+          changePage2(currentPage + 1, filteredData);
+         }
+     };
+     paginationContainer4.appendChild(nextButton);
+     updateButtonState2();
+}
+
+
+function hidePagination2() {
+  const paginationContainer = document.getElementById('pagination-container4');
+  paginationContainer.style.display = 'none';
+}
+function showPagination2() {
+  const paginationContainer = document.getElementById('pagination-container4');
+  paginationContainer.style.display = 'flex';
+}
+
+
+
+
+function updateButtonState2() {
+  const prevButton2 = document.getElementById('prv2');
+  const nextButton2 = document.getElementById('next2');
+
+  if (currentPage === 1) {
+      prevButton2.style.display = 'none'; // Hide "Previous" button on the first page
+  } else {
+      prevButton2.style.display = 'block';
+  }
+
+  if (currentPage === totalPages) {
+      nextButton2.disabled = true; // Disable "Next" button on the last page
+  } else {
+      nextButton2.disabled = false;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   function calculateTimeElapsed(specificDate) {
     // Convert the specific date to a JavaScript Date object
@@ -431,34 +925,15 @@ async function fetchData(page = 1) {
                           </div>
                       </div>
                       <div class="d-flex reacts">
-                                      <div class="persons-react1">
-                                          <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
-                                                  alt=""></a>
-                                          <img class="emoji" src="./images/emo1.png" alt="">
-                                      </div>
-                                      <div class="persons-react2">
-                                          <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
-                                                  alt=""></a>
-                                          <img class="emoji" src="./images/emo2.png" alt="">
-                                      </div>
-                                      <div class="persons-react3">
-                                          <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react "
-                                                  alt=""></a>
-                                          <img class="emoji" src="./images/ic.png" alt="">
-                                      </div>
-                                      <div class="persons-react4">
-                                          <a href="#" target="_blank"> <img src="./images/04.jpg" class="persons-react"
-                                                  alt=""></a>
-                                          <img class="emoji" src="./images/ic2.png" alt="">
-                                      </div>
-                                      <div class="persons-react-count" id="btn6" data-bs-toggle="modal"
-                                          data-bs-target="#staticBackdrop" style="cursor: pointer;">
-                                          <span>+6</span>
-                                      </div>
-                                  </div>
+                        ${generateLikes(data.likes)}
+                          <div class="persons-react-count" id="btn2" data-bs-toggle="modal"
+                              data-bs-target="#staticBackdrop" style="cursor: pointer;">
+                              <span>${data.likesCount}</span>
+                           </div>
+                      </div>
                                   <div class="d-flex justify-content-center">
-                                  <span class="frist-hr"></span>
-                                </div>
+                                     <span class="frist-hr"></span>
+                                   </div>
                                   ${generateComments(data.comments)}
                           
                                   <div class="d-flex justify-content-center align-items-center mb-3 mt-4 readmore" id="comentbtn${data.id}"
@@ -472,28 +947,48 @@ async function fetchData(page = 1) {
                   </div>
               </div>
           `;
-    const updatedButtons = document.querySelectorAll('.persons-react-count');
-    updatedButtons.forEach(button => {
-      button.addEventListener('click', handleButtonClick);
-    });
+    // const updatedButtons = document.querySelectorAll('.persons-react-count');
+    // updatedButtons.forEach(button => {
+    //   button.addEventListener('click', handleButtonClick);
+    // });
     if (data.comments.length <= 1) {
-      console.log(data.comments.length);
+     // console.log(data.comments.length);
       card.querySelector('.readmore').classList.add("hide");
     }
     if (data.comments.length === 0) {
       card.querySelector('.frist-hr').classList.add("hide");
     }
-    cardContainer.appendChild(card);
-    const CommnetsButtons = document.querySelectorAll('.readmore');
+    const likebtn = card.querySelector(`#btn2`);
 
-    CommnetsButtons.forEach(button => {
-      button.addEventListener('click', function () {
-        const dataId = button.id.replace("comentbtn", "");
-        const data = currentPageData.find(item => item.id === parseInt(dataId));
+          if (likebtn) {
+            likebtn.addEventListener('click', function () {
+             
+              console.log(data.id);
+              displayLikesData(data.id)
+           
+            });
+          }
+    const readMoreButton = card.querySelector(`#comentbtn${data.id}`);
+
+    if (readMoreButton) {
+      readMoreButton.addEventListener('click', function () {
+        displayCommentsData(data.id);
+        console.log(data.id);
+        
      
-        displayCommentsData(data.comments);
       });
-    });
+    }
+    cardContainer.appendChild(card);
+    // const CommnetsButtons = document.querySelectorAll('.readmore');
+
+    // CommnetsButtons.forEach(button => {
+    //   button.addEventListener('click', function () {
+    //     const dataId = button.id.replace("comentbtn", "");
+    //     const data = currentPageData.find(item => item.id === parseInt(dataId));
+     
+    //     displayCommentsData(data.comments);
+    //   });
+    // });
 
 
   }
@@ -548,36 +1043,16 @@ async function fetchData(page = 1) {
                           <span> يستحق المشاهدة <i class="fa-solid fa-star" style="color: #f1830d;"></i></span>
                         </div>
                         <div>
-                            <span><i class="fa-regular fa-eye"></i> ${data.totalViews
-      }</span>
+                            <span><i class="fa-regular fa-eye"></i> ${data.totalViews}</span>
                         </div>
                     </div>
-                    <div class="d-flex reacts" >
-                                    <div class="persons-react1">
-                                        <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
-                                                alt=""></a>
-                                        <img class="emoji" src="./images/emo1.png" alt="">
-                                    </div>
-                                    <div class="persons-react2">
-                                        <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
-                                                alt=""></a>
-                                        <img class="emoji" src="./images/emo2.png" alt="">
-                                    </div>
-                                    <div class="persons-react3">
-                                        <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react "
-                                                alt=""></a>
-                                        <img class="emoji" src="./images/ic.png" alt="">
-                                    </div>
-                                    <div class="persons-react4">
-                                        <a href="#" target="_blank"> <img src="./images/04.jpg" class="persons-react"
-                                                alt=""></a>
-                                        <img class="emoji" src="./images/ic2.png" alt="">
-                                    </div>
-                                    <div class="persons-react-count" id="btn6" data-bs-toggle="modal"
-                                        data-bs-target="#staticBackdrop" style="cursor: pointer;">
-                                        <span>+6</span>
-                                    </div>
-                                </div>
+                    <div class="d-flex reacts">
+                    ${generateLikes(data.likes)}
+                      <div class="persons-react-count" id="btn2" data-bs-toggle="modal"
+                          data-bs-target="#staticBackdrop" style="cursor: pointer;">
+                          <span>${data.likesCount}</span>
+                       </div>
+                  </div>
                                 <div class="d-flex justify-content-center">
                                   <span class="frist-hr"></span>
                                 </div>
@@ -589,37 +1064,64 @@ async function fetchData(page = 1) {
                                 data-bs-target="#largeModal" 
                                 style="cursor: pointer;"
                                 >
-                                <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down"
+                                <span style="font-weight: 500;" >اقرا المزيد<i class="fa-solid fa-chevron-down"
                                   style="margin-right: 13px;"></i></span>
                               </div>
                           
                 </div>
             </div>
         `;
-    const updatedButtons = document.querySelectorAll('.persons-react-count');
+    // const updatedButtons = document.querySelectorAll('.persons-react-count');
 
-    updatedButtons.forEach(button => {
+    // updatedButtons.forEach(button => {
 
-      button.addEventListener('click', handleButtonClick);
-    });
+    //   button.addEventListener('click', handleButtonClick);
+    // });
+    const likebtn = card.querySelector(`#btn2`);
+
+    if (likebtn) {
+      likebtn.addEventListener('click', function () {
+       
+        console.log(data.id);
+        displayLikesData(data.id)
+     
+      });
+    }
     if (data.comments.length <= 1) {
-      console.log(data.comments.length);
+     // console.log(data.comments.length);
       card.querySelector('.readmore').classList.add("hide");
     }
     if (data.comments.length == 0) {
       card.querySelector('.frist-hr').classList.add("hide");
     }
-    cardContainer.appendChild(card);
-    const CommnetsButtons = document.querySelectorAll('.readmore');
+    // card.addEventListener('click', function () {
+    //   // Log the item ID when the card is clicked
+    //   console.log(data.id);
+    // });
+    const readMoreButton = card.querySelector(`#comentbtn${data.id}`);
 
-    CommnetsButtons.forEach(button => {
-      button.addEventListener('click', function () {
-        const dataId = button.id.replace("comentbtn", "");
-        const data = currentPageData.find(item => item.id === parseInt(dataId));
+    if (readMoreButton) {
+      readMoreButton.addEventListener('click', function () {
+        displayCommentsData(data.id);
+        console.log(data.id);
+        
      
-        displayCommentsData(data.comments);
       });
-    });
+    }
+    cardContainer.appendChild(card);
+    // const CommnetsButtons = document.querySelectorAll('.readmore');
+
+    // CommnetsButtons.forEach(button => {
+    //   button.addEventListener('click', function () {
+    //    // console.log(data.id);
+    //     const dataId = button.id.replace("comentbtn", "");
+    //     console.log( button.id);
+    //     const data = currentPageData.find(item => item.id === parseInt(dataId));
+     
+    //     displayCommentsData(dataId);
+    //   });
+    // });
+   
   }
   // Function to create Film Post
   function createImageCard(data) {
@@ -666,38 +1168,26 @@ async function fetchData(page = 1) {
               <div class="d-flex justify-content-between align-items-center">
                 
               <div>
-              <div class="d-flex reacts" style="margin-top:0">
-                  <div class="persons-react1">
-                      <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
-                              alt=""></a>
-                      <img class="emoji" src="./images/emo1.png" alt="">
-                  </div>
-                  <div class="persons-react2">
-                      <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
-                              alt=""></a>
-                      <img class="emoji" src="./images/emo2.png" alt="">
-                  </div>
-              
-                  <div class="persons-react-count" id="btn9" data-bs-toggle="modal"
-                      data-bs-target="#staticBackdrop" style="cursor: pointer;">
-                      <span>+5</span>
-                  </div>
-
-              </div>
+              <div class="d-flex reacts" style = "margin-top=0">
+              ${generateLikes(data.likes)}
+                <div class="persons-react-count" id="btn2" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop" style="cursor: pointer;">
+                    <span>${data.likesCount}</span>
+                 </div>
+            </div>
           </div>
 
           <div class="vission-comments">
           <div>
               <span>
                   <i class="fa-regular fa-eye"></i>
-                  ${data.totalViews
-      }
+                  ${data.totalViews }
               </span>
           </div>
         
       </div>
               </div>
-            
+             
                           <div class="d-flex justify-content-center">
                             <span class="frist-hr"></span>
                           </div>
@@ -716,30 +1206,50 @@ async function fetchData(page = 1) {
           </div>
       </div>
       `;
-    const updatedButtons = document.querySelectorAll('.persons-react-count');
+    // const updatedButtons = document.querySelectorAll('.persons-react-count');
 
-    updatedButtons.forEach(button => {
+    // updatedButtons.forEach(button => {
 
-      button.addEventListener('click', handleButtonClick);
-    });
+    //   button.addEventListener('click', handleButtonClick);
+    // });
+    const likebtn = card.querySelector(`#btn2`);
+
+    if (likebtn) {
+      likebtn.addEventListener('click', function () {
+       
+        console.log(data.id);
+        displayLikesData(data.id)
+     
+      });
+    }
     if (data.comments.length <= 1) {
-      console.log(data.comments.length);
+    //  console.log(data.comments.length);
       card.querySelector('.readmore').classList.add("hide");
     }
     if (data.comments.length == 0) {
       card.querySelector('.frist-hr').classList.add("hide");
     }
-    cardContainer.appendChild(card);
-    const CommnetsButtons = document.querySelectorAll('.readmore');
+    const readMoreButton = card.querySelector(`#comentbtn${data.id}`);
 
-    CommnetsButtons.forEach(button => {
-      button.addEventListener('click', function () {
-        const dataId = button.id.replace("comentbtn", "");
-        const data = currentPageData.find(item => item.id === parseInt(dataId));
+    if (readMoreButton) {
+      readMoreButton.addEventListener('click', function () {
+        displayCommentsData(data.id);
+        console.log(data.id);
+        
      
-        displayCommentsData(data.comments);
       });
-    });
+    }
+    cardContainer.appendChild(card);
+    // const CommnetsButtons = document.querySelectorAll('.readmore');
+
+    // CommnetsButtons.forEach(button => {
+    //   button.addEventListener('click', function () {
+    //     const dataId = button.id.replace("comentbtn", "");
+    //     const data = currentPageData.find(item => item.id === parseInt(dataId));
+     
+    //     displayCommentsData(data.comments);
+    //   });
+    // });
   }
   // Function to create Film Post
   function createTextCard(data) {
@@ -787,24 +1297,13 @@ async function fetchData(page = 1) {
                     <div class="d-flex justify-content-between align-items-center">
                       
                        <div>
-                          <div class="d-flex reacts">
-                            <div class="persons-react1">
-                                <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
-                                        alt=""></a>
-                                <img class="emoji" src="./images/emo1.png" alt="">
-                            </div>
-                            <div class="persons-react2">
-                                <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
-                                        alt=""></a>
-                                <img class="emoji" src="./images/emo2.png" alt="">
-                            </div>
-                        
-                            <div class="persons-react-count" id="btn9" data-bs-toggle="modal"
-                                data-bs-target="#staticBackdrop" style="cursor: pointer;">
-                                <span>+5</span>
-                            </div>
-
-                        </div>
+                       <div class="d-flex reacts">
+                       ${generateLikes(data.likes)}
+                         <div class="persons-react-count" id="btn2" data-bs-toggle="modal"
+                             data-bs-target="#staticBackdrop" style="cursor: pointer;">
+                             <span>${data.likesCount}</span>
+                          </div>
+                     </div>
                 </div>
 
                 <div class="vission-comments">
@@ -841,30 +1340,50 @@ async function fetchData(page = 1) {
                 </div>
             </div>
         `;
-    const updatedButtons = document.querySelectorAll('.persons-react-count');
+    // const updatedButtons = document.querySelectorAll('.persons-react-count');
 
-    updatedButtons.forEach(button => {
+    // updatedButtons.forEach(button => {
 
-      button.addEventListener('click', handleButtonClick);
-    });
+    //   button.addEventListener('click', handleButtonClick);
+    // });
+    const likebtn = card.querySelector(`#btn2`);
+
+    if (likebtn) {
+      likebtn.addEventListener('click', function () {
+       
+        console.log(data.id);
+        displayLikesData(data.id)
+     
+      });
+    }
     if (data.comments.length <= 1) {
-      console.log(data.comments.length);
+    //  console.log(data.comments.length);
       card.querySelector('.readmore').classList.add("hide");
     }
     if (data.comments.length == 0) {
       card.querySelector('.frist-hr').classList.add("hide");
     }
-    cardContainer.appendChild(card);
-    const CommnetsButtons = document.querySelectorAll('.readmore');
+    const readMoreButton = card.querySelector(`#comentbtn${data.id}`);
 
-    CommnetsButtons.forEach(button => {
-      button.addEventListener('click', function () {
-        const dataId = button.id.replace("comentbtn", "");
-        const data = currentPageData.find(item => item.id === parseInt(dataId));
+    if (readMoreButton) {
+      readMoreButton.addEventListener('click', function () {
+        displayCommentsData(data.id);
+        console.log(data.id);
+        
      
-        displayCommentsData(data.comments);
       });
-    });
+    }
+    cardContainer.appendChild(card);
+    // const CommnetsButtons = document.querySelectorAll('.readmore');
+
+    // CommnetsButtons.forEach(button => {
+    //   button.addEventListener('click', function () {
+    //     const dataId = button.id.replace("comentbtn", "");
+    //     const data = currentPageData.find(item => item.id === parseInt(dataId));
+     
+    //     displayCommentsData(data.comments);
+    //   });
+    // });
   }
 
   // Function to create OCCASION Post
@@ -927,31 +1446,13 @@ async function fetchData(page = 1) {
             <p>${data.occasion.end ? '<span class="fact">انتهت</span>' : '<span class="fact">لم تنتهي</span>'}</p>
 
         </div>
-        <div class="d-flex reacts">
-            <div class="persons-react1">
-                <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
-                        alt=""></a>
-                <img class="emoji" src="./images/emo1.png" alt="">
-            </div>
-            <div class="persons-react2">
-                <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
-                        alt=""></a>
-                <img class="emoji" src="./images/emo2.png" alt="">
-            </div>
-            <div class="persons-react3">
-                <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react "
-                        alt=""></a>
-                <img class="emoji" src="./images/ic.png" alt="">
-            </div>
-            <div class="persons-react-count" id="btn2" data-bs-toggle="modal"
-                data-bs-target="#staticBackdrop" style="cursor: pointer;">
-                <span>+6</span>
-            </div>
-
-        </div>
-            <div class="d-flex justify-content-center">
-            <span class="frist-hr"></span>
-          </div>
+        <div class="d-flex reacts" style="margin-top:25px">
+        ${generateLikes(data.likes)}
+          <div class="persons-react-count" id="btn2" data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop" style="cursor: pointer;">
+              <span>${data.likesCount}</span>
+           </div>
+      </div>
         
           ${generateComments(data.comments)}
 
@@ -967,30 +1468,51 @@ async function fetchData(page = 1) {
       </div>
       </div>
         `;
-    const updatedButtons = document.querySelectorAll('.persons-react-count');
+    // const updatedButtons = document.querySelectorAll('.persons-react-count');
 
-    updatedButtons.forEach(button => {
+    // updatedButtons.forEach(button => {
 
-      button.addEventListener('click', handleButtonClick);
-    });
+    //   button.addEventListener('click', handleButtonClick);
+    // });
+    const likebtn = card.querySelector(`#btn2`);
+
+    if (likebtn) {
+      likebtn.addEventListener('click', function () {
+       
+        console.log(data.id);
+        displayLikesData(data.id)
+     
+      });
+    }
     if (data.comments.length <= 1) {
-      console.log(data.comments.length);
+    //  console.log(data.comments.length);
       card.querySelector('.readmore').classList.add("hide");
     }
-    if (data.comments.length == 0) {
-      card.querySelector('.frist-hr').classList.add("hide");
-    }
+    // if (data.comments.length == 0) {
+    //   card.querySelector('.frist-hr').classList.add("hide");
+    // }
     cardContainer.appendChild(card);
-    const CommnetsButtons = document.querySelectorAll('.readmore');
+    const readMoreButton = card.querySelector(`#comentbtn${data.id}`);
 
-    CommnetsButtons.forEach(button => {
-      button.addEventListener('click', function () {
-        const dataId = button.id.replace("comentbtn", "");
-        const data = currentPageData.find(item => item.id === parseInt(dataId));
+    if (readMoreButton) {
+      readMoreButton.addEventListener('click', function () {
+        displayCommentsData(data.id);
+        console.log(data.id);
+        
      
-        displayCommentsData(data.comments);
       });
-    });
+    }
+    // const CommnetsButtons = document.querySelectorAll('.readmore');
+
+    // CommnetsButtons.forEach(button => {
+    //   button.addEventListener('click', function () {
+    //     console.log(button);
+    //     const dataId = button.id.replace("comentbtn", "");
+    //     const data = currentPageData.find(item => item.id === parseInt(dataId));
+     
+    //     displayCommentsData(data.comments);
+    //   });
+    // });
   }
   function createGiftCard(data) {
     const cardContainer = document.getElementById('GIFT');
@@ -1030,28 +1552,13 @@ async function fetchData(page = 1) {
                       <div class="card-body">
 
 
-                          <div class="d-flex reacts" style="margin-top:0">
-                              <div class="persons-react1">
-                                  <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
-                                          alt=""></a>
-                                  <img class="emoji" src="./images/emo1.png" alt="">
-                              </div>
-                              <div class="persons-react2">
-                                  <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
-                                          alt=""></a>
-                                  <img class="emoji" src="./images/emo2.png" alt="">
-                              </div>
-                              <div class="persons-react3">
-                                  <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react "
-                                          alt=""></a>
-                                  <img class="emoji" src="./images/ic.png" alt="">
-                              </div>
-                              <div class="persons-react-count" id="btn8" data-bs-toggle="modal"
-                                  data-bs-target="#staticBackdrop" style="cursor: pointer;">
-                                  <span>+4</span>
-                              </div>
-
-                          </div>
+                      <div class="d-flex reacts" style="margin-top = 0">
+                      ${generateLikes(data.likes)}
+                        <div class="persons-react-count" id="btn2" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop" style="cursor: pointer;">
+                            <span>${data.likesCount}</span>
+                         </div>
+                    </div>
                           <div class="d-flex justify-content-center">
                           <span class="frist-hr"></span>
                         </div>
@@ -1070,30 +1577,50 @@ async function fetchData(page = 1) {
                     </div>
                     </div>
         `;
-    const updatedButtons = document.querySelectorAll('.persons-react-count');
+    // const updatedButtons = document.querySelectorAll('.persons-react-count');
 
-    updatedButtons.forEach(button => {
+    // updatedButtons.forEach(button => {
 
-      button.addEventListener('click', handleButtonClick);
-    });
+    //   button.addEventListener('click', handleButtonClick);
+    // });
+    const likebtn = card.querySelector(`#btn2`);
+
+    if (likebtn) {
+      likebtn.addEventListener('click', function () {
+       
+        console.log(data.id);
+        displayLikesData(data.id)
+     
+      });
+    }
     if (data.comments.length <= 1) {
-      console.log(data.comments.length);
+  //    console.log(data.comments.length);
       card.querySelector('.readmore').classList.add("hide");
     }
     if (data.comments.length == 0) {
       card.querySelector('.frist-hr').classList.add("hide");
     }
-    cardContainer.appendChild(card);
-    const CommnetsButtons = document.querySelectorAll('.readmore');
+    const readMoreButton = card.querySelector(`#comentbtn${data.id}`);
 
-    CommnetsButtons.forEach(button => {
-      button.addEventListener('click', function () {
-        const dataId = button.id.replace("comentbtn", "");
-        const data = currentPageData.find(item => item.id === parseInt(dataId));
+    if (readMoreButton) {
+      readMoreButton.addEventListener('click', function () {
+        displayCommentsData(data.id);
+        console.log(data.id);
+        
      
-        displayCommentsData(data.comments);
       });
-    });
+    }
+    cardContainer.appendChild(card);
+    // const CommnetsButtons = document.querySelectorAll('.readmore');
+
+    // CommnetsButtons.forEach(button => {
+    //   button.addEventListener('click', function () {
+    //     const dataId = button.id.replace("comentbtn", "");
+    //     const data = currentPageData.find(item => item.id === parseInt(dataId));
+     
+    //     displayCommentsData(data.comments,data.id);
+    //   });
+    // });
   }
   function createVedioCard(data) {
     const cardContainer = document.getElementById('VIDEO');
@@ -1158,28 +1685,13 @@ async function fetchData(page = 1) {
               </div>
 
           </div>
-              <div class="d-flex reacts" >
-                  <div class="persons-react1">
-                      <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
-                              alt=""></a>
-                      <img class="emoji" src="./images/emo1.png" alt="">
-                  </div>
-                  <div class="persons-react2">
-                      <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
-                              alt=""></a>
-                      <img class="emoji" src="./images/emo2.png" alt="">
-                  </div>
-                  <div class="persons-react3">
-                      <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react "
-                              alt=""></a>
-                      <img class="emoji" src="./images/ic.png" alt="">
-                  </div>
-                  <div class="persons-react-count" id="btn8" data-bs-toggle="modal"
-                      data-bs-target="#staticBackdrop" style="cursor: pointer;">
-                      <span>+4</span>
-                  </div>
-
-              </div>
+          <div class="d-flex reacts">
+          ${generateLikes(data.likes)}
+            <div class="persons-react-count" id="btn2" data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop" style="cursor: pointer;">
+                <span>${data.likesCount}</span>
+             </div>
+        </div>
               <div class="d-flex justify-content-center">
               <span class="frist-hr"></span>
             </div>
@@ -1198,30 +1710,51 @@ async function fetchData(page = 1) {
         </div>
         </div>
         `;
-          const updatedButtons = document.querySelectorAll('.persons-react-count');
+          // const updatedButtons = document.querySelectorAll('.persons-react-count');
 
-          updatedButtons.forEach(button => {
+          // updatedButtons.forEach(button => {
 
-            button.addEventListener('click', handleButtonClick);
-          });
+          //   button.addEventListener('click', handleButtonClick);
+          // });
+          const likebtn = card.querySelector(`#btn2`);
+
+          if (likebtn) {
+            likebtn.addEventListener('click', function () {
+             
+              console.log(data.id);
+              displayLikesData(data.id)
+           
+            });
+          }
           if (data.comments.length <= 1) {
-            console.log(data.comments.length);
+          //  console.log(data.comments.length);
             card.querySelector('.readmore').classList.add("hide");
           }
           if (data.comments.length == 0) {
             card.querySelector('.frist-hr').classList.add("hide");
           }
-          cardContainer.appendChild(card);
-          const CommnetsButtons = document.querySelectorAll('.readmore');
+          
+          const readMoreButton = card.querySelector(`#comentbtn${data.id}`);
 
-          CommnetsButtons.forEach(button => {
-            button.addEventListener('click', function () {
-              const dataId = button.id.replace("comentbtn", "");
-              const data = currentPageData.find(item => item.id === parseInt(dataId));
-     
-              displayCommentsData(data.comments);
+          if (readMoreButton) {
+            readMoreButton.addEventListener('click', function () {
+              displayCommentsData(data.id);
+              console.log(data.id);
+              
+           
             });
-          });
+          }
+          cardContainer.appendChild(card);
+          // const CommnetsButtons = document.querySelectorAll('.readmore');
+
+          // CommnetsButtons.forEach(button => {
+          //   button.addEventListener('click', function () {
+          //     const dataId = button.id.replace("comentbtn", "");
+          //     const data = currentPageData.find(item => item.id === parseInt(dataId));
+     
+          //     displayCommentsData(data.comments);
+          //   });
+          // });
   }
   function createLocationCard(data) {
   //   const cardContainer = document.getElementById('LOCATION');
@@ -1366,7 +1899,7 @@ async function fetchData(page = 1) {
 
 
   function playVideo(videoUrl) {
-  console.log(videoUrl);
+  //console.log(videoUrl);
   const videoContainer = document.getElementById("videoContainer");
   videoContainer.innerHTML = `<video controls autoplay src="${videoUrl}" style="max-width: 100%; height: auto;width: 100%"></video>`;
 
@@ -1432,12 +1965,16 @@ async function fetchData(page = 1) {
     const commentHTML = `
           <div class="d-flex comment-box align-items-center">
             <div class="persons-react1">
+            <a href="" class="personal" target="_blank" > 
               <img src="${firstComment.user.img}" class=" persons-react " alt="">
+              </a>
             </div>
             <div class="bg-white">
               <div class="comment-info">
                 <div class="d-flex justify-content-between">
+                <a href="" class="personal" target="_blank" > 
                   <p class="comment-person-name">${firstComment.user.fullname}</p>
+                  </a>
                   <span class="comment-time">${timeAgo(new Date(firstComment.createdAt))}</span>
                 </div>
                 <div class="d-flex mt-2 comment-time">
@@ -1450,38 +1987,295 @@ async function fetchData(page = 1) {
 
     return commentHTML;
   }
+  function generateLikes(likes) {
+    console.log(likes);
+    if (likes.length === 0) {
+     
+  
+      return ``; // Return an empty string if there are no comments
+    }
+    const slicedLikes = likes.slice(0, 3);
+    const firstlike = likes[0];
 
-  function displayCommentsData(data) {
-    console.log(originalPosts);
-    const modal = document.getElementById("largeModal");
-    const modalContent = document.getElementById("modalCommentContent");
+//     const likeHTML = `
+//     <div class="d-flex reacts">
+//     <div class="persons-react1">
+//         <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
+//                 alt=""></a>
+//         <img class="emoji" src="./images/emo1.png" alt="">
+//     </div>
+//     <div class="persons-react2">
+//         <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
+//                 alt=""></a>
+//         <img class="emoji" src="./images/emo2.png" alt="">
+//     </div>
+//     <div class="persons-react3">
+//         <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react "
+//                 alt=""></a>
+//         <img class="emoji" src="./images/ic.png" alt="">
+//     </div>
+//     <div class="persons-react-count" id="btn2" data-bs-toggle="modal"
+//         data-bs-target="#staticBackdrop" style="cursor: pointer;">
+//         <span>+${data.likesCount}</span>
+//     </div>
 
-    modalContent.innerHTML = ''; // Clear previous content
+// </div>
+//         `;
 
-    data.forEach(comment => {
-      const commentBox = document.createElement('div');
-      commentBox.classList.add('d-flex', 'align-items-center', 'modelcomment-box');
+//     return likeHTML;
+    const likeHTML = slicedLikes.map((like, index) => `
+    
+        <div class="persons-react1">
+          <a href="#" target="_blank">
+            <img src="${like.user.img}" class="persons-react" alt="${like.user.fullname}">
+          </a>
+          <img class="emoji" src="${like.reaction.img}" alt="Reaction Emoji">
+        </div>
+     
+   
+      `).join('');
 
-      commentBox.innerHTML = `
-            <div class="persons-react1">
-            <img src="${comment.user.img}" class=" persons-react " alt="">
-            </div>
-            <div class="bg-white">
-              <div class="comment-info">
-                <div class="d-flex justify-content-between">
-                  <p class="comment-person-name">${comment.user.fullname}</p>
-                  <span class="comment-time">${timeAgo(new Date(comment.createdAt))}</span>
-                </div>
-                <div class="d-flex mt-2 comment-time">
-                  <span>${comment.comment}</span>
-                </div>
-              </div>
-            </div>
-          `;
+      return likeHTML;
+      }
 
-      modalContent.appendChild(commentBox);
-    });
+      
+
+
+  nasda: [
+    {
+        "id": 8,
+        "createdAt": "2023-11-02T05:32:45.548Z",
+        "user": {
+            "fullname": "بدر الدريعي",
+            "id": 2,
+            "img": "https://wisht7b-api.algorithms.ws/uploads/595f7777-22e7-403d-9fe4-347d4a82cf71.jpeg"
+        },
+        "reaction": {
+            "img": "https://wisht7b-api.algorithms.ws/uploads/08e62a06-7b32-4eca-a62b-0061ff337d7f.png",
+            "id": 1
+        }
+    },
+    {
+      "id": 9,
+      "createdAt": "2023-11-02T05:32:45.548Z",
+      "user": {
+          "fullname": "بدر الدريعي",
+          "id": 2,
+          "img": "https://wisht7b-api.algorithms.ws/uploads/595f7777-22e7-403d-9fe4-347d4a82cf71.jpeg"
+      },
+      "reaction": {
+          "img": "https://wisht7b-api.algorithms.ws/uploads/08e62a06-7b32-4eca-a62b-0061ff337d7f.png",
+          "id": 1
+      }
+  },
+  {
+    "id": 10,
+    "createdAt": "2023-11-02T05:32:45.548Z",
+    "user": {
+        "fullname": "بدر الدريعي",
+        "id": 2,
+        "img": "https://wisht7b-api.algorithms.ws/uploads/595f7777-22e7-403d-9fe4-347d4a82cf71.jpeg"
+    },
+    "reaction": {
+        "img": "https://wisht7b-api.algorithms.ws/uploads/08e62a06-7b32-4eca-a62b-0061ff337d7f.png",
+        "id": 1
+    }
+},
+{
+  "id": 11,
+  "createdAt": "2023-11-02T05:32:45.548Z",
+  "user": {
+      "fullname": "بدر الدريعي",
+      "id": 2,
+      "img": "https://wisht7b-api.algorithms.ws/uploads/595f7777-22e7-403d-9fe4-347d4a82cf71.jpeg"
+  },
+  "reaction": {
+      "img": "https://wisht7b-api.algorithms.ws/uploads/08e62a06-7b32-4eca-a62b-0061ff337d7f.png",
+      "id": 1
   }
+},
+  
+]
+
+
+
+
+
+
+
+  // function displayCommentsData(id) {
+  //   console.log(id);
+  //   // const modal = document.getElementById("largeModal");
+  //   // const modalContent = document.getElementById("modalCommentContent");
+
+  //   // modalContent.innerHTML = ''; // Clear previous content
+
+  //   // data.forEach(comment => {
+  //   //   const commentBox = document.createElement('div');
+  //   //   commentBox.classList.add('d-flex', 'align-items-center', 'modelcomment-box');
+
+  //   //   commentBox.innerHTML = `
+  //   //         <div class="persons-react1">
+  //   //         <img src="${comment.user.img}" class=" persons-react " alt="">
+  //   //         </div>
+  //   //         <div class="bg-white">
+  //   //           <div class="comment-info">
+  //   //             <div class="d-flex justify-content-between">
+  //   //               <p class="comment-person-name">${comment.user.fullname}</p>
+  //   //               <span class="comment-time">${timeAgo(new Date(comment.createdAt))}</span>
+  //   //             </div>
+  //   //             <div class="d-flex mt-2 comment-time">
+  //   //               <span>${comment.comment}</span>
+  //   //             </div>
+  //   //           </div>
+  //   //         </div>
+  //   //       `;
+
+  //   //   modalContent.appendChild(commentBox);
+  //   // });
+  // }
+
+  
+ function displayCommentsData(id) {
+  console.log(id);
+  fetch(`https://wisht7b-api.algorithms.ws/api/v1/posts/${id}/getPostComments`, {
+   method: 'GET',
+   headers: headers
+ })
+   .then(response => response.json())
+   .then(res => {
+     let postcomments = res.data
+     console.log(res.data);
+      const modal = document.getElementById("largeModal");
+   const modalContent = document.getElementById("modalCommentContent");
+
+   modalContent.innerHTML = ''; // Clear previous content
+
+   postcomments.forEach(comment => {
+     const commentBox = document.createElement('div');
+     commentBox.classList.add('d-flex', 'align-items-center', 'modelcomment-box');
+
+     commentBox.innerHTML = `
+           <div class="persons-react1">
+           <a href="" target="_blank" >
+           <img src="${comment.user.img}" class=" persons-react " alt="">
+           </a>
+           </div>
+           <div class="bg-white">
+             <div class="comment-info">
+               <div class="d-flex justify-content-between">
+               <a href="" class="personal" target="_blank" >  <p class="comment-person-name">${comment.user.fullname}</p></a>
+                 <span class="comment-time">${timeAgo(new Date(comment.createdAt))}</span>
+               </div>
+               <div class="d-flex mt-2 comment-time">
+                 <span>${comment.comment}</span>
+               </div>
+             </div>
+           </div>
+         `;
+
+     modalContent.appendChild(commentBox);
+   });
+   })
+   .catch(error => {
+
+     console.error('Error:', error);
+   });
+  
+ }
+  
+//  function displayLikesData(id) {
+//   console.log(id);
+//   fetch(`https://wisht7b-api.algorithms.ws/api/v1/posts/${id}/getPostLikes`, {
+//    method: 'GET',
+//    headers: headers
+//  })
+//    .then(response => response.json())
+//    .then(res => {
+//     if(res){
+//       let postlikes = res.data.likes
+//       console.log(res.data);
+//        const modal = document.getElementById("staticBackdrop");
+//     const modalContent = document.getElementById("modalContent");
+ 
+//     modalContent.innerHTML = `<ul>`; // Clear previous content
+//     postlikes.forEach(like => {
+//      const likesbox = document.createElement('div');
+//      likesbox.classList.add('d-flex', 'align-items-center', 'modelcomment-box');
+ 
+//      modalContent.innerHTML += `
+//      <li>
+//      <img class="model-per-img" src="${like.user.img}" alt="${project.name}" />
+//        <p>${like.user.fullname}</p>
+//        <img class="model-per-react" src="${like.reaction.img}" alt="${project.name}" />
+//      </li>
+//    `;
+ 
+//      modalContent.appendChild(likesbox);
+//    });
+//     }
+  
+//    })
+//    .catch(error => {
+
+//      console.error('Error:', error);
+//    });
+  
+//  }
+
+function displayLikesData(id) {
+  console.log(id);
+  fetch(`https://wisht7b-api.algorithms.ws/api/v1/posts/${id}/getPostLikes`, {
+    method: 'GET',
+    headers: headers
+  })
+    .then(response => response.json())
+    .then(res => {
+      if (res && res.data ) {
+        let postlikes = res.data;
+        console.log(res.data);
+        const modal = document.getElementById("staticBackdrop");
+        const modalContent = document.getElementById("modalContent");
+
+        modalContent.innerHTML = `<ul>`; // Clear previous content
+
+        if (postlikes.length > 0) {
+          postlikes.forEach(like => {
+           
+            modalContent.innerHTML += `
+              <li>
+              
+               <div class="likeperdiv">
+               <a href="" class="personal" target="_blank" > 
+                  <img class="model-per-img" src="${like.user.img}" alt="" />
+                  </a>
+                  <a href="" class="personal" target="_blank" > 
+                  <p>${like.user.fullname}</p>
+                  </a>
+                  <img class="model-per-react" src="${like.reaction.img}" alt="" />
+                
+               </div>
+               <div> <span class="comment-time">${timeAgo(new Date(like.createdAt))}</span></div>
+              
+              </li>
+            `;
+
+          //  modalContent.appendChild(likesbox);
+          });
+        } else {
+          // Handle the case where there are no likes
+          modalContent.innerHTML += `<p class="nolikes">لا توجد اعجابات حاليا </p>`;
+        }
+      } else {
+        // Handle the case where the response or required data is missing
+        console.error('Invalid response:', res);
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
+
   const Commentbuttons = document.querySelectorAll('.readmore');
   function handlecommentButtonClick(data) {
     displayCommentsData(data);
@@ -1489,7 +2283,7 @@ async function fetchData(page = 1) {
 
   const buttons = document.querySelectorAll('.persons-react-count');
   function handleButtonClick() {
-    console.log("Button clicked");
+    //console.log("Button clicked");
     displayModalData(button1Data);
   }
   buttons.forEach(button => {

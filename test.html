@@ -4,19 +4,623 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video Player</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
-    <div id="videoContainer">
-        <img id="thumbnail" src="YOUR_IMAGE_URL" alt="Video Thumbnail" style="max-width: 100%; height: auto;">
-        <button onclick="playVideo('YOUR_VIDEO_URL')">Play Video</button>
-    </div>
+    <div id="pagination-container"></div>
+    <div id="data-container"></div>
 
     <script>
-        function playVideo(videoUrl) {
-            // Replace the image with the video
-            const videoContainer = document.getElementById("videoContainer");
-            videoContainer.innerHTML = <video controls autoplay src="${videoUrl}" style="max-width: 100%; height: auto;"></video>;
+            const paginationContainer = document.getElementById('data-container');
+          paginationContainer.innerHTML = '';
+        // Your provided data
+        var data =[
+        {
+            "content": "بوست لمنقطة معينة\n",
+            "status": "ACTIVE",
+            "likesCount": 0,
+            "type": "TEXT",
+            "commentsCount": 0,
+            "privacy": "PUBLIC-REGION",
+            "location": {
+                "coordinates": []
+            },
+            "media": {},
+            "isLike": false,
+            "totalViews": 0,
+            "viewsCount": 0,
+            "id": 155,
+            "createdAt": "2023-11-15T12:02:10.909Z",
+            "files": [],
+            "owner": {
+                "fullname": "Ismael",
+                "id": 60,
+                "img": "https://wisht7b-api.algorithms.ws/uploads/9cc67126-6413-4ecd-8154-c92f5d7cc178.jpeg"
+            },
+            "comments": [],
+            "likes": []
+        },
+        {
+            "content": "https://youtu.be/q1a9OYz_ppk?si=sZlrGphBWqmNaa80\n",
+            "status": "ACTIVE",
+            "likesCount": 0,
+            "type": "TEXT",
+            "commentsCount": 0,
+            "privacy": "PUBLIC",
+            "location": {
+                "coordinates": []
+            },
+            "media": {},
+            "isLike": false,
+            "totalViews": 0,
+            "viewsCount": 0,
+            "id": 142,
+            "createdAt": "2023-11-10T21:16:33.510Z",
+            "files": [],
+            "owner": {
+                "fullname": "Bader",
+                "phone": "+966564646590",
+                "id": 69,
+                "img": "https://wisht7b-api.algorithms.ws/uploads/b768d2b3-7991-4150-adef-bb4714026393.jpeg"
+            },
+            "comments": [],
+            "likes": []
+        },
+        {
+            "content": "وكن في الطريق عفيف الخُطا شريف السماع كريم النظر .. وكن رجلا إن أتوا بعده يقولون: مر وهذا الأثر! \n\n- أحمد شوقي",
+            "status": "ACTIVE",
+            "likesCount": 0,
+            "type": "TEXT",
+            "commentsCount": 0,
+            "privacy": "PUBLIC",
+            "location": {
+                "coordinates": []
+            },
+            "media": {},
+            "isLike": false,
+            "totalViews": 0,
+            "viewsCount": 0,
+            "id": 136,
+            "createdAt": "2023-11-10T21:02:40.081Z",
+            "files": [],
+            "owner": {
+                "fullname": "Bader",
+                "phone": "+966564646590",
+                "id": 69,
+                "img": "https://wisht7b-api.algorithms.ws/uploads/b768d2b3-7991-4150-adef-bb4714026393.jpeg"
+            },
+            "comments": [],
+            "likes": []
+        },
+        {
+            "content": "‘’النسوية حررت النساء من كرامة جنسهن وحولتهن الى رجال ناقصين''\n\n- نيكولاس غوميز دافيلا",
+            "status": "ACTIVE",
+            "likesCount": 0,
+            "type": "TEXT",
+            "commentsCount": 0,
+            "privacy": "PUBLIC",
+            "location": {
+                "coordinates": []
+            },
+            "media": {},
+            "isLike": false,
+            "totalViews": 0,
+            "viewsCount": 0,
+            "id": 135,
+            "createdAt": "2023-11-10T21:02:16.497Z",
+            "files": [],
+            "owner": {
+                "fullname": "Bader",
+                "phone": "+966564646590",
+                "id": 69,
+                "img": "https://wisht7b-api.algorithms.ws/uploads/b768d2b3-7991-4150-adef-bb4714026393.jpeg"
+            },
+            "comments": [],
+            "likes": []
+        },
+        {
+            "content": "يقول الشيخ المغامسي :\n\nمن يعاني من تعثر أمور حياته و يخشى من شيء فليردد \"اللهم ياولي نعمتي و ياملاذي عند كربتي أجعل ماأخافهُ و أحذره برداً و سلاماً عليّ كما جعلت النار برداً و سلاماً على إبراهيم”\n",
+            "status": "ACTIVE",
+            "likesCount": 0,
+            "type": "TEXT",
+            "commentsCount": 0,
+            "privacy": "PUBLIC",
+            "location": {
+                "coordinates": []
+            },
+            "media": {},
+            "isLike": false,
+            "totalViews": 0,
+            "viewsCount": 0,
+            "id": 134,
+            "createdAt": "2023-11-10T20:59:56.873Z",
+            "files": [],
+            "owner": {
+                "fullname": "Bader",
+                "phone": "+966564646590",
+                "id": 69,
+                "img": "https://wisht7b-api.algorithms.ws/uploads/b768d2b3-7991-4150-adef-bb4714026393.jpeg"
+            },
+            "comments": [],
+            "likes": []
+        },
+        {
+            "content": "we have a dream .. 🇸🇦🇸🇦\n",
+            "status": "ACTIVE",
+            "likesCount": 0,
+            "type": "TEXT",
+            "commentsCount": 0,
+            "privacy": "PUBLIC",
+            "location": {
+                "coordinates": []
+            },
+            "media": {},
+            "isLike": false,
+            "totalViews": 0,
+            "viewsCount": 0,
+            "id": 115,
+            "createdAt": "2023-11-09T20:13:40.137Z",
+            "files": [],
+            "owner": {
+                "fullname": "Bader",
+                "phone": "+966564646590",
+                "id": 69,
+                "img": "https://wisht7b-api.algorithms.ws/uploads/b768d2b3-7991-4150-adef-bb4714026393.jpeg"
+            },
+            "comments": [],
+            "likes": []
+        },
+        {
+            "content": "هلا",
+            "status": "ACTIVE",
+            "likesCount": 0,
+            "type": "TEXT",
+            "commentsCount": 1,
+            "privacy": "PUBLIC",
+            "location": {
+                "coordinates": []
+            },
+            "media": {},
+            "isLike": false,
+            "totalViews": 0,
+            "viewsCount": 0,
+            "id": 113,
+            "createdAt": "2023-11-06T17:16:20.307Z",
+            "files": [
+                {
+                    "link": "https://wisht7b-api.algorithms.ws/uploads/5239b5ef-ace9-48a9-bacf-513db4a532dc.jpeg",
+                    "preview": "https://wisht7b-api.algorithms.ws/uploads/5239b5ef-ace9-48a9-bacf-513db4a532dc.jpeg"
+                },
+                {
+                    "link": "https://wisht7b-api.algorithms.ws/uploads/bebb37c0-6bdf-4e82-9483-ed174421ef60.jpeg",
+                    "preview": "https://wisht7b-api.algorithms.ws/uploads/bebb37c0-6bdf-4e82-9483-ed174421ef60.jpeg"
+                }
+            ],
+            "owner": {
+                "fullname": "Bader",
+                "phone": "+966564646590",
+                "id": 69,
+                "img": "https://wisht7b-api.algorithms.ws/uploads/b768d2b3-7991-4150-adef-bb4714026393.jpeg"
+            },
+            "comments": [
+                {
+                    "comment": "هلا بك",
+                    "type": "MAIN",
+                    "id": 21,
+                    "createdAt": "2023-11-08T15:01:18.379Z",
+                    "user": {
+                        "fullname": "Ismael",
+                        "username": "ttttt",
+                        "id": 60,
+                        "img": "https://wisht7b-api.algorithms.ws/uploads/9cc67126-6413-4ecd-8154-c92f5d7cc178.jpeg"
+                    }
+                }
+            ],
+            "likes": []
+        },
+        {
+            "content": "هلا",
+            "status": "ACTIVE",
+            "likesCount": 0,
+            "type": "TEXT",
+            "commentsCount": 0,
+            "privacy": "PUBLIC",
+            "location": {
+                "coordinates": []
+            },
+            "media": {},
+            "isLike": false,
+            "totalViews": 0,
+            "viewsCount": 0,
+            "id": 112,
+            "createdAt": "2023-11-06T17:15:56.769Z",
+            "files": [
+                {
+                    "link": "https://wisht7b-api.algorithms.ws/uploads/5239b5ef-ace9-48a9-bacf-513db4a532dc.jpeg",
+                    "preview": "https://wisht7b-api.algorithms.ws/uploads/5239b5ef-ace9-48a9-bacf-513db4a532dc.jpeg"
+                }
+            ],
+            "owner": {
+                "fullname": "Bader",
+                "phone": "+966564646590",
+                "id": 69,
+                "img": "https://wisht7b-api.algorithms.ws/uploads/b768d2b3-7991-4150-adef-bb4714026393.jpeg"
+            },
+            "comments": [],
+            "likes": []
+        },
+        {
+            "content": "هلا",
+            "status": "ACTIVE",
+            "likesCount": 0,
+            "type": "TEXT",
+            "commentsCount": 0,
+            "privacy": "PUBLIC",
+            "location": {
+                "coordinates": []
+            },
+            "media": {},
+            "isLike": false,
+            "totalViews": 0,
+            "viewsCount": 0,
+            "id": 111,
+            "createdAt": "2023-11-06T17:15:33.847Z",
+            "files": [],
+            "owner": {
+                "fullname": "Bader",
+                "phone": "+966564646590",
+                "id": 69,
+                "img": "https://wisht7b-api.algorithms.ws/uploads/b768d2b3-7991-4150-adef-bb4714026393.jpeg"
+            },
+            "comments": [],
+            "likes": []
+        },
+        {
+            "content": "\"لم يتأخر رزقك ولم يفتك القطار ولم يسبقك أحد، هي أقدار الله وكلها في صالحك ورب الخير لا يقضي إلا بالخير، ولو شاء لأعطاك أمانيك في غمضة عين، ولا شيء يعيننا إلا يقيننا التام بأن الله يحسن التدبير ولن يضيعنا\"\n\nالدكتور مصطفى محمود",
+            "status": "ACTIVE",
+            "likesCount": 0,
+            "type": "TEXT",
+            "commentsCount": 0,
+            "privacy": "PUBLIC",
+            "location": {
+                "coordinates": []
+            },
+            "media": {},
+            "isLike": false,
+            "totalViews": 0,
+            "viewsCount": 0,
+            "id": 108,
+            "createdAt": "2023-11-02T19:57:57.524Z",
+            "files": [],
+            "owner": {
+                "fullname": "Bader",
+                "phone": "+966564646590",
+                "id": 69,
+                "img": "https://wisht7b-api.algorithms.ws/uploads/b768d2b3-7991-4150-adef-bb4714026393.jpeg"
+            },
+            "comments": [],
+            "likes": []
+        },
+        {
+            "content": "مكتبه كتب \n\nدليل جدتي لقتل الاوغاد",
+            "status": "ACTIVE",
+            "likesCount": 0,
+            "type": "TEXT",
+            "commentsCount": 0,
+            "privacy": "PUBLIC",
+            "location": {
+                "coordinates": []
+            },
+            "media": {},
+            "isLike": false,
+            "totalViews": 0,
+            "viewsCount": 0,
+            "id": 107,
+            "createdAt": "2023-11-02T19:56:14.231Z",
+            "files": [],
+            "owner": {
+                "fullname": "Bader",
+                "phone": "+966564646590",
+                "id": 69,
+                "img": "https://wisht7b-api.algorithms.ws/uploads/b768d2b3-7991-4150-adef-bb4714026393.jpeg"
+            },
+            "comments": [],
+            "likes": []
+        },
+        {
+            "content": "المستحيل ليس سعوديا😍😍😍😍",
+            "status": "ACTIVE",
+            "likesCount": 0,
+            "type": "TEXT",
+            "commentsCount": 0,
+            "privacy": "PUBLIC",
+            "location": {
+                "coordinates": []
+            },
+            "media": {},
+            "isLike": false,
+            "totalViews": 0,
+            "viewsCount": 0,
+            "id": 97,
+            "createdAt": "2023-11-02T13:59:03.310Z",
+            "files": [],
+            "owner": {
+                "fullname": "Bader",
+                "phone": "+966564646590",
+                "id": 69,
+                "img": "https://wisht7b-api.algorithms.ws/uploads/b768d2b3-7991-4150-adef-bb4714026393.jpeg"
+            },
+            "comments": [],
+            "likes": []
+        },
+        {
+            "content": "النصر يارب 🇵🇸🇵🇸🇵🇸🇵🇸🇵🇸🇵🇸 النصر يارب 🇵🇸🇵🇸🇵🇸🇵🇸🇵🇸🇵🇸  النصر يارب 🇵🇸🇵🇸🇵🇸🇵🇸🇵🇸🇵🇸 النصر يارب 🇵🇸🇵🇸🇵🇸🇵🇸🇵🇸🇵🇸 النصر يارب 🇵🇸🇵🇸🇵🇸🇵🇸🇵🇸🇵🇸  النصر يارب 🇵🇸🇵🇸🇵🇸🇵🇸🇵🇸🇵🇸 ",
+            "status": "ACTIVE",
+            "likesCount": 0,
+            "type": "TEXT",
+            "commentsCount": 0,
+            "privacy": "PUBLIC",
+            "location": {
+                "coordinates": []
+            },
+            "media": {},
+            "isLike": false,
+            "totalViews": 0,
+            "viewsCount": 0,
+            "id": 90,
+            "createdAt": "2023-11-02T10:16:58.999Z",
+            "files": [],
+            "owner": {
+                "fullname": "Ismael",
+                "id": 60,
+                "img": "https://wisht7b-api.algorithms.ws/uploads/9cc67126-6413-4ecd-8154-c92f5d7cc178.jpeg"
+            },
+            "comments": [],
+            "likes": []
+        },
+        {
+            "content": "النصر يارب 🇵🇸🇵🇸",
+            "status": "ACTIVE",
+            "likesCount": 0,
+            "type": "TEXT",
+            "commentsCount": 0,
+            "privacy": "PUBLIC",
+            "location": {
+                "coordinates": []
+            },
+            "media": {},
+            "isLike": false,
+            "totalViews": 0,
+            "viewsCount": 0,
+            "id": 88,
+            "createdAt": "2023-11-02T10:11:19.734Z",
+            "files": [],
+            "owner": {
+                "fullname": "Ismael",
+                "id": 60,
+                "img": "https://wisht7b-api.algorithms.ws/uploads/9cc67126-6413-4ecd-8154-c92f5d7cc178.jpeg"
+            },
+            "comments": [],
+            "likes": []
+        },
+        {
+            "content": "🇵🇸 فلسطين",
+            "status": "ACTIVE",
+            "likesCount": 0,
+            "type": "TEXT",
+            "commentsCount": 1,
+            "privacy": "PUBLIC",
+            "location": {
+                "coordinates": []
+            },
+            "media": {},
+            "isLike": false,
+            "totalViews": 0,
+            "viewsCount": 0,
+            "id": 87,
+            "createdAt": "2023-11-02T09:56:31.909Z",
+            "files": [],
+            "owner": {
+                "fullname": "Ismael",
+                "id": 60,
+                "img": "https://wisht7b-api.algorithms.ws/uploads/9cc67126-6413-4ecd-8154-c92f5d7cc178.jpeg"
+            },
+            "comments": [
+                {
+                    "comment": "فالقلب ❤️",
+                    "type": "MAIN",
+                    "id": 18,
+                    "createdAt": "2023-11-08T12:43:21.251Z",
+                    "user": {
+                        "fullname": "Ismael",
+                        "username": "ttttt",
+                        "id": 60,
+                        "img": "https://wisht7b-api.algorithms.ws/uploads/9cc67126-6413-4ecd-8154-c92f5d7cc178.jpeg"
+                    }
+                }
+            ],
+            "likes": []
+        },
+        {
+            "content": "السلام عليكم بسم الله",
+            "status": "ACTIVE",
+            "likesCount": 0,
+            "type": "TEXT",
+            "commentsCount": 0,
+            "privacy": "PUBLIC",
+            "location": {
+                "coordinates": []
+            },
+            "media": {},
+            "isLike": false,
+            "totalViews": 0,
+            "viewsCount": 0,
+            "id": 79,
+            "createdAt": "2023-11-01T19:06:34.077Z",
+            "files": [],
+            "owner": {
+                "fullname": "Bader",
+                "phone": "+966564646590",
+                "id": 69,
+                "img": "https://wisht7b-api.algorithms.ws/uploads/b768d2b3-7991-4150-adef-bb4714026393.jpeg"
+            },
+            "comments": [],
+            "likes": []
+        },
+        {
+            "content": "هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام \"هنا يوجد محتوى نصي، هنا يوجد محتوى نصي\" فتجعلها تبدو (أي الأحرف) وكأنها نص مقروء. العديد من برامح النشر المكتبي وبرامح تحرير صفحات الويب تستخدم لوريم إيبسوم بشكل إفتراضي كنموذج عن النص، وإذا قمت بإدخال \"lorem ipsum\" في أي محرك بحث ستظهر العديد من المواقع الحديثة العهد في نتائج البحث. على مدى السنين ظهرت نسخ جديدة ومختلفة من نص لوريم إيبسوم، أحياناً عن طريق الصدفة، وأحياناً عن عمد كإدخال بعض العبارات الفكاهية إليها.",
+            "status": "ACTIVE",
+            "likesCount": 0,
+            "type": "TEXT",
+            "commentsCount": 0,
+            "privacy": "PUBLIC",
+            "location": {
+                "coordinates": []
+            },
+            "media": {},
+            "isLike": false,
+            "totalViews": 0,
+            "viewsCount": 0,
+            "id": 74,
+            "createdAt": "2023-10-31T13:54:56.754Z",
+            "files": [],
+            "owner": {
+                "fullname": "Ismael",
+                "id": 60,
+                "img": "https://wisht7b-api.algorithms.ws/uploads/9cc67126-6413-4ecd-8154-c92f5d7cc178.jpeg"
+            },
+            "comments": [],
+            "likes": []
+        },
+        {
+            "content": "لندنللنلنل",
+            "status": "ACTIVE",
+            "likesCount": 0,
+            "type": "TEXT",
+            "commentsCount": 0,
+            "privacy": "PUBLIC-REGION",
+            "location": {
+                "coordinates": []
+            },
+            "media": {},
+            "isLike": false,
+            "totalViews": 0,
+            "viewsCount": 0,
+            "id": 69,
+            "createdAt": "2023-10-31T07:20:22.958Z",
+            "files": [],
+            "owner": {
+                "fullname": "Ismael",
+                "id": 60,
+                "img": "https://wisht7b-api.algorithms.ws/uploads/9cc67126-6413-4ecd-8154-c92f5d7cc178.jpeg"
+            },
+            "comments": [],
+            "likes": []
+        },
+        {
+            "content": "اتنتتاتا",
+            "status": "ACTIVE",
+            "likesCount": 0,
+            "type": "TEXT",
+            "commentsCount": 0,
+            "privacy": "PUBLIC-REGION",
+            "location": {
+                "coordinates": [
+                    31.705771230905224,
+                    31.450459833114913
+                ],
+                "type": "Point"
+            },
+            "media": {},
+            "isLike": false,
+            "totalViews": 0,
+            "viewsCount": 0,
+            "id": 68,
+            "createdAt": "2023-10-31T07:15:14.012Z",
+            "files": [],
+            "owner": {
+                "fullname": "Ismael",
+                "id": 60,
+                "img": "https://wisht7b-api.algorithms.ws/uploads/9cc67126-6413-4ecd-8154-c92f5d7cc178.jpeg"
+            },
+            "comments": [],
+            "likes": []
+        },
+        {
+            "content": "بوست خاص لمنطقة ",
+            "status": "ACTIVE",
+            "likesCount": 0,
+            "type": "TEXT",
+            "commentsCount": 0,
+            "privacy": "PUBLIC-REGION",
+            "location": {
+                "coordinates": [
+                    31.705771230905224,
+                    31.450459833114913
+                ],
+                "type": "Point"
+            },
+            "media": {},
+            "isLike": false,
+            "totalViews": 0,
+            "viewsCount": 0,
+            "id": 67,
+            "createdAt": "2023-10-31T07:13:23.413Z",
+            "files": [],
+            "owner": {
+                "fullname": "Ismael",
+                "id": 60,
+                "img": "https://wisht7b-api.algorithms.ws/uploads/9cc67126-6413-4ecd-8154-c92f5d7cc178.jpeg"
+            },
+            "comments": [],
+            "likes": []
         }
-    </script>
+    ];
+        
+        // Number of items per page
+        var itemsPerPage = 10;
+        
+        // Function to display paginated data
+        function displayData(page) {
+            var startIndex = (page - 1) * itemsPerPage;
+            var endIndex = startIndex + itemsPerPage;
+            var currentPageData = data.slice(startIndex, endIndex);
+        
+            // Clear previous content
+            $('#data-container').empty();
+        
+            // Display current page data
+            currentPageData.forEach(function(item) {
+                // Create HTML elements for each item and append them to #data-container
+                var itemHTML = '<div class="item">';
+                itemHTML += '<p>' + item.owner.fullname + '</p>';
+                // Add more content as needed
+                itemHTML += '</div>';
+                $('#data-container').append(itemHTML);
+            });
+        }
+        
+        // Initial display (page 1)
+        displayData(1);
+        
+        // Create pagination links
+        function createPaginationLinks() {
+            var totalPages = Math.ceil(data.length / itemsPerPage);
+        
+            for (var i = 1; i <= totalPages; i++) {
+                var linkHTML = '<a href="#" onclick="changePage(' + i + ')">' + i + '</a>';
+                $('#pagination-container').append(linkHTML);
+            }
+        }
+        
+        // Function to change page
+        function changePage(page) {
+            displayData(page);
+        }
+        
+        // Initialize pagination
+        createPaginationLinks();
+        </script>
+        
 </body>
 </html>
