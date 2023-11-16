@@ -202,7 +202,7 @@ section {
     border-bottom: 0;
 }
 .person-name{
-    /* color: white; */
+    color: white;
     font-weight: bold;
 }
 .radio-container .parent{
@@ -786,6 +786,7 @@ background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(206,219,235,1) 
 .nine .card-nine{
     /* background-image: url('../images/sudia.jpg'); */
     background-repeat: no-repeat;
+    background-color: black;
     background-size: contain;
     background-position: center;
     background-position-y: top;
