@@ -266,8 +266,8 @@ section {
     -o-border-radius: 50%;
 }
 .persons-react-count{
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
@@ -286,14 +286,15 @@ section {
 }
 .persons-react1 .emoji,.persons-react2 .emoji,.persons-react3 .emoji,.persons-react4 .emoji{
     position: absolute;
-    width: 30px;
-    bottom: -7px;
-    left: -4px;
+    width: 25px;
+    bottom: -5px;
+    /* left: -4px; */
+    left: 0;
 }
 @media (max-width:500px) {
     .persons-react,.persons-react-count{
-        width: 45px;
-        height: 45px;
+        width: 35px;
+        height: 35px;
     }
     .persons-react1 .emoji,.persons-react2 .emoji,.persons-react3 .emoji,.persons-react4 .emoji{
         width: 20px; 
@@ -459,7 +460,9 @@ section {
         width: 25px;
     }
 }
-
+.reacts{
+    align-items: center;
+}
 /* end section 3 */
 
 /*  section 4 */
@@ -1173,8 +1176,8 @@ background: rgb(249 241 241 / 50%);
 }
 @media (max-width:500px) {
     .persons-react-count{
-        width: 45px;
-        height: 45px;
+        width: 35px;
+        height: 35px;
     }
 }
 .music-card {

@@ -928,7 +928,8 @@ function updateButtonState2() {
                         ${generateLikes(data.likes)}
                           <div class="persons-react-count" id="btn2" data-bs-toggle="modal"
                               data-bs-target="#staticBackdrop" style="cursor: pointer;">
-                              <span>${data.likesCount}</span>
+                             
+                              <span>${data.likesCount > 0 ? '+' : ''}${data.likesCount}</span>
                            </div>
                       </div>
                                   <div class="d-flex justify-content-center">
@@ -1050,7 +1051,7 @@ function updateButtonState2() {
                     ${generateLikes(data.likes)}
                       <div class="persons-react-count" id="btn2" data-bs-toggle="modal"
                           data-bs-target="#staticBackdrop" style="cursor: pointer;">
-                          <span>${data.likesCount}</span>
+                          <span>${data.likesCount > 0 ? '+' : ''}${data.likesCount}</span>
                        </div>
                   </div>
                                 <div class="d-flex justify-content-center">
@@ -1172,7 +1173,7 @@ function updateButtonState2() {
               ${generateLikes(data.likes)}
                 <div class="persons-react-count" id="btn2" data-bs-toggle="modal"
                     data-bs-target="#staticBackdrop" style="cursor: pointer;">
-                    <span>${data.likesCount}</span>
+                    <span>${data.likesCount > 0 ? '+' : ''}${data.likesCount}</span>
                  </div>
             </div>
           </div>
@@ -1301,7 +1302,7 @@ function updateButtonState2() {
                        ${generateLikes(data.likes)}
                          <div class="persons-react-count" id="btn2" data-bs-toggle="modal"
                              data-bs-target="#staticBackdrop" style="cursor: pointer;">
-                             <span>${data.likesCount}</span>
+                             <span>${data.likesCount > 0 ? '+' : ''}${data.likesCount}</span>
                           </div>
                      </div>
                 </div>
@@ -1450,7 +1451,7 @@ function updateButtonState2() {
         ${generateLikes(data.likes)}
           <div class="persons-react-count" id="btn2" data-bs-toggle="modal"
               data-bs-target="#staticBackdrop" style="cursor: pointer;">
-              <span>${data.likesCount}</span>
+              <span>${data.likesCount > 0 ? '+' : ''}${data.likesCount}</span>
            </div>
       </div>
         
@@ -1556,7 +1557,7 @@ function updateButtonState2() {
                       ${generateLikes(data.likes)}
                         <div class="persons-react-count" id="btn2" data-bs-toggle="modal"
                             data-bs-target="#staticBackdrop" style="cursor: pointer;">
-                            <span>${data.likesCount}</span>
+                            <span>${data.likesCount > 0 ? '+' : ''}${data.likesCount}</span>
                          </div>
                     </div>
                           <div class="d-flex justify-content-center">
@@ -1689,7 +1690,7 @@ function updateButtonState2() {
           ${generateLikes(data.likes)}
             <div class="persons-react-count" id="btn2" data-bs-toggle="modal"
                 data-bs-target="#staticBackdrop" style="cursor: pointer;">
-                <span>${data.likesCount}</span>
+                <span>${data.likesCount > 0 ? '+' : ''}${data.likesCount}</span>
              </div>
         </div>
               <div class="d-flex justify-content-center">
