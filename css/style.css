@@ -259,7 +259,7 @@ section {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    border: 5px solid #bbb9b1;
+    border: 4px solid #bbb9b1;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
@@ -308,6 +308,10 @@ section {
   height: 2px;
   margin-top: 27px;
 }
+.comment-box .persons-react1{
+    display: flex;
+    justify-content: center;
+}
 @media (min-width:992px) {
     .comment-box .persons-react1{
         width: 12%;
@@ -347,7 +351,7 @@ section {
 }
 @media (max-width:425px) {
     .comment-box .persons-react1{
-        width: 20%;
+        width: 17%;
     }
     .comment-box .bg-white{
         width: 80%;
