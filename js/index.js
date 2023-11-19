@@ -1876,17 +1876,17 @@
 
       function handleImageError(imgElement) {
         // Replace the image source with a default image URL
-        imgElement.src = '../images/avatar-1.png'; 
+        imgElement.src = 'images/avatar-1.png'; 
         imgElement.alt = ''; 
       }
       function handlebigImageError(imgElement) {
         // Replace the image source with a default image URL
-        imgElement.src = '../images/error.png'; 
+        imgElement.src = 'images/error.png'; 
         imgElement.alt = ''; 
       }
       function handleBackgroundImageError(container) {
         // Replace the background image with a default image URL
-        container.style.backgroundImage = 'url("../images/error.png")'; 
+        container.style.backgroundImage = 'url("images/error.png")'; 
       }
 
 
