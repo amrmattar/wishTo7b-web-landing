@@ -502,7 +502,7 @@ background: linear-gradient(0deg, rgba(218,200,238,1) 21%, rgb(197 154 192) 60%)
 .falimy-data .icons{
     font-weight: 300;
     font-size: 13px;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 .falimy-data .person-name{
     color: black;
@@ -548,7 +548,13 @@ background: linear-gradient(0deg, rgba(218,200,238,1) 21%, rgb(197 154 192) 60%)
     bottom: 10%;
     color: white;
 }
-
+.maparea  .whereIAM{
+    position: absolute;
+    right: 5%;
+    bottom: 20%;
+    color: black;
+    font-weight: bold;
+}
 
 @media (max-width:330px) {
     .falimy-data .icons span:nth-child(1) {
@@ -1349,3 +1355,15 @@ background: rgb(249 241 241 / 50%);
     -moz-box-shadow:    0 0 5px 4px rgba(0, 0, 0, 0.2);
     box-shadow:         0 0 5px 4px rgba(0, 0, 0, 0.2);
 }
+.map-container {
+    height: 300px; /* Adjust the height as needed */
+   width: 100%; /* Adjust the margin as needed */
+}
+.mapurl{
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+/* .mapurl:hover{
+    color: black;
+} */

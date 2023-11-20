@@ -91,6 +91,8 @@
               createGiftCard(item);
             } else if (item.type === 'VIDEO') {
               createVedioCard(item);
+            }else if (item.type === 'LOCATION') {
+              createLocationCard(item);
             }
 
 
@@ -107,7 +109,7 @@
         const OCCASION = document.getElementById('OCCASION');
         const GIFT = document.getElementById('GIFT');
         const VIDEO = document.getElementById('VIDEO');
-
+        const Locate = document.getElementById('Locate');
         // Remove existing cards from the containers
         musicCardContainer.innerHTML = '';
         filmCardContainer.innerHTML = '';
@@ -117,7 +119,7 @@
         OCCASION.innerHTML = '';
         GIFT.innerHTML = '';
         VIDEO.innerHTML = '';
-
+        Locate.innerHTML = '';
 
       }
       function initiatePagination(data, type) {
@@ -223,6 +225,8 @@
             createGiftCard(item);
           } else if (item.type === 'VIDEO') {
             createVedioCard(item);
+          }else if (item.type === 'LOCATION') {
+            createLocationCard(item);
           }
           else if (selectedType === 'all') {
             // Render based on item type
@@ -240,6 +244,8 @@
               createGiftCard(item);
             } else if (item.type === 'VIDEO') {
               createVedioCard(item);
+            } else if (item.type === 'LOCATION') {
+              createLocationCard(item);
             }
           }
         });
@@ -460,6 +466,8 @@
               createGiftCard(item);
             } else if (item.type === 'VIDEO') {
               createVedioCard(item);
+            } else if (item.type === 'LOCATION') {
+              createLocationCard(item);
             }
           });
         }
@@ -595,6 +603,9 @@
             createGiftCard(item);
           } else if (item.type === 'VIDEO') {
             createVedioCard(item);
+          }
+          else if (item.type === 'LOCATION') {
+            createLocationCard(item);
           }
         });
 
@@ -1510,144 +1521,208 @@
       }
             
       function createLocationCard(data) {
-        //   const cardContainer = document.getElementById('LOCATION');
-        //   const card = document.createElement('div');
-        //   card.className = 'col-lg-8 p-0 music-card';
-        //   getCountryName(coordinates, function (country) {
-        //   card.innerHTML = `
-        //   <div class="card card-three">
-        //   <div class=" head-div d-flex justify-content-between">
-        //       <div class="family d-flex align-items-center gap-2">
-        //           <div class="persons-react1">
-        //               <img src="./images/01.jpg" class=" persons-react " alt="">
-        //           </div>
-        //           <div class="falimy-data">
-        //               <p class="person-name">أبو دينا</p>
-        //               <div class="icons">
-        //                   <span dir="rtl"> <i class="fa-solid fa-location-dot"
-        //                           style="margin: 0 4px;"></i>الرياض</span>
-        //                   <span dir="rtl"> <i class="fa-solid fa-user-group"
-        //                           style="margin: 0 4px;"></i>العائلة</span>
+        const cardContainer = document.getElementById('Locate');
+        const card = document.createElement('div');
+        card.className = 'col-lg-8 p-0 music-card';
 
-        //               </div>
+        card.innerHTML = `
+                <div class="card card-three">
+                <div class=" head-div d-flex justify-content-between">
+                    <div class="family d-flex align-items-center gap-2">
+                        <div class="persons-react1">
+                        <a href="" class="personal" target="_blank" > 
+                          <img src="${data.owner.img}" class="persons-react" alt="" onerror="handleImageError(this)">
+                        </a>
+                        </div>
+                        <div class="falimy-data">
+                        <a href="" class="personal" target="_blank" > 
+                          <p class="person-name">${data.owner.fullname}</p>
+                        </a> 
+                            <div class="icons">
+                            <span dir="rtl" class="contryname" > </span>
+                              
 
-        //           </div>
-        //       </div>
-        //       <div class="d-flex align-items-end flex-column">
-        //           <div class="dropdown">
-        //               <div class=" alarm btn btn-secondary dropdown-toggle" type="button"
-        //                   data-bs-toggle="dropdown" aria-expanded="false">
-        //                   <i class="fa-solid fa-ellipsis"></i>
-        //               </div>
-        //               <ul class="dropdown-menu">
-        //                   <li><a class="dropdown-item" href="#">رؤية التفاصيل</a></li>
-        //                   <li><a class="dropdown-item" href="#">حذف</a></li>
+                            </div>
 
-        //               </ul>
-        //           </div>
-        //           <div class="time">
-        //               <span>منذ 3 ساعات</span>
-        //           </div>
-        //       </div>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-end flex-column">
+                        <div class="dropdown">
+                            <div class=" alarm btn btn-secondary dropdown-toggle" type="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </div>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">رؤية التفاصيل</a></li>
+                                <li><a class="dropdown-item" href="#">حذف</a></li>
 
-        //   </div>
-        //   <div class="d-flex justify-content-center resturant-data">
-        //       <img class="card-img-top" src="./images/shepreani.jpg" alt="Card image cap">
+                            </ul>
+                        </div>
+                        <div class="time">
+                            <span>منذ 3 ساعات</span>
+                        </div>
+                    </div>
 
-        //       <div class="whereIAM">
-        //           <span>انا في</span><br>
-        //           <span>${data.location.coordinates}</span><br>
-        //           <span><i class="fa-solid fa-location-dot" style="margin: 0 4px;"></i> ${country} </span>
+                </div>
+                <div class="d-flex justify-content-center resturant-data">
+            
+              
+                <div id="mapcontainer"></div>
+                    <div class="whereIAM">
+                        <span>انا في</span><br>
+                        <a href="" target="_blank" class="d-flex align-items-center mapurl">
+                        <i class="fa-solid fa-location-dot" style="margin: 0 4px;"> </i>
+                          <p>
+                          <span class="regionName"></span> —
+                            <span class="area">  </span>
+                          
+                          </p>
+                        </a>
+                      
+                    </div>
+                </div>
+                <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                  
+                <div>
+                <div class="d-flex reacts" style = "margin-top=0">
+                ${generateLikes(data.likes)}
+                  <div class="persons-react-count" id="btn2" data-bs-toggle="modal"
+                      data-bs-target="#staticBackdrop" style="cursor: pointer;">
+                      <span>${data.likesCount > 0 ? '+' : ''}${data.likesCount}</span>
+                  </div>
+              </div>
+            </div>
 
-        //       </div>
-        //   </div>
-        //   <div class="card-body">
-        //       <div class="d-flex justify-content-between align-items-center">
-        //           <div>
-        //               <span><i class="fa-solid fa-user-large"></i> انا مع </span>
+            <div class="vission-comments">
+            <div>
+                <span>
+                    <i class="fa-regular fa-eye"></i>
+                    ${data.totalViews}
+                </span>
+            </div>
+          
+        </div>
+                </div>
+              
+                            <div class="d-flex justify-content-center">
+                              <span class="frist-hr"></span>
+                            </div>
+                          
+                            ${generateComments(data.comments)}
+                      
+                            <div class="d-flex justify-content-center align-items-center mb-3 mt-4 readmore" id="comentbtn${data.id}"
+                            data-bs-toggle="modal" 
+                            data-bs-target="#largeModal" 
+                            style="cursor: pointer;"
+                            >
+                            <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down"
+                              style="margin-right: 13px;"></i></span>
+                          </div>
+                      
+            </div>
+        </div>
+                    `;
 
-        //               <span> <a href="#" class="Iam-With">فهد الدوبخ</a></span>
-        //           </div>
-        //           <div>
-        //               <span><i class="fa-regular fa-eye"></i> 50</span>
-        //           </div>
+        const likebtn = card.querySelector(`#btn2`);
 
-        //       </div>
-        //       <div class="d-flex reacts">
-        //           <div class="persons-react1">
-        //               <a href="#" target="_blank"> <img src="./images/01.jpg" class=" persons-react "
-        //                       alt=""></a>
-        //               <img class="emoji" src="./images/emo1.png" alt="">
-        //           </div>
-        //           <div class="persons-react2">
-        //               <a href="#" target="_blank"> <img src="./images/02.jpg" class="persons-react"
-        //                       alt=""></a>
-        //               <img class="emoji" src="./images/emo2.png" alt="">
-        //           </div>
-        //           <div class="persons-react3">
-        //               <a href="#" target="_blank"> <img src="./images/03.jpg" class="persons-react "
-        //                       alt=""></a>
-        //               <img class="emoji" src="./images/ic.png" alt="">
-        //           </div>
+        if (likebtn) {
+          likebtn.addEventListener('click', function () {
+            console.log(data.id);
+            displayLikesData(data.id)
+          });
+        }
+        if (data.comments.length <= 1) {
+          card.querySelector('.readmore').classList.add("hide");
+        }
+        if (data.comments.length == 0) {
+          card.querySelector('.frist-hr').classList.add("hide");
+        }
+        const readMoreButton = card.querySelector(`#comentbtn${data.id}`);
+        if (readMoreButton) {
+          readMoreButton.addEventListener('click', function () {
+            displayCommentsData(data.id);
+            console.log(data.id);
+          });
+        }
 
-        //           <div class="persons-react-count" id="btn3" data-bs-toggle="modal"
-        //               data-bs-target="#staticBackdrop" style="cursor: pointer;">
-        //               <span>+6</span>
-        //           </div>
-        //       </div>
-        //       <div class="d-flex justify-content-center">
-        //           <span class="frist-hr"></span>
-        //       </div>
 
-        //       <div class="d-flex  comment-box align-items-center">
-        //           <div class="persons-react1">
-        //               <img src="./images/01.jpg" class=" persons-react " alt="">
+        // MapKit code
+        const mapContainer = card.querySelector('#mapcontainer');
+        const mapId = 'map' + data.id;
+        mapContainer.id = mapId;
+        mapContainer.className = 'map-container';
 
-        //           </div>
-        //           <div class="bg-white">
-        //               <div class="comment-info ">
-        //                   <div class="d-flex justify-content-between">
-        //                       <p class="comment-person-name">بدر الدريعي</p>
-        //                       <span class="comment-time"> منذ 12 دقيقة</span>
-        //                   </div>
-        //                   <div class="d-flex mt-2 comment-time">
-        //                       <span>لاتنسي تحجز لي هديه من الملفا يا فهد</span>
-        //                   </div>
-        //               </div>
-        //           </div>
-        //       </div>
-        //       <div class="d-flex justify-content-center align-items-center mb-3 mt-4 readmore" id="comentbtn3"
-        //           data-bs-toggle="modal" data-bs-target="#largeModal" style="cursor: pointer;">
-        //           <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down"
-        //                   style="margin-right: 13px;"></i></span>
-        //       </div>
-        //   </div>
+        // Add the card to the container
+        cardContainer.appendChild(card);
 
-        // </div>
-        //       `;
-        //         const updatedButtons = document.querySelectorAll('.persons-react-count');
-        //         updatedButtons.forEach(button => {
+        // Initialize MapKit after the card is added to the DOM
+        console.log('Initializing MapKit');
+        mapkit.init({
+          authorizationCallback: function (done) {
+            done("eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkNWNzdCQlg1NVEifQ.eyJpc3MiOiI3VjMzN1RVTUhQIiwiaWF0IjoxNzAwNDgzMjM0LCJleHAiOjE3MzIwNjA4MDB9.1--SuZK6kPCIK6phmNH-14xsH5HKkaZqBokr-K61HSs5ZmXJcn6xPVpJYXsiDvk0c4sTzeXJP8jIZ8JDO-dvpQ"); // Replace with your MapKit JS key
+          },
+          language: "en"
+        });
 
-        //           button.addEventListener('click', handleButtonClick);
-        //         });
-        //         if (data.comments.length <= 1) {
-        //           console.log(data.comments.length);
-        //           card.querySelector('.readmore').classList.add("hide");
-        //         }
-        //         if (data.comments.length == 0) {
-        //           card.querySelector('.frist-hr').classList.add("hide");
-        //         }
-        //         cardContainer.appendChild(card);
-        //         const CommnetsButtons = document.querySelectorAll('.readmore');
-        //         CommnetsButtons.forEach(button => {
-        //           button.addEventListener('click', function () {
-        //             const dataId = button.id.replace("comentbtn", "");
-        //             const data = posts.find(item => item.id === parseInt(dataId));
-        //             displayCommentsData(data.comments);
-        //           });
-        //         });
-        // })
+        const map = new mapkit.Map(mapId, {
+          showsMapTypeControl: false,
+          showsCompass: mapkit.FeatureVisibility.Hidden
+        });
+        var coordinateRegion = new mapkit.CoordinateRegion(
+          new mapkit.Coordinate(25.197525,  55.274288),
+          new mapkit.CoordinateSpan(0.234, 0.23423)
+        );
+        map.region = coordinateRegion;
+
+        const coordinate = new mapkit.Coordinate(25.197525,  55.274288);
+        const marker = new mapkit.MarkerAnnotation(coordinate);
+        map.addAnnotation(marker);
+
+        // Reverse geocoding
+        const reverseGeocoder = new mapkit.Geocoder({
+          language: "en"
+        });
+
+        reverseGeocoder.reverseLookup(coordinate, function (error, data) {
+          if (error) {
+            console.error("Reverse geocoding error:", error);
+          } else {
+            console.log(data);
+            const placeName = data.results[0].name;
+            const CeName = data.results[0].administrativeArea;
+            const url = data.results[0]._wpURL;
+            const country = data.results[0].country;
+            console.log("Current location:", placeName);
+
+            // Display place name on the card
+            const mapurl = document.querySelector('.mapurl');
+            if (mapurl) {
+              mapurl.setAttribute("href", `${url}`)
+            }
+            const whereIAMElement = card.querySelector('.whereIAM');
+            const contryname = card.querySelector('.contryname');
+            const Area = document.querySelector(".area");
+            const regionName = document.querySelector(".regionName");
+            if (regionName) {
+              regionName.innerText = `${placeName}`;
+            }
+            if (Area) {
+              Area.innerText = `${CeName}`;
+            }
+            if (contryname) {
+              contryname.innerHTML += `<i class="fa-solid fa-location-dot" style="margin: 0 4px;"></i>${country}`;
+            }
+          }
+        });
+
+
       }
+
+
+
+
+
 
       function playVideo(videoUrl) {
         const videoContainer = document.getElementById("videoContainer");
@@ -1863,5 +1938,4 @@
         container.style.backgroundImage = 'url("images/error.png")'; 
       }
 
-
-
+ 

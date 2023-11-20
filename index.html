@@ -13,7 +13,10 @@
     <link rel="stylesheet" href="./css/all.min.css">
     <link rel="stylesheet" href="./css/style.css">
 
+    <script src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.js"></script>
+ 
 
+    </script>
 </head>
 
 <body dir="rtl">
@@ -69,7 +72,7 @@
                         <option value="TEXT">مقالى</option>
                         <option value="IMAGE">صوره</option>
                         <option value="VIDEO">فيديو</option>
-                        <!-- <option value="LOCATION">لوكيشن</option> -->
+                        <option value="LOCATION">لوكيشن</option>
                         <option value="MOVIE">فيلم</option>
                         <option value="MUSIC">موسيقي</option>
                     </select>
@@ -88,8 +91,18 @@
 
         <section id="notFoundMessage"></section>
 
+        <!-- Location -->
+        <section>
+            <div class="container container-md forth maparea">
+                <div class="row d-flex justify-content-center" id="Locate">
+                    <div class="col-lg-8 p-0 music-card">
+                        <div id="map"></div>
+                      
+                    </div>
+                </div>
+            </div>
 
-
+        </section>
         <!-- OCCASION -->
         <section id="OCCASION-SECTION">
             <div class="container container-md nine">
@@ -170,3 +183,7 @@
     <script src="./js/bootstrap.bundle.min.js"></script>
     <script src="./js/all.min.js"></script>
     <script src="./js/index.js"></script>
+    
+    
+</body>
+</html>
