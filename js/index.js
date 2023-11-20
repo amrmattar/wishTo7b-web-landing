@@ -1,27 +1,4 @@
 
-    $(document).ready(function () {
-      $(".owl-carousel").owlCarousel({
-        items: 3, // Number of items to display by default
-        loop: true, // Infinite loop
-        margin: 10, // Space between items
-        responsive: {
-          0: {
-            items: 1, // 1 item in the carousel for small screens
-          },
-          576: {
-            items: 2, // 2 items for screens wider than 576px
-          },
-          992: {
-            items: 3, // 3 items for screens wider than 992px
-          }
-
-        }
-      });
-    });
-    // Initiate the venobox plugin
-    $(window).on('load', function () {
-      $('.venobox').venobox();
-    });
 
     const apiUrl = 'https://wisht7b-api.algorithms.ws/api/v1/posts'
     const allapi = "https://wisht7b-api.algorithms.ws/api/v1/posts?limit=1000";
@@ -1724,7 +1701,7 @@
         return commentHTML;
       }
       function generateLikes(likes) {
-        console.log(likes);
+       
         if (likes.length === 0) {
           return ``;
         }
@@ -1875,17 +1852,14 @@
       }
 
       function handleImageError(imgElement) {
-        // Replace the image source with a default image URL
         imgElement.src = 'images/avatar-1.png'; 
         imgElement.alt = ''; 
       }
       function handlebigImageError(imgElement) {
-        // Replace the image source with a default image URL
         imgElement.src = 'images/error.png'; 
         imgElement.alt = ''; 
       }
       function handleBackgroundImageError(container) {
-        // Replace the background image with a default image URL
         container.style.backgroundImage = 'url("images/error.png")'; 
       }
 
