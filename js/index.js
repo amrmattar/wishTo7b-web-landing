@@ -1669,13 +1669,16 @@
           showsMapTypeControl: false,
           showsCompass: mapkit.FeatureVisibility.Hidden
         });
+        const lang = data.location.coordinates[0];
+        const lat = data.location.coordinates[1];
+        console.log(lang, lat);
         var coordinateRegion = new mapkit.CoordinateRegion(
-          new mapkit.Coordinate(25.197525,  55.274288),
+          new mapkit.Coordinate(lat,  lang),
           new mapkit.CoordinateSpan(0.234, 0.23423)
         );
         map.region = coordinateRegion;
 
-        const coordinate = new mapkit.Coordinate(25.197525,  55.274288);
+        const coordinate = new mapkit.Coordinate(lat,  lang);
         const marker = new mapkit.MarkerAnnotation(coordinate);
         map.addAnnotation(marker);
 
