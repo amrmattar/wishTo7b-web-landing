@@ -1559,8 +1559,8 @@
                             </ul>
                         </div>
                         <div class="time">
-                            <span>منذ 3 ساعات</span>
-                        </div>
+                              <span>${timeAgo(new Date(data.createdAt))}</span>
+                            </div>
                     </div>
 
                 </div>
