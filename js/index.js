@@ -1186,92 +1186,93 @@
       }
 
       // Function to create OCCASION Post
+     
       function createOccasionCard(data) {
         const cardContainer = document.getElementById('OCCASION');
         const card = document.createElement('div');
         card.className = 'col-lg-8 p-0 music-card';
         card.innerHTML = `
-          <div class="card card-nine"
-          style="background-image: url('${data.occasion.img}');"
-          onerror="handleBackgroundImageError(this)"
-          >
-          <div class=" head-div d-flex justify-content-end">
-              <div class="dropdown">
-                  <div class=" alarm btn btn-secondary dropdown-toggle" type="button"
-                      data-bs-toggle="dropdown" aria-expanded="false">
-                      <i class="fa-solid fa-ellipsis"></i>
-                  </div>
-                  <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">رؤية التفاصيل</a></li>
-                      <li><a class="dropdown-item" href="#">حذف</a></li>
+        <div class="card card-three">
+        <div class=" head-div d-flex justify-content-end">
+            <div class="dropdown">
+                <div class=" alarm btn btn-secondary dropdown-toggle" type="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-ellipsis"></i>
+                </div>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">رؤية التفاصيل</a></li>
+                    <li><a class="dropdown-item" href="#">حذف</a></li>
 
-                  </ul>
-              </div>
-          </div>
+                </ul>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center resturant-data">
+            <img class="card-img-new-top" src="${data.occasion.img}" alt="" onerror="handlebigImageError(this)">
 
-          <div class="d-flex justify-content-between align-items-center outer-person">
-              <div class="d-flex align-items-center gap-2">
-                  <div class="person-img">
-                
+            <div class="d-flex justify-content-between align-items-center whereIAM outer-person newgif">
+                <div class="d-flex align-items-center gap-2">
+                    <div class="person-img">
+                      <a href="" class="personal" target="_blank" > 
+                         <img src="${data.owner.img}" alt="" onerror="handleImageError(this)">
+                       </a>
+                    </div>
                     <a href="" class="personal" target="_blank" > 
-                      <img src="${data.owner.img}" alt="" onerror="handleImageError(this)">
-                    </a>
-                  </div>
-                  <a href="" class="personal" target="_blank" > 
-                    <p class="person-name">${data.owner.fullname}</p>
+                     <p class="person-name">${data.owner.fullname}</p>
                   </a>
-              </div>
+                </div>
 
-              <button class="wish">
-                  وش تحب
-                  <i class="fa-solid fa-less-than"></i>
-              </button>
-          </div>
-          <div class="card-body">
+                <button class="wish">
+                    وش تحب
+                    <i class="fa-solid fa-less-than"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
 
-              <div class="d-flex justify-content-between comments">
-                  <div class="vission-name">
-                      <p>${data.occasion.name} <span>${timeAgo(new Date(data.occasion.fullDate))}</span></p>
-                  </div>
-                  <div class="vission-comments">
-                      <div>
-                          <span>  <i class="fa-regular fa-eye"></i>   ${data.totalViews}</span>
-                      </div>
-                      <div>
-                          <span class="comment-num">
-                              <i class="fa-regular fa-message"></i>
-                              ${data.commentsCount}
-                          </span>
-                      </div>
-                  </div>
-              </div>
-              <div class="d-flex flex-column ">
-                
-                  <p>${data.occasion.end ? '<span class="fact">انتهت</span>' : '<span class="fact">لم تنتهي</span>'}</p>
-
-              </div>
-              <div class="d-flex reacts" style="margin-top:25px">
-              ${generateLikes(data.likes)}
-                <div class="persons-react-count" id="btn2" data-bs-toggle="modal"
-                    data-bs-target="#staticBackdrop" style="cursor: pointer;">
-                    <span>${data.likesCount > 0 ? '+' : ''}${data.likesCount}</span>
+        <div class="d-flex justify-content-between comments">
+            <div class="vission-name">
+                <p>${data.occasion.name} <span>${timeAgo(new Date(data.occasion.fullDate))}</span></p>
+            </div>
+            <div class="vission-comments">
+                <div>
+                    <span>  <i class="fa-regular fa-eye"></i>   ${data.totalViews}</span>
+                </div>
+                <div>
+                    <span class="comment-num">
+                        <i class="fa-regular fa-message"></i>
+                        ${data.commentsCount}
+                    </span>
                 </div>
             </div>
-              
-                ${generateComments(data.comments)}
+        </div>
+        <div class="d-flex flex-column ">
+          
+            <p>${data.occasion.end ? '<span class="fact">انتهت</span>' : '<span class="fact">لم تنتهي</span>'}</p>
 
-                <div class="d-flex justify-content-center align-items-center mb-3 mt-4 readmore" id="comentbtn${data.id}"
-                data-bs-toggle="modal" 
-                data-bs-target="#largeModal" 
-                style="cursor: pointer;"
-                >
-                <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down"
-                  style="margin-right: 13px;"></i></span>
-              </div>
+        </div>
+        <div class="d-flex reacts" style="margin-top:25px">
+        ${generateLikes(data.likes)}
+          <div class="persons-react-count" id="btn2" data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop" style="cursor: pointer;">
+              <span>${data.likesCount > 0 ? '+' : ''}${data.likesCount}</span>
+          </div>
+      </div>
+        
+          ${generateComments(data.comments)}
 
-            </div>
-            </div>
-              `;
+          <div class="d-flex justify-content-center align-items-center mb-3 mt-4 readmore" id="comentbtn${data.id}"
+          data-bs-toggle="modal" 
+          data-bs-target="#largeModal" 
+          style="cursor: pointer;"
+          >
+          <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down"
+            style="margin-right: 13px;"></i></span>
+        </div>
+
+      </div>
+      </div>
+        `;
+
 
         const likebtn = card.querySelector(`#btn2`);
 
@@ -1301,75 +1302,79 @@
 
       }
       function createGiftCard(data) {
-        const cardContainer = document.getElementById('GIFT');
+        const cardContainer = document.getElementById('OCCASION');
         const card = document.createElement('div');
         card.className = 'col-lg-8 p-0 music-card';
         card.innerHTML = `
-          <div class="card card-gift"
-          style="background-image: url('${data.gift.img}');"
-          onerror="handleBackgroundImageError(this)"
+        <div class="card card-three">
+        <div class=" head-div d-flex justify-content-end">
+            <div class="dropdown">
+                <div class=" alarm btn btn-secondary dropdown-toggle" type="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-ellipsis"></i>
+                </div>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">رؤية التفاصيل</a></li>
+                    <li><a class="dropdown-item" href="#">حذف</a></li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center resturant-data">
+            <img class="card-img-new-top" src="${data.gift.img}" alt="" onerror="handlebigImageError(this)">
+
+            <div class="d-flex justify-content-between align-items-center whereIAM outer-person newgif">
+                <div class="d-flex align-items-center gap-2">
+                    <div class="person-img">
+                      <a href="" class="personal" target="_blank" > 
+                         <img src="${data.owner.img}" alt="" onerror="handleImageError(this)">
+                       </a>
+                    </div>
+                    <a href="" class="personal" target="_blank" > 
+                     <p class="person-name">${data.owner.fullname}</p>
+                  </a>
+                </div>
+
+                <button class="wish">
+                    وش تحب
+                    <i class="fa-solid fa-less-than"></i>
+                </button>
+            </div>
+        </div>
+       
+        
+        <div class="card-body">
+
+
+        <div class="d-flex reacts" style="margin-top :0 !important">
+        ${generateLikes(data.likes)}
+          <div class="persons-react-count" id="btn2" data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop" style="cursor: pointer;">
+              <span>${data.likesCount > 0 ? '+' : ''}${data.likesCount}</span>
+          </div>
+      </div>
+            <div class="d-flex justify-content-center">
+            <span class="frist-hr"></span>
+          </div>
+        
+          ${generateComments(data.comments)}
+  
+          <div class="d-flex justify-content-center align-items-center mb-3 mt-4 readmore" id="comentbtn${data.id}"
+          data-bs-toggle="modal" 
+          data-bs-target="#largeModal" 
+          style="cursor: pointer;"
           >
-                            <div class=" head-div d-flex justify-content-end">
-                                <div class="dropdown">
-                                    <div class=" alarm btn btn-secondary dropdown-toggle" type="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa-solid fa-ellipsis"></i>
-                                    </div>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">رؤية التفاصيل</a></li>
-                                        <li><a class="dropdown-item" href="#">حذف</a></li>
+          <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down"
+            style="margin-right: 13px;"></i></span>
+        </div>
+  
+      </div>
+      </div>
+        `;
 
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="d-flex justify-content-between align-items-center outer-person">
-                                <div class="d-flex align-items-center gap-2">
-                                    <div class="person-img">
-                                  <a href="" class="personal" target="_blank" > 
-                                    <img src="${data.owner.img}" alt="" onerror="handleImageError(this)">
-                                  </a>
-                                    </div>
-                                  <a href="" class="personal" target="_blank" > 
-                                    <p class="person-name"> ${data.owner.fullname}</p>
-                                  </a>
-                                </div>
-
-                                <button class="wish">
-                                    وش تحب
-                                    <i class="fa-solid fa-less-than"></i>
-                                </button>
-                            </div>
-                            <div class="card-body">
-
-
-                            <div class="d-flex reacts" style="margin-top = 0">
-                            ${generateLikes(data.likes)}
-                              <div class="persons-react-count" id="btn2" data-bs-toggle="modal"
-                                  data-bs-target="#staticBackdrop" style="cursor: pointer;">
-                                  <span>${data.likesCount > 0 ? '+' : ''}${data.likesCount}</span>
-                              </div>
-                          </div>
-                                <div class="d-flex justify-content-center">
-                                <span class="frist-hr"></span>
-                              </div>
-                            
-                              ${generateComments(data.comments)}
-                      
-                              <div class="d-flex justify-content-center align-items-center mb-3 mt-4 readmore" id="comentbtn${data.id}"
-                              data-bs-toggle="modal" 
-                              data-bs-target="#largeModal" 
-                              style="cursor: pointer;"
-                              >
-                              <span style="font-weight: 500;">اقرا المزيد<i class="fa-solid fa-chevron-down"
-                                style="margin-right: 13px;"></i></span>
-                            </div>
-                      
-                          </div>
-                          </div>
-              `;
 
         const likebtn = card.querySelector(`#btn2`);
+
         if (likebtn) {
           likebtn.addEventListener('click', function () {
 
@@ -1379,11 +1384,14 @@
           });
         }
         if (data.comments.length <= 1) {
+
           card.querySelector('.readmore').classList.add("hide");
         }
-        if (data.comments.length == 0) {
+        
+        if (data.comments.length === 0) {
           card.querySelector('.frist-hr').classList.add("hide");
         }
+        cardContainer.appendChild(card);
         const readMoreButton = card.querySelector(`#comentbtn${data.id}`);
 
         if (readMoreButton) {
@@ -1394,9 +1402,9 @@
 
           });
         }
-        cardContainer.appendChild(card);
 
       }
+     
       function createVedioCard(data) {
         const cardContainer = document.getElementById('VIDEO');
         const card = document.createElement('div');

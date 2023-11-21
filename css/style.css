@@ -1021,9 +1021,9 @@ background: rgb(249 241 241 / 50%);
 .thirty .head-div{
     padding: 25px;
 }
-.forth .head-div{
+/* .forth .head-div{
     padding: 25px;
-}
+} */
 .forth button {
     background: rgb(71,74,176);
     background: linear-gradient(90deg, rgba(71,74,176,1) 36%, rgba(89,27,89,1) 81%);
@@ -1367,3 +1367,14 @@ background: rgb(249 241 241 / 50%);
 /* .mapurl:hover{
     color: black;
 } */
+.newgif{
+    width: 90%;
+}
+.forth .birthday{
+    color: white;
+    font-weight: bold;
+}
+.card-img-new-top{
+    max-height: 400px;
+    width: 85%;
+}
