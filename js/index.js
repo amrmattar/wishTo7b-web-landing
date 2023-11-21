@@ -428,6 +428,7 @@
         paginationContainer3.appendChild(nextButton);
         updateButtonState();
       }
+   
       function changePage(page, filteredData) {
 
         console.log(page);
@@ -494,22 +495,38 @@
           changePage(currentPage + 1, currentPageData);
         }
       }
+     
       function updateButtonState() {
         const prevButton = document.getElementById('prv');
         const nextButton = document.getElementById('next');
-
+    
         if (currentPage === 1) {
-          prevButton.style.display = 'none'; // Hide "Previous" button on the first page
+            // If on the first page, hide the "Previous" button
+            if (prevButton) {
+                prevButton.style.display = 'none';
+            }
         } else {
-          prevButton.style.display = 'block';
+            // If not on the first page, show the "Previous" button
+            if (prevButton) {
+                prevButton.style.display = 'block';
+            }
         }
-
+    
         if (currentPage === totalPages) {
-          nextButton.disabled = true; // Disable "Next" button on the last page
+            // If on the last page, disable the "Next" button
+            if (nextButton) {
+                nextButton.disabled = true;
+                nextButton.classList.add('disabled'); // Add a class for styling
+            }
         } else {
-          nextButton.disabled = false;
+            // If not on the last page, enable the "Next" button
+            if (nextButton) {
+                nextButton.disabled = false;
+                nextButton.classList.remove('disabled'); // Remove the disabled class
+            }
         }
-      }
+    }
+    
       function contains(selector, text) {
         const elements = document.querySelectorAll(selector);
         return Array.from(elements).find(element => element.textContent.includes(text));
@@ -683,23 +700,38 @@
         paginationContainer.style.display = 'flex';
       }
 
+     
       function updateButtonState2() {
         const prevButton2 = document.getElementById('prv2');
         const nextButton2 = document.getElementById('next2');
-
+    
         if (currentPage === 1) {
-          prevButton2.style.display = 'none'; // Hide "Previous" button on the first page
+            // If on the first page, hide the "Previous" button
+            if (prevButton2) {
+              prevButton2.style.display = 'none';
+            }
         } else {
-          prevButton2.style.display = 'block';
+            // If not on the first page, show the "Previous" button
+            if (prevButton2) {
+              prevButton2.style.display = 'block';
+            }
         }
-
+    
         if (currentPage === totalPages) {
-          nextButton2.disabled = true; // Disable "Next" button on the last page
+            // If on the last page, disable the "Next" button
+            if (nextButton2) {
+                nextButton2.disabled = true;
+                nextButton2.classList.add('disabled'); // Add a class for styling
+            }
         } else {
-          nextButton2.disabled = false;
+            // If not on the last page, enable the "Next" button
+            if (nextButton2) {
+                nextButton2.disabled = false;
+                nextButton2.classList.remove('disabled'); // Remove the disabled class
+            }
         }
-      }
-
+    }
+    
 
 
       function calculateTimeElapsed(specificDate) {

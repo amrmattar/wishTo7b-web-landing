@@ -1378,3 +1378,7 @@ background: rgb(249 241 241 / 50%);
     max-height: 400px;
     width: 85%;
 }
+#next.disabled ,#next.disabled:hover ,#next2.disabled ,#next2.disabled:hover{
+    background-color: #ddd;
+    cursor: not-allowed;
+}
