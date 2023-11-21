@@ -1054,9 +1054,9 @@ background: rgb(249 241 241 / 50%);
         flex-direction: column-reverse;
         align-items: center !important;
     }
-    .forth .head-div {
+    /* .forth .head-div {
         padding: 25px 10px;
-    }
+    } */
     
 }
 
