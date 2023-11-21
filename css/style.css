@@ -1378,6 +1378,12 @@ background: rgb(249 241 241 / 50%);
     max-height: 400px;
     width: 85%;
 }
+@media (max-width:768px) {
+    .card-img-new-top{
+       
+        width: 100%;
+    }
+}
 #next.disabled ,#next.disabled:hover ,#next2.disabled ,#next2.disabled:hover{
     background-color: #ddd;
     cursor: not-allowed;
