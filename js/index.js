@@ -1302,7 +1302,7 @@
 
       }
       function createGiftCard(data) {
-        const cardContainer = document.getElementById('OCCASION');
+        const cardContainer = document.getElementById('GIFT');
         const card = document.createElement('div');
         card.className = 'col-lg-8 p-0 music-card';
         card.innerHTML = `
